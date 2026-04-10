@@ -12,7 +12,7 @@ export async function SiteHeader() {
           <div className="logo-badge">
             <div className="logo-badge__inner">
               <div>
-                Platt Ladies
+                Platt Ladies2
                 <br />
                 Cricket
               </div>
