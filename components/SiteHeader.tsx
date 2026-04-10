@@ -7,7 +7,7 @@ export async function SiteHeader() {
       <div className="site-wrap hero-banner__content">
         <div className="hero-left">
           <img
-            src="/logo.png"
+            src="/images/platt-logo.png"
             alt="Platt Ladies Cricket Logo"
             className="logo-only__plain"
           />
