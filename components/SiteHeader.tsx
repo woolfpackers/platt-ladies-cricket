@@ -27,7 +27,7 @@ export async function SiteHeader() {
         <div className="hero-right">
           <div className="team-card">
             <Image
-              src="/images/Platt Ladies logo - round 2.png"
+              src="/images/team-placeholder.jpg"
               alt="Platt Ladies team"
               fill
               priority
