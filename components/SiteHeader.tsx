@@ -9,7 +9,7 @@ export async function SiteHeader() {
           <img
             src="/images/platt-logo.png"
             alt="Platt Ladies Cricket Logo"
-            className="logo-only__plain"
+            className="logo-only__image"
           />
 
           <div className="site-title-text">
