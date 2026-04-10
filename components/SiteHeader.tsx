@@ -10,19 +10,15 @@ export async function SiteHeader() {
       <div className="site-wrap hero-banner__content">
         <div className="hero-left">
           <div className="logo-badge">
-            <div className="logo-badge__inner">
- 	      <Image
-    		src="/platt-logo.png"
-    		alt="Platt Ladies Cricket Logo"
-    		width={120}
-    		height={120}
-		className="object-contain"
-  	      />
-	    </div>
-           </div>
-
-          <div className="oval-card">
-            <h1>{settings.clubName}</h1>
+            <div className="logo-badge__inner logo-image-wrap">
+              <Image
+                src="/Platt Ladies logo - round 2.png"
+                alt="Platt Ladies Cricket Logo"
+                fill
+                priority
+                className="logo-image"
+              />
+            </div>
           </div>
         </div>
 
@@ -36,7 +32,6 @@ export async function SiteHeader() {
               sizes="(max-width: 980px) 100vw, 40vw"
               style={{ objectFit: 'cover' }}
             />
-            <div className="team-title-pill">Platt Ladies</div>
           </div>
         </div>
       </div>

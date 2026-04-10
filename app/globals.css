@@ -135,13 +135,9 @@ img { max-width: 100%; height: auto; display: block; }
   height: 50px;
   border-radius: 50%;
   border: 2px solid rgba(255,255,255,0.6);
-  background: linear-gradient(180deg, var(--pink), var(--blue));
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  text-align: center;
-  line-height: 1.05;
-  font-size: 0.55rem;
+  background: white;
+  overflow: hidden;
+  position: relative;
 }
 
 .oval-card {
