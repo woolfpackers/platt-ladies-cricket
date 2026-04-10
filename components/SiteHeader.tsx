@@ -11,13 +11,15 @@ export async function SiteHeader() {
         <div className="hero-left">
           <div className="logo-badge">
             <div className="logo-badge__inner">
-              <div>
-                Platt Ladies2
-                <br />
-                Cricket
-              </div>
-            </div>
-          </div>
+ 	      <Image
+    		src="/platt-logo.png"
+    		alt="Platt Ladies Cricket Logo"
+    		width={120}
+    		height={120}
+		className="object-contain"
+  	      />
+	    </div>
+           </div>
 
           <div className="oval-card">
             <h1>{settings.clubName}</h1>
