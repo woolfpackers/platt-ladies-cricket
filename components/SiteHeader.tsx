@@ -8,7 +8,7 @@ export async function SiteHeader() {
         <div className="hero-left">
           <div className="logo-only">
             <Image
-              src="/platt-logo.png"
+              src="/images/platt-logo.png"
               alt="Platt Ladies Cricket Logo"
               width={90}
               height={90}
