@@ -6,15 +6,14 @@ export async function SiteHeader() {
       <div className="hero-banner__waves" />
       <div className="site-wrap hero-banner__content">
         <div className="hero-left">
-          <div className="logo-only">
-            <Image
-              src="/images/platt-logo.png"
-              alt="Platt Ladies Cricket Logo"
-              width={90}
-              height={90}
-              priority
-              className="logo-only__image"
-            />
+          <img
+            src="/images/platt-logo.png"
+            alt="Platt Ladies Cricket Logo"
+            className="logo-only__plain"
+          />
+
+          <div className="site-title-text">
+            Platt Ladies Cricket
           </div>
         </div>
 
