@@ -20,13 +20,13 @@ export async function SiteHeader() {
         <div className="hero-right">
           <div className="team-card">
             <Image
-              src="/images/team-placeholder.jpg"
-              alt="Platt Ladies team"
-              fill
-              priority
-              sizes="(max-width: 980px) 100vw, 40vw"
-              style={{ objectFit: 'cover' }}
-            />
+ 	      src="/images/team-placeholder.jpg"
+  	      alt="Platt Ladies team"
+   	      fill
+  	      priority
+  	      sizes="(max-width: 980px) 100vw, 40vw"
+  	      style={{ objectFit: 'contain' }}
+	    />
           </div>
         </div>
       </div>
