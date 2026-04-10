@@ -1,0 +1,124 @@
+export type Sponsor = {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  website_url?: string | null;
+  logo_url?: string | null;
+  sponsor_type: 'main' | 'player' | 'match' | 'event' | 'pavilion';
+  sort_order: number;
+  active: boolean;
+};
+
+export type BattingSeasonStat = {
+  id: string;
+  player_id: string;
+  season_year: number;
+  competition_code?: string | null;
+  balls?: number | null;
+  wkts?: number | null;
+  runs?: number | null;
+  net_runs?: number | null;
+  strike_rate?: number | null;
+  balls_per_wkt?: number | null;
+  net_strike_rate?: number | null;
+};
+
+export type BowlingSeasonStat = {
+  id: string;
+  player_id: string;
+  season_year: number;
+  competition_code?: string | null;
+  balls?: number | null;
+  wkts?: number | null;
+  runs?: number | null;
+  wides?: number | null;
+  nbs?: number | null;
+  balls_per_wkt?: number | null;
+  runs_per_over?: number | null;
+  net_runs_per_over?: number | null;
+  extras_per_over?: number | null;
+};
+
+export type Player = {
+  id: string;
+  first_name: string;
+  last_name: string;
+  display_name: string;
+  short_name?: string | null;
+  squad_number?: number | null;
+  role_label?: string | null;
+  batting_style?: string | null;
+  bowling_style?: string | null;
+  bio?: string | null;
+  image_url?: string | null;
+  is_active: boolean;
+  sort_order: number;
+};
+
+export type PlayerWithSponsor = Player & {
+  sponsor?: Sponsor | null;
+  batting_2026?: BattingSeasonStat | null;
+  bowling_2026?: BowlingSeasonStat | null;
+};
+
+export type FixtureResult = {
+  id: string;
+  title: string;
+  season_year: number;
+  competition_code: 'KWSCIL' | 'TIL' | 'KWSCL' | 'KWSB' | 'Tournaments' | 'Friendlies';
+  competition_name: string;
+  competition_division?: string | null;
+  fixture_type: 'fixture' | 'result';
+  starts_at: string;
+  venue_name?: string | null;
+  home_team: string;
+  away_team: string;
+  home_score?: string | null;
+  away_score?: string | null;
+  result_summary?: string | null;
+  report?: string | null;
+  external_link?: string | null;
+};
+
+export type PageContent = {
+  slug: string;
+  title: string;
+  intro?: string | null;
+  body?: string | null;
+  image_url?: string | null;
+  cta_label?: string | null;
+  cta_url?: string | null;
+  seo_title?: string | null;
+  seo_description?: string | null;
+};
+
+export type PageSection = {
+  id?: string;
+  page_slug: string;
+  section_key: string;
+  heading?: string | null;
+  body?: string | null;
+  image_url?: string | null;
+  cta_label?: string | null;
+  cta_url?: string | null;
+  sort_order: number;
+};
+
+export type EventItem = {
+  id: string;
+  title: string;
+  event_date?: string | null;
+  summary?: string | null;
+  description?: string | null;
+  image_url?: string | null;
+  status: 'draft' | 'published';
+};
+
+export type SiteSettings = {
+  clubName: string;
+  heroTagline: string;
+  heroSubtext: string;
+  contactEmail?: string | null;
+  contactPhone?: string | null;
+};
