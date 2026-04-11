@@ -1,16 +1,18 @@
 import { PageShell } from '@/components/PageShell';
-import { getPageContent, getPageSections, getSponsors } from '@/lib/data';
+import { getPageContent, getPageSections } from '@/lib/data';
 
 export default async function HomePage() {
   const content = await getPageContent('home');
-  const sponsors = await getSponsors();
   const sections = await getPageSections('home');
 
   return (
     <PageShell>
       <section className="section-card" style={{ marginBottom: 24 }}>
         <h1 className="page-title">{content?.title || 'Welcome to Platt Ladies Cricket'}</h1>
-        <p className="lead">{content?.intro}</p>
+
+        {content?.intro ? <p className="lead">{content.intro}</p> : null}
+        {content?.body ? <p className="lead">{content.body}</p> : null}
+
         <div className="grid-3" style={{ marginTop: 24 }}>
           {sections.map((section) => (
             <div key={section.section_key} className="content-panel" style={{ padding: 22 }}>
@@ -23,15 +25,33 @@ export default async function HomePage() {
 
       <section className="two-col">
         <div className="section-card">
-          <h2 className="small-heading">Featured sponsors</h2>
-          <p className="lead">Your main sponsor area is ready and can be managed from the database.</p>
+          <h2 className="small-heading">Latest News</h2>
+          <p className="lead">
+            Keep supporters up to date with what is happening at Platt Ladies Cricket.
+          </p>
+
           <div style={{ display: 'grid', gap: 14 }}>
-            {sponsors.slice(0, 3).map((sponsor) => (
-              <div key={sponsor.id} className="content-panel" style={{ padding: 18 }}>
-                <strong>{sponsor.name}</strong>
-                <p className="footer-note" style={{ marginBottom: 0 }}>{sponsor.description}</p>
-              </div>
-            ))}
+            <div className="content-panel" style={{ padding: 18 }}>
+              <strong>Latest News Item 1</strong>
+              <p className="footer-note" style={{ marginBottom: 0 }}>
+                Add your latest update here, such as upcoming fixtures, recruitment news, tournament plans,
+                training updates, events, fundraising activity or club achievements.
+              </p>
+            </div>
+
+            <div className="content-panel" style={{ padding: 18 }}>
+              <strong>Latest News Item 2</strong>
+              <p className="footer-note" style={{ marginBottom: 0 }}>
+                Use this section to highlight anything exciting coming up for the team and wider club.
+              </p>
+            </div>
+
+            <div className="content-panel" style={{ padding: 18 }}>
+              <strong>Latest News Item 3</strong>
+              <p className="footer-note" style={{ marginBottom: 0 }}>
+                This can later be made fully database-driven if you want a proper news feed or blog section.
+              </p>
+            </div>
           </div>
         </div>
 
