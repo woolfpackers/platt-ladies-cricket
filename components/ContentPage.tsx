@@ -16,7 +16,10 @@ export function ContentPage({
   return (
     <div className="two-col">
       <section className="section-card">
-        <SectionIntro title={content.title} intro={content.intro} />
+        <SectionIntro
+	  title={content.title ?? 'Page'}
+	  intro={content.intro ?? ''}
+	/>
         {content.body ? <p className="lead">{content.body}</p> : null}
         {content.cta_label && content.cta_url ? (
           <div style={{ marginTop: 18 }}>
