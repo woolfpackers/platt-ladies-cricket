@@ -28,22 +28,22 @@ export default async function AboutPage() {
           ) : (
             <>
               <h1 className="about-page-title">About our club</h1>
-              <p className="lead">
-                No page content was found in the database for this page yet.
-              </p>
+              <p className="lead">No page content was found in the database for this page yet.</p>
             </>
           )}
         </section>
 
         <aside>
-          <Image
-            src="/images/frances-placeholder.png"
-            alt="Frances Heron Maxwell"
-            width={700}
-            height={700}
-            className="about-image-only"
-            priority
-          />
+          {content?.image_url ? (
+            <Image
+              src={content.image_url}
+              alt={content.image_alt || 'About our club'}
+              width={700}
+              height={700}
+              className="about-image-only"
+              priority
+            />
+          ) : null}
         </aside>
       </div>
     </PageShell>
