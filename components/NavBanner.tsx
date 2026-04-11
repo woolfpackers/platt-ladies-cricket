@@ -1,9 +1,18 @@
 import Link from 'next/link';
-import { getNavItems } from '@/lib/data';
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Our Club', href: '/about' },
+  { label: 'Squad', href: '/squad' },
+  { label: 'Fixtures and Results', href: '/fixtures' },
+  { label: 'Join Us', href: '/join-us' },
+  { label: 'Tour', href: '/tour' },
+  { label: 'Pavilion', href: '/pavilion' },
+  { label: 'Sponsors', href: '/sponsors' },
+  { label: 'Events', href: '/events' },
+];
 
 export async function NavBanner() {
-  const navItems = await getNavItems();
-
   return (
     <nav className="nav-banner">
       <div className="site-wrap nav-banner__scroll">
