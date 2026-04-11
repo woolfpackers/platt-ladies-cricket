@@ -17,9 +17,13 @@ export const pageContent: Record<string, PageContent> = {
   },
   about: {
     slug: "about",
-    title: "About our club",
-    intro: "Platt Ladies Cricket continues a remarkable local women’s cricket heritage while building a modern, welcoming club for current and future generations.",
-    body: "St. Mary’s Platt has been part of women’s cricket history for almost a century through Frances Heron Maxwell, who helped open doors for women’s cricket and hosted the Australian women’s international team at Great Comp Gardens before the first women’s Ashes Test in the UK. Today, Platt Ladies proudly continues that legacy through inclusive cricket, coaching, outreach and community events."
+    title: "A Proud Heritage of Women’s  Cricket",
+    intro: "St. Mary’s Platt has been part of women’s cricket history for almost a century, thanks to local pioneer Frances Heron Maxwell, a passionate advocate for women’s cricket, at a time when opportunities were extremely limited.
+",
+    body: "Against a backdrop of minimal recognition in the women’s game, she was very influential in setting up the Women’s Cricket Association (WCA). As chair of the WCA, she campaigned for government to pass legislation that enabled women’s sports teams to apply for grants and land. In 1937 she famously hosted the Australian women’s international team to train in her garden, her very own ‘Oval’, at Great Comp Gardens, Platt ahead of the first ever women’s international Ashes Test in the UK. 
+
+Max’s support helped challenge attitudes, open doors, and normalise elite women playing cricket, and in doing so, enabled Platt to quietly play a role on the world stage. To this day, Platt Ladies Cricket proudly continue that legacy — creating opportunities for women and girls of all ages and abilities to play, compete, and be part of this inspirational legacy.
+"
   },
   squad: {
     slug: "squad",
