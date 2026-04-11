@@ -13,7 +13,10 @@ export default async function AboutPage() {
           {content ? (
             <>
               <div className="about-intro">
-                <SectionIntro title={content.title} intro={content.intro} />
+                <SectionIntro	
+		  title={content.title ?? 'Our club'}
+		  intro={content.intro ?? ''}
+		/>
               </div>
               {content.body ? <p className="lead">{content.body}</p> : null}
 

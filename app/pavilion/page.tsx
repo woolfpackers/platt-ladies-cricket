@@ -12,7 +12,10 @@ export default async function PavilionPage() {
         <section className="section-card">
           {content ? (
             <>
-              <SectionIntro title={content.title} intro={content.intro} />
+              <SectionIntro
+		  title={content.title ?? 'New Pavilion Project'}
+		  intro={content.intro ?? ''}
+		/>
               {content.body ? <p className="lead">{content.body}</p> : null}
 
               {content.cta_label && content.cta_url ? (

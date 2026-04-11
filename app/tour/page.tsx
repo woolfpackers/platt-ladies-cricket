@@ -12,7 +12,10 @@ export default async function TourPage() {
         <section className="section-card">
           {content ? (
             <>
-              <SectionIntro title={content.title} intro={content.intro} />
+              <SectionIntro
+		title={content.title ?? 'Baltic Bash Tour 2026'}
+  		intro={content.intro ?? ''}
+	      />
               {content.body ? <p className="lead">{content.body}</p> : null}
 
               {content.cta_label && content.cta_url ? (

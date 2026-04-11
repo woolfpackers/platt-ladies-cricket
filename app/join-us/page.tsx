@@ -12,7 +12,10 @@ export default async function JoinUsPage() {
         <section className="section-card">
           {content ? (
             <>
-              <SectionIntro title={content.title} intro={content.intro} />
+              <SectionIntro
+  		  title={content.title ?? 'Join Platt Ladies Cricket'}
+		  intro={content.intro ?? ''}
+		/>
               {content.body ? <p className="lead">{content.body}</p> : null}
 
               {content.cta_label && content.cta_url ? (
