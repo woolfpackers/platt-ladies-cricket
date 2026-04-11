@@ -1,9 +1,10 @@
 import { PageShell } from '@/components/PageShell';
-import { getPageContent, getPageSections } from '@/lib/data';
+import { getNewsItems, getPageContent, getPageSections } from '@/lib/data';
 
 export default async function HomePage() {
   const content = await getPageContent('home');
   const sections = await getPageSections('home');
+  const newsItems = await getNewsItems();
 
   return (
     <PageShell>
@@ -27,31 +28,55 @@ export default async function HomePage() {
         <div className="section-card">
           <h2 className="small-heading">Latest News</h2>
           <p className="lead">
-            Keep supporters up to date with what is happening at Platt Ladies Cricket.
+            Keep supporters up to date with the latest from Platt Ladies Cricket.
           </p>
 
           <div style={{ display: 'grid', gap: 14 }}>
-            <div className="content-panel" style={{ padding: 18 }}>
-              <strong>Latest News Item 1</strong>
-              <p className="footer-note" style={{ marginBottom: 0 }}>
-                Add your latest update here, such as upcoming fixtures, recruitment news, tournament plans,
-                training updates, events, fundraising activity or club achievements.
-              </p>
-            </div>
+            {newsItems.length > 0 ? (
+              newsItems.map((item) => (
+                <div key={item.id} className="content-panel" style={{ padding: 18 }}>
+                  <strong>{item.title}</strong>
 
-            <div className="content-panel" style={{ padding: 18 }}>
-              <strong>Latest News Item 2</strong>
-              <p className="footer-note" style={{ marginBottom: 0 }}>
-                Use this section to highlight anything exciting coming up for the team and wider club.
-              </p>
-            </div>
+                  {item.paragraph_1 ? (
+                    <p className="footer-note" style={{ marginTop: 12, marginBottom: 0 }}>
+                      {item.paragraph_1}
+                    </p>
+                  ) : null}
 
-            <div className="content-panel" style={{ padding: 18 }}>
-              <strong>Latest News Item 3</strong>
-              <p className="footer-note" style={{ marginBottom: 0 }}>
-                This can later be made fully database-driven if you want a proper news feed or blog section.
-              </p>
-            </div>
+                  {item.paragraph_2 ? (
+                    <p className="footer-note" style={{ marginTop: 12, marginBottom: 0 }}>
+                      {item.paragraph_2}
+                    </p>
+                  ) : null}
+
+                  {item.paragraph_3 ? (
+                    <p className="footer-note" style={{ marginTop: 12, marginBottom: 0 }}>
+                      {item.paragraph_3}
+                    </p>
+                  ) : null}
+
+                  {item.link_url ? (
+                    <div style={{ marginTop: 14 }}>
+                      <a
+                        className="button-link"
+                        href={item.link_url}
+                        target={item.link_url.startsWith('http') ? '_blank' : undefined}
+                        rel={item.link_url.startsWith('http') ? 'noreferrer' : undefined}
+                      >
+                        {item.button_label || 'Read more'}
+                      </a>
+                    </div>
+                  ) : null}
+                </div>
+              ))
+            ) : (
+              <div className="content-panel" style={{ padding: 18 }}>
+                <strong>No news items yet</strong>
+                <p className="footer-note" style={{ marginTop: 12, marginBottom: 0 }}>
+                  Add a published row to the news_items table in Supabase and it will appear here.
+                </p>
+              </div>
+            )}
           </div>
         </div>
 

@@ -3,6 +3,7 @@ import { supabase } from './supabase';
 import type {
   EventItem,
   FixtureResult,
+  NewsItem,
   PageContent,
   PageSection,
   PlayerWithSponsor,
@@ -17,6 +18,21 @@ function requireSupabase() {
     );
   }
   return supabase;
+}
+
+export async function getNewsItems(): Promise<NewsItem[]> {
+  const db = requireSupabase();
+  const { data, error } = await db
+    .from('news_items')
+    .select('*')
+    .eq('is_published', true)
+    .order('published_at', { ascending: false });
+
+  if (error) {
+    throw new Error(`Failed to load news items: ${error.message}`);
+  }
+
+  return data ?? [];
 }
 
 export async function getPageContent(slug: string): Promise<PageContent | null> {

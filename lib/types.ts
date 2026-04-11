@@ -10,6 +10,20 @@ export type Sponsor = {
   active: boolean;
 };
 
+export type NewsItem = {
+  id: string;
+  title: string;
+  paragraph_1: string | null;
+  paragraph_2: string | null;
+  paragraph_3: string | null;
+  link_url: string | null;
+  button_label: string | null;
+  published_at: string;
+  is_published: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
 export type BattingSeasonStat = {
   id: string;
   player_id: string;
