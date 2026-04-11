@@ -490,6 +490,12 @@ main.site-main {
     line-height: 1.2;
   }
  
+  .about-page-title {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
   .section-card {
     padding: 20px;
   }

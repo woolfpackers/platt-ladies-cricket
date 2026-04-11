@@ -25,7 +25,7 @@ export default async function AboutPage() {
 
         <aside>
           <Image
-            src="/images/frances-placeholder.jpg"
+            src="/images/frances-placeholder.png"
             alt="Frances Heron Maxwell"
             width={700}
             height={700}
