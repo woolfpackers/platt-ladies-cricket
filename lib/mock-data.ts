@@ -8,7 +8,7 @@ export const siteSettings: SiteSettings = {
   contactPhone: "Anthony – 07789 076856"
 };
 
-export const pageContent: Record<string, PageContent> = {
+export const pageContent: Record<string, Partial<PageContent>> = {
   home: {
     slug: "home",
     title: "Welcome to Platt Ladies Cricket",
