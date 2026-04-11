@@ -8,21 +8,36 @@ export default async function HomePage() {
 
   return (
     <PageShell>
-      <section className="section-card" style={{ marginBottom: 24 }}>
-        <h1 className="page-title">{content?.title || 'Welcome to Platt Ladies Cricket'}</h1>
+      <section className="section-card" style={{ marginBottom: 16, padding: 18 }}>
+	  <h1 className="page-title" style={{ fontSize: 28, marginBottom: 8 }}>
+	    {content?.title || 'Welcome to Platt Ladies Cricket'}
+	  </h1>
 
-        {content?.intro ? <p className="lead">{content.intro}</p> : null}
-        {content?.body ? <p className="lead">{content.body}</p> : null}
+	  {content?.intro ? (
+	    <p className="lead" style={{ marginBottom: 6 }}>
+	      {content.intro}
+	    </p>
+	  ) : null}
 
-        <div className="grid-3" style={{ marginTop: 24 }}>
-          {sections.map((section) => (
-            <div key={section.section_key} className="content-panel" style={{ padding: 22 }}>
-              <h2 className="small-heading">{section.heading}</h2>
-              <p className="lead">{section.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+	  {content?.body ? (
+	    <p className="lead" style={{ marginBottom: 10, fontSize: 14 }}>
+	      {content.body}
+	    </p>
+	  ) : null}
+
+	  <div className="grid-3" style={{ marginTop: 12 }}>
+	    {sections.map((section) => (
+	      <div key={section.section_key} className="content-panel" style={{ padding: 16 }}>
+	        <h2 className="small-heading" style={{ marginBottom: 6 }}>
+	          {section.heading}
+	        </h2>
+	        <p className="lead" style={{ fontSize: 14 }}>
+	          {section.body}
+	        </p>
+	      </div>
+	    ))}
+	  </div>
+	</section>
 
       <section className="two-col">
         <div className="section-card">
