@@ -210,15 +210,13 @@ export async function getEvents(): Promise<EventItem[]> {
 
 export async function getUpcomingItems(limit = 5): Promise<UpcomingItem[]> {
   const db = requireSupabase();
+
   const { data, error } = await db
     .from('upcoming_items_public')
     .select('*')
     .order('item_datetime', { ascending: true })
-    .limit(limit);
-
-  if (error) {
-    throw new Error(`Failed to load upcoming items: ${error.message}`);
-  }
+    .limit(limit)
+    .throwOnError();
 
   return (data ?? []) as UpcomingItem[];
 }

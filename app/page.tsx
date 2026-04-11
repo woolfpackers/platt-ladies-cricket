@@ -1,5 +1,6 @@
 import { PageShell } from '@/components/PageShell';
 import { getNewsItems, getPageContent, getPageSections, getUpcomingItems } from '@/lib/data';
+export const revalidate = 60;
 
 function formatDate(dateString: string) {
   const date = new Date(dateString);
