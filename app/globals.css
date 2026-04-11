@@ -146,6 +146,14 @@ img { max-width: 100%; height: auto; display: block; }
   flex-shrink: 0;
 }
 
+.about-image-only {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  object-fit: contain;
+}
+
 .oval-card {
   max-width: 520px;
   border-radius: 999px;
@@ -477,6 +485,11 @@ main.site-main {
     font-size: 0.82rem;
   }
 
+  .section-card h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+ 
   .section-card {
     padding: 20px;
   }
