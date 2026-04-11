@@ -117,7 +117,7 @@ export default async function HomePage() {
         <div className="section-card">
           <h2 className="small-heading">Coming Up Next</h2>
           <p className="lead">
-            The next five fixtures, training sessions and club events.
+            Upcoming fixtures, events and training sessions...
           </p>
 
           <div style={{ display: 'grid', gap: 14 }}>
@@ -125,7 +125,7 @@ export default async function HomePage() {
               upcomingItems.map((item, index) => (
                 <div key={`${item.item_type}-${item.id}`} className="content-panel" style={{ padding: 18 }}>
                   <strong>
-                    [{item.item_type === 'fixture' ? `Fixture ${index + 1}` : `Event ${index + 1}`}] {formatDate(item.item_datetime)} - {item.title}
+                    {formatDate(item.item_datetime)} - {item.title}
                   </strong>
 
                   <p className="footer-note" style={{ marginTop: 12, marginBottom: 0 }}>
