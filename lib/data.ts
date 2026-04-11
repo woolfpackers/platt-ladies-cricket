@@ -1,3 +1,4 @@
+
 import { supabase } from './supabase';
 import type {
   EventItem,
@@ -46,6 +47,18 @@ export async function getPageSections(pageSlug: string): Promise<PageSection[]> 
   }
 
   return data ?? [];
+}
+
+export async function getNavItems() {
+  return [
+    { label: 'Home', href: '/' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Tour', href: '/tour' },
+    { label: 'Pavilion', href: '/pavilion' },
+    { label: 'Events', href: '/events' },
+    { label: 'Join Us', href: '/join-us' },
+    { label: 'Sponsors', href: '/sponsors' },
+  ];
 }
 
 export async function getSiteSettings(): Promise<SiteSettings> {

@@ -1,17 +1,33 @@
 import { PageShell } from '@/components/PageShell';
-import { EventsGrid } from '@/components/EventsGrid';
-import { getEvents, getPageContent } from '@/lib/data';
+import { SectionIntro } from '@/components/SectionIntro';
+import { getPageContent } from '@/lib/data';
 
 export default async function EventsPage() {
-  const events = await getEvents();
   const content = await getPageContent('events');
 
   return (
     <PageShell>
       <section className="section-card">
-        <h1 className="page-title">{content?.title || 'Events'}</h1>
-        <p className="lead">{content?.intro}</p>
-        <EventsGrid events={events} />
+        {content ? (
+          <>
+            <SectionIntro title={content.title} intro={content.intro} />
+            {content.body ? <p className="lead">{content.body}</p> : null}
+            {content.cta_label && content.cta_url ? (
+              <div style={{ marginTop: 18 }}>
+                <a className="button-link" href={content.cta_url}>
+                  {content.cta_label}
+                </a>
+              </div>
+            ) : null}
+          </>
+        ) : (
+          <>
+            <h1 className="page-title">Events</h1>
+            <p className="lead">
+              No events page content was found in the database yet.
+            </p>
+          </>
+        )}
       </section>
     </PageShell>
   );

@@ -1,14 +1,34 @@
-import { ContentPage } from '@/components/ContentPage';
 import { PageShell } from '@/components/PageShell';
+import { SectionIntro } from '@/components/SectionIntro';
 import { getPageContent } from '@/lib/data';
 
 export default async function PavilionPage() {
   const content = await getPageContent('pavilion');
-  if (!content) return null;
 
   return (
     <PageShell>
-      <ContentPage content={content} imageSrc="/images/pavilion-placeholder.jpg" imageAlt="New pavilion concept" />
+      <section className="section-card">
+        {content ? (
+          <>
+            <SectionIntro title={content.title} intro={content.intro} />
+            {content.body ? <p className="lead">{content.body}</p> : null}
+            {content.cta_label && content.cta_url ? (
+              <div style={{ marginTop: 18 }}>
+                <a className="button-link" href={content.cta_url}>
+                  {content.cta_label}
+                </a>
+              </div>
+            ) : null}
+          </>
+        ) : (
+          <>
+            <h1 className="page-title">Pavilion</h1>
+            <p className="lead">
+              No pavilion content was found in the database yet.
+            </p>
+          </>
+        )}
+      </section>
     </PageShell>
   );
 }
