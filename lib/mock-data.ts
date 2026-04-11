@@ -16,13 +16,13 @@ export const pageContent: Record<string, PageContent> = {
     body: "Use this site to explore the squad, current season stats, fixtures, results, sponsorship opportunities, pavilion plans, recruitment information and major club events."
   },
   about: {
-    slug: "about",
-    title: "A Proud Heritage of Women’s  Cricket",
-    intro: "St. Mary’s Platt has been part of women’s cricket history for almost a century, thanks to local pioneer Frances Heron Maxwell, a passionate advocate for women’s cricket, at a time when opportunities were extremely limited.
-",
-    body: "Against a backdrop of minimal recognition in the women’s game, she was very influential in setting up the Women’s Cricket Association (WCA). As chair of the WCA, she campaigned for government to pass legislation that enabled women’s sports teams to apply for grants and land. In 1937 she famously hosted the Australian women’s international team to train in her garden, her very own ‘Oval’, at Great Comp Gardens, Platt ahead of the first ever women’s international Ashes Test in the UK. Max’s support helped challenge attitudes, open doors, and normalise elite women playing cricket, and in doing so, enabled Platt to quietly play a role on the world stage. To this day, Platt Ladies Cricket proudly continue that legacy — creating opportunities for women and girls of all ages and abilities to play, compete, and be part of this inspirational legacy.
-"
-  },
+  slug: "about",
+  title: "A Proud Heritage of Women’s Cricket",
+  intro: `St. Mary’s Platt has been part of women’s cricket history for almost a century, thanks to local pioneer Frances Heron Maxwell, a passionate advocate for women’s cricket, at a time when opportunities were extremely limited.`,
+  body: `Against a backdrop of minimal recognition in the women’s game, she was very influential in setting up the Women’s Cricket Association (WCA). As chair of the WCA, she campaigned for government to pass legislation that enabled women’s sports teams to apply for grants and land. In 1937 she famously hosted the Australian women’s international team to train in her garden, her very own ‘Oval’, at Great Comp Gardens, Platt ahead of the first ever women’s international Ashes Test in the UK. 
+
+Max’s support helped challenge attitudes, open doors, and normalise elite women playing cricket, and in doing so, enabled Platt to quietly play a role on the world stage. To this day, Platt Ladies Cricket proudly continue that legacy — creating opportunities for women and girls of all ages and abilities to play, compete, and be part of this inspirational legacy.`
+},
   squad: {
     slug: "squad",
     title: "Our Squad",
