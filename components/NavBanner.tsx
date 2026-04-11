@@ -1,25 +1,35 @@
-'use client';
+import Image from 'next/image';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
-import { navItems } from '@/lib/nav';
-
-export function NavBanner() {
-  const pathname = usePathname();
-
+export async function SiteHeader() {
   return (
-    <nav className="nav-banner" aria-label="Main navigation">
-      <div className="nav-banner__inner">
-        {navItems.map((item) => {
-          const active = pathname === item.href;
-          return (
-            <Link key={item.href} href={item.href} className={clsx('nav-pill', active && 'active')}>
-              {item.label}
-            </Link>
-          );
-        })}
+    <header className="hero-banner">
+      <div className="hero-banner__waves" />
+      <div className="site-wrap hero-banner__content">
+        <div className="hero-left">
+          <img
+            src="/logo.png"
+            alt="Platt Ladies Cricket Logo"
+            className="logo-only__plain"
+          />
+
+          <div className="site-title-text">
+            Platt Ladies Cricket
+          </div>
+        </div>
+
+        <div className="hero-right">
+          <div className="team-card">
+            <Image
+              src="/images/team-placeholder.jpg"
+              alt="Platt Ladies team"
+              fill
+              priority
+              sizes="(max-width: 980px) 34vw, 240px"
+              style={{ objectFit: 'contain', objectPosition: 'center' }}
+            />
+          </div>
+        </div>
       </div>
-    </nav>
+    </header>
   );
 }

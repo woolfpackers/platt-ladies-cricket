@@ -10,7 +10,9 @@ export async function PageShell({ children }: { children: ReactNode }) {
         <NavBanner />
       </div>
 
-      <main className="site-wrap site-main">{children}</main>
+      <main className="site-main">
+        <div className="site-wrap">{children}</div>
+      </main>
     </div>
   );
 }
