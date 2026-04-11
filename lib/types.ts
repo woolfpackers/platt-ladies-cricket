@@ -83,14 +83,13 @@ export type FixtureResult = {
 
 export type PageContent = {
   slug: string;
-  title: string;
-  intro?: string | null;
-  body?: string | null;
-  image_url?: string | null;
-  cta_label?: string | null;
-  cta_url?: string | null;
-  seo_title?: string | null;
-  seo_description?: string | null;
+  title: string | null;
+  intro: string | null;
+  body: string | null;
+  cta_label: string | null;
+  cta_url: string | null;
+  image_url: string | null;
+  image_alt: string | null;
 };
 
 export type PageSection = {
