@@ -10,6 +10,16 @@ export type Sponsor = {
   active: boolean;
 };
 
+export type UpcomingItem = {
+  item_type: 'event' | 'fixture';
+  id: string;
+  item_datetime: string;
+  title: string;
+  location_text: string;
+  short_details: string;
+  link_url: string;
+};
+
 export type NewsItem = {
   id: string;
   title: string;
