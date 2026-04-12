@@ -4,10 +4,10 @@ export const dynamic = 'force-dynamic';
 
 function formatDate(dateString: string) {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'short',
-  });
+  const weekday = date.toLocaleDateString('en-GB', { weekday: 'short' });
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = date.toLocaleDateString('en-GB', { month: 'short' });
+  return `${weekday} ${day} ${month}`;
 }
 
 function formatTime(dateString: string) {
@@ -62,7 +62,7 @@ export default async function HomePage() {
         <div className="section-card">
           <h2 className="small-heading">Latest News</h2>
           <p className="lead">
-            CHeck out the latest news from Platt Ladies Cricket...
+            Check out the latest news from Platt Ladies Cricket...
           </p>
 
           <div style={{ display: 'grid', gap: 14 }}>
