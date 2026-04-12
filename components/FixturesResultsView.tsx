@@ -40,21 +40,10 @@ export function FixturesResultsView({ items }: { items: FixtureResult[] }) {
 
   function formatDate(dateString: string) {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB', {
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-    });
-  }
-
-  function formatTime(dateString: string) {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString('en-GB', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    });
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = date.toLocaleDateString('en-GB', { month: 'short' });
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
   }
 
   return (
@@ -118,51 +107,25 @@ export function FixturesResultsView({ items }: { items: FixtureResult[] }) {
 
             return (
               <article key={item.id} className="fixture-card">
-                <div className="fixture-card__header">
-                  <h2 className="small-heading">{item.title}</h2>
-                  <span className="muted-label">
-                    {isResult ? 'Result' : 'Fixture'}
-                  </span>
-                </div>
-
-                <p className="footer-note" style={{ margin: 0 }}>
-                  {formatDate(item.starts_at)} · {formatTime(item.starts_at)}
+                <p className="fixture-line-main">
+                  {formatDate(item.starts_at)} - {item.competition_code || item.competition_name || 'Competition'} -{' '}
+                  {item.home_team || 'Home Team'} vs {item.away_team || 'Away Team'}
                 </p>
 
-                <p className="footer-note" style={{ margin: 0 }}>
-                  {[item.competition_code, item.competition_division, item.venue_name]
-                    .filter(Boolean)
-                    .join(' · ')}
+                <p className="fixture-line-sub">
+                  {item.home_team || 'Home Team'}: {item.home_score || '-'}
                 </p>
 
-                {isResult ? (
-                  <>
-                    <p className="lead" style={{ margin: 0 }}>
-                      {[item.home_team, item.home_score].filter(Boolean).join(' ')}{' '}
-                      {item.home_score || item.away_score ? 'vs' : ''}{' '}
-                      {[item.away_score, item.away_team].filter(Boolean).join(' ')}
-                    </p>
+                <p className="fixture-line-sub">
+                  {item.away_team || 'Away Team'}: {item.away_score || '-'}
+                </p>
 
-                    {item.result_summary ? (
-                      <p className="footer-note" style={{ margin: 0 }}>
-                        {item.result_summary}
-                      </p>
-                    ) : null}
-                  </>
-                ) : (
-                  <p className="lead" style={{ margin: 0 }}>
-                    {[item.home_team, 'vs', item.away_team].filter(Boolean).join(' ')}
-                  </p>
-                )}
-
-                {item.report ? (
-                  <p className="footer-note" style={{ margin: 0 }}>
-                    {item.report}
-                  </p>
-                ) : null}
+                <p className="fixture-line-sub">
+                  Result: {item.result_summary || (isResult ? 'Result recorded' : 'Fixture not yet played')}
+                </p>
 
                 {item.external_link ? (
-                  <div>
+                  <div style={{ marginTop: 12 }}>
                     <a
                       className="button-link"
                       href={item.external_link}

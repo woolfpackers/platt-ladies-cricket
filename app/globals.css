@@ -350,6 +350,19 @@ img {
   box-shadow: var(--shadow);
 }
 
+.fixture-line-main {
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.fixture-line-sub {
+  margin: 0 0 8px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 .filter-inline-group {
   display: flex;
   align-items: center;

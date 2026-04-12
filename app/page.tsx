@@ -62,7 +62,7 @@ export default async function HomePage() {
         <div className="section-card">
           <h2 className="small-heading">Latest News</h2>
           <p className="lead">
-            Keep supporters up to date with the latest from Platt Ladies Cricket.
+            CHeck out the latest news from Platt Ladies Cricket...
           </p>
 
           <div style={{ display: 'grid', gap: 14 }}>
