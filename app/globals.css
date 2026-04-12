@@ -376,6 +376,23 @@ img {
   padding: 12px 14px;
 }
 
+.stats-heading {
+  font-weight: 700;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+.stats-list {
+  display: grid;
+  gap: 8px;
+}
+
+.stats-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .stat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));

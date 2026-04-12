@@ -10,6 +10,21 @@ export type Sponsor = {
   active: boolean;
 };
 
+export type PlayerCareerStats = {
+  player_id: string;
+  batting_total_runs: number;
+  batting_total_balls: number;
+  batting_total_outs: number;
+  batting_average: number | null;
+  batting_strike_rate: number | null;
+  bowling_total_runs_conceded: number;
+  bowling_total_balls: number;
+  bowling_total_wickets: number;
+  bowling_average: number | null;
+  bowling_strike_rate: number | null;
+  economy_rate: number | null;
+};
+
 export type UpcomingItem = {
   item_type: 'event' | 'fixture';
   id: string;
@@ -84,6 +99,7 @@ export type PlayerWithSponsor = Player & {
   sponsor?: Sponsor | null;
   batting_2026?: BattingSeasonStat | null;
   bowling_2026?: BowlingSeasonStat | null;
+  career_stats?: PlayerCareerStats | null;
 };
 
 export type FixtureResult = {

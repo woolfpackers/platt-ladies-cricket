@@ -1,20 +1,9 @@
 import Image from 'next/image';
 import type { PlayerWithSponsor } from '@/lib/types';
 
-function hasBatting(player: PlayerWithSponsor) {
-  return Boolean(
-    player.batting_2026 &&
-      (((player.batting_2026.balls ?? 0) > 0) || ((player.batting_2026.runs ?? 0) > 0))
-  );
-}
-
-function hasBowling(player: PlayerWithSponsor) {
-  return Boolean(
-    player.bowling_2026 &&
-      (((player.bowling_2026.balls ?? 0) > 0) ||
-        ((player.bowling_2026.wkts ?? 0) > 0) ||
-        ((player.bowling_2026.runs ?? 0) > 0))
-  );
+function formatStat(value: number | null | undefined, decimals = 2) {
+  if (value === null || value === undefined) return '—';
+  return Number(value).toFixed(decimals).replace(/\.00$/, '');
 }
 
 export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
@@ -40,53 +29,23 @@ export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
             </p>
           </div>
 
-          {hasBatting(player) ? (
-            <div className="stat-block">
-              <div className="stat-block__title">2026 batting totals</div>
-              <div className="stat-grid">
-                <div>
-                  <strong>Runs</strong>
-                  <span>{player.batting_2026?.runs ?? 0}</span>
-                </div>
-                <div>
-                  <strong>Net runs</strong>
-                  <span>{player.batting_2026?.net_runs ?? 0}</span>
-                </div>
-                <div>
-                  <strong>Balls</strong>
-                  <span>{player.batting_2026?.balls ?? 0}</span>
-                </div>
-                <div>
-                  <strong>Wkts</strong>
-                  <span>{player.batting_2026?.wkts ?? 0}</span>
-                </div>
-              </div>
+          <div className="stat-block">
+            <div className="stats-heading">Batting Stats:</div>
+            <div className="stats-list">
+              <div><strong>Batting average:</strong> <span>{formatStat(player.career_stats?.batting_average)}</span></div>
+              <div><strong>Strike Rate:</strong> <span>{formatStat(player.career_stats?.batting_strike_rate)}</span></div>
+              <div><strong>Total Runs:</strong> <span>{player.career_stats?.batting_total_runs ?? 0}</span></div>
             </div>
-          ) : null}
+          </div>
 
-          {hasBowling(player) ? (
-            <div className="stat-block">
-              <div className="stat-block__title">2026 bowling totals</div>
-              <div className="stat-grid">
-                <div>
-                  <strong>Wkts</strong>
-                  <span>{player.bowling_2026?.wkts ?? 0}</span>
-                </div>
-                <div>
-                  <strong>Balls</strong>
-                  <span>{player.bowling_2026?.balls ?? 0}</span>
-                </div>
-                <div>
-                  <strong>Runs</strong>
-                  <span>{player.bowling_2026?.runs ?? 0}</span>
-                </div>
-                <div>
-                  <strong>Wides</strong>
-                  <span>{player.bowling_2026?.wides ?? 0}</span>
-                </div>
-              </div>
+          <div className="stat-block">
+            <div className="stats-heading">Bowling Stats:</div>
+            <div className="stats-list">
+              <div><strong>Bowling average:</strong> <span>{formatStat(player.career_stats?.bowling_average)}</span></div>
+              <div><strong>Bowling strike rate:</strong> <span>{formatStat(player.career_stats?.bowling_strike_rate)}</span></div>
+              <div><strong>Economy rate:</strong> <span>{formatStat(player.career_stats?.economy_rate)}</span></div>
             </div>
-          ) : null}
+          </div>
 
           <div>
             <span className="muted-label">
