@@ -106,38 +106,43 @@ export function FixturesResultsView({ items }: { items: FixtureResult[] }) {
               Boolean(item.result_summary);
 
             return (
-              <article key={item.id} className="fixture-card">
-                <p className="fixture-line-main">
-                  {formatDate(item.starts_at)} - {item.competition_code || item.competition_name || 'Competition'} -{' '}
-                  {item.home_team || 'Home Team'} vs {item.away_team || 'Away Team'}
-                </p>
+	      <article key={item.id} className="fixture-card">
+	        <p className="fixture-line-main">
+	        {formatDate(item.starts_at)} - {item.competition_code || item.competition_name || 'Competition'} -{' '}
+	        {item.home_team || 'Home Team'} vs {item.away_team || 'Away Team'}
+    		</p>
 
-                <p className="fixture-line-sub">
-                  {item.home_team || 'Home Team'}: {item.home_score || '-'}
-                </p>
+    		{isResult ? (
+      		<>
+        	<p className="fixture-line-sub">
+          	{item.home_team || 'Home Team'}: {item.home_score || '-'}
+        	</p>
 
-                <p className="fixture-line-sub">
-                  {item.away_team || 'Away Team'}: {item.away_score || '-'}
-                </p>
+        	<p className="fixture-line-sub">
+          	{item.away_team || 'Away Team'}: {item.away_score || '-'}
+	        </p>
 
-                <p className="fixture-line-sub">
-                  Result: {item.result_summary || (isResult ? 'Result recorded' : 'Fixture not yet played')}
-                </p>
+        	<p className="fixture-line-sub">
+	          Result: {item.result_summary || 'Result recorded'}
+        	</p>
+      		</>
+    	) : null}
+	
+	    {item.external_link ? (
+	      <div style={{ marginTop: isResult ? 12 : 4 }}>
+	        <a
+	          className="button-link"
+	          href={item.external_link}
+	          target="_blank"	
+	          rel="noreferrer"
+	        >
+	          View details
+	        </a>
+	      </div>
+	    ) : null}
+	  </article>
+	);
 
-                {item.external_link ? (
-                  <div style={{ marginTop: 12 }}>
-                    <a
-                      className="button-link"
-                      href={item.external_link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      View details
-                    </a>
-                  </div>
-                ) : null}
-              </article>
-            );
           })
         ) : (
           <div className="section-card">
