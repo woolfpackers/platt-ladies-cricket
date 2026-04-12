@@ -8,7 +8,7 @@ function formatDate(dateString: string) {
   const weekday = date.toLocaleDateString('en-GB', { weekday: 'short' });
   const day = String(date.getDate()).padStart(2, '0');
   const month = date.toLocaleDateString('en-GB', { month: 'short' });
-  return `${weekday}-${day}-${month}`;
+  return `${weekday} ${day} ${month}`;
 }
 
 function formatTime(dateString: string) {
