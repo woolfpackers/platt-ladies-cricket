@@ -158,7 +158,10 @@ export default async function HomePage() {
               upcomingItems.map((item, index) => (
                 <div key={`${item.item_type}-${item.id}`} className="content-panel" style={{ padding: 18 }}>
                   <strong>
-                    {formatDate(item.item_datetime)} - {item.title}
+                    {formatDate(item.date)} -{' '}
+  			{item.type === 'fixture'
+    			? `${item.competition_code || ''} ${item.home_team} vs ${item.away_team}`
+			    : item.title}
                   </strong>
 
                   <p className="footer-note"
