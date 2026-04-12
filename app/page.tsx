@@ -68,23 +68,50 @@ export default async function HomePage() {
           <div style={{ display: 'grid', gap: 14 }}>
             {newsItems.length > 0 ? (
               newsItems.map((item) => (
-                <div key={item.id} className="content-panel" style={{ padding: 18 }}>
-                  <strong>{item.title}</strong>
+                <div key={item.id} className="content-panel" style={{ padding: 16 }}>
+                  <h3
+		    style={{
+		    fontSize: 18,
+		    fontWeight: 700,
+		    textDecoration: 'underline',
+		    marginBottom: 8
+		    }}
+		  >
+		    {item.title}
+		  </h3>
 
                   {item.paragraph_1 ? (
-                    <p className="footer-note" style={{ marginTop: 12, marginBottom: 0 }}>
+                    <p className="footer-note"
+		      style={{
+		      marginTop: 8,
+		      marginBottom: 0,
+		      lineHeight: '1.6'
+		    }}
+		    >
                       {item.paragraph_1}
                     </p>
                   ) : null}
 
                   {item.paragraph_2 ? (
-                    <p className="footer-note" style={{ marginTop: 12, marginBottom: 0 }}>
+                    <p className="footer-note"
+		      style={{
+		      marginTop: 8,
+		      marginBottom: 0,
+		      lineHeight: '1.6'
+		    }}
+		    >
                       {item.paragraph_2}
                     </p>
                   ) : null}
 
                   {item.paragraph_3 ? (
-                    <p className="footer-note" style={{ marginTop: 12, marginBottom: 0 }}>
+                    <p className="footer-note"
+		    style={{
+		    marginTop: 8,
+		    marginBottom: 0,
+		    lineHeight: '1.6'
+		    }}
+		    >
                       {item.paragraph_3}
                     </p>
                   ) : null}
@@ -106,7 +133,13 @@ export default async function HomePage() {
             ) : (
               <div className="content-panel" style={{ padding: 18 }}>
                 <strong>No news items yet</strong>
-                <p className="footer-note" style={{ marginTop: 12, marginBottom: 0 }}>
+                <p className="footer-note"
+		  style={{
+		    marginTop: 8,
+		    marginBottom: 0,
+		    lineHeight: '1.6'
+		  }}
+		>
                   Add a published row to the news_items table in Supabase and it will appear here.
                 </p>
               </div>
@@ -128,7 +161,13 @@ export default async function HomePage() {
                     {formatDate(item.item_datetime)} - {item.title}
                   </strong>
 
-                  <p className="footer-note" style={{ marginTop: 12, marginBottom: 0 }}>
+                  <p className="footer-note"
+		    style={{
+		    marginTop: 8,
+		    marginBottom: 0,
+		    lineHeight: '1.6'
+		  }}
+		  >
                     {[item.location_text, formatTime(item.item_datetime)]
                       .filter(Boolean)
                       .join(', ')}
@@ -151,7 +190,13 @@ export default async function HomePage() {
             ) : (
               <div className="content-panel" style={{ padding: 18 }}>
                 <strong>No upcoming items</strong>
-                <p className="footer-note" style={{ marginTop: 12, marginBottom: 0 }}>
+                <p className="footer-note"
+		    style={{
+		    marginTop: 8,
+		    marginBottom: 0,
+		    lineHeight: '1.6'
+		  }}
+		>
                   Add future fixtures or events in the database and they will appear here automatically.
                 </p>
               </div>
