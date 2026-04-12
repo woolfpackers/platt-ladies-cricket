@@ -162,72 +162,33 @@ export default async function HomePage() {
                   className="content-panel"
                   style={{ padding: 18 }}
                 >
-                  <strong>
+                  <p
+                    className="footer-note"
+                    style={{
+                      marginTop: 0,
+                      marginBottom: 0,
+                      lineHeight: '1.6',
+                      fontWeight: 700,
+                      color: 'var(--text)',
+                    }}
+                  >
                     {item.item_type === 'fixture'
                       ? `${formatDate(item.item_datetime)} - ${
                           item.competition_code ? `${item.competition_code} ` : ''
                         }${item.home_team || ''} vs ${item.away_team || ''}`
                       : `${formatDate(item.item_datetime)} - ${item.title}`}
-                  </strong>
+                  </p>
 
-                  {item.item_type === 'event' ? (
-                    <>
-                      {item.summary_text ? (
-                        <p
-                          className="footer-note"
-                          style={{
-                            marginTop: 8,
-                            marginBottom: 0,
-                            lineHeight: '1.6',
-                          }}
-                        >
-                          {item.summary_text}
-                        </p>
-                      ) : null}
-
-                      <p
-                        className="footer-note"
-                        style={{
-                          marginTop: 8,
-                          marginBottom: 0,
-                          lineHeight: '1.6',
-                        }}
-                      >
-                        {formatTime(item.item_datetime)}
-                      </p>
-                    </>
-                  ) : (
-                    <>
-                      <p
-                        className="footer-note"
-                        style={{
-                          marginTop: 8,
-                          marginBottom: 0,
-                          lineHeight: '1.6',
-                        }}
-                      >
-                        {[
-                          item.competition_code || item.competition_name || '',
-                          item.format_label || '',
-                        ]
-                          .filter(Boolean)
-                          .join(' ')}
-                      </p>
-
-                      <p
-                        className="footer-note"
-                        style={{
-                          marginTop: 8,
-                          marginBottom: 0,
-                          lineHeight: '1.6',
-                        }}
-                      >
-                        {[formatTime(item.item_datetime), item.venue_name || '']
-                          .filter(Boolean)
-                          .join(' · ')}
-                      </p>
-                    </>
-                  )}
+                  <p
+                    className="footer-note"
+                    style={{
+                      marginTop: 8,
+                      marginBottom: 0,
+                      lineHeight: '1.6',
+                    }}
+                  >
+                    {[item.venue_name || '', formatTime(item.item_datetime)].filter(Boolean).join(' - ')}
+                  </p>
 
                   {item.link_url ? (
                     <div style={{ marginTop: 14 }}>
