@@ -1,9 +1,10 @@
-import { createServerSupabaseClient } from '@/lib/supabaseServer';
+import { supabase } from './supabase';
 import type { PlayerWithSponsor, PlayerCareerStats } from '@/lib/types';
 
 function requireSupabase() {
-  const supabase = createServerSupabaseClient();
-  if (!supabase) throw new Error('Supabase client not initialised');
+  if (!supabase) {
+    throw new Error('Supabase client not initialised');
+  }
   return supabase;
 }
 
