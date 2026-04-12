@@ -297,8 +297,9 @@ img {
   gap: 14px;
   padding: 18px;
   border-radius: 20px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(8, 20, 38, 0.88);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: var(--shadow);
 }
 
 .player-photo-wrap {
@@ -342,6 +343,11 @@ img {
   flex-wrap: wrap;
   gap: 14px;
   align-items: flex-end;
+  background: rgba(8, 20, 38, 0.88);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
 }
 
 .filter-inline-group {
@@ -358,11 +364,30 @@ img {
 
 .filter-inline-group select {
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.06);
-  color: white;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(8, 20, 38, 1);
+  color: #f6f8fb;
   padding: 10px 12px;
   min-width: 150px;
+  appearance: auto;
+}
+
+.filter-inline-group select option {
+  background: #081426;
+  color: #f6f8fb;
+}
+
+.fixture-card {
+  background: rgba(8, 20, 38, 0.88);
+}
+
+.fixture-card .small-heading {
+  margin: 0;
+}
+
+.fixture-card .footer-note,
+.fixture-card .lead {
+  color: var(--muted);
 }
 
 .fixture-card__header {
