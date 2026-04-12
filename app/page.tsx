@@ -1,5 +1,6 @@
 import { PageShell } from '@/components/PageShell';
 import { getNewsItems, getPageContent, getPageSections, getUpcomingItems } from '@/lib/data';
+
 export const dynamic = 'force-dynamic';
 
 function formatDate(dateString: string) {
@@ -7,7 +8,7 @@ function formatDate(dateString: string) {
   const weekday = date.toLocaleDateString('en-GB', { weekday: 'short' });
   const day = String(date.getDate()).padStart(2, '0');
   const month = date.toLocaleDateString('en-GB', { month: 'short' });
-  return `${weekday} ${day} ${month}`;
+  return `${weekday}-${day}-${month}`;
 }
 
 function formatTime(dateString: string) {
@@ -61,57 +62,58 @@ export default async function HomePage() {
       <section className="two-col">
         <div className="section-card">
           <h2 className="small-heading">Latest News</h2>
-          <p className="lead">
-            Check out the latest news from Platt Ladies Cricket...
-          </p>
+          <p className="lead">Check out the latest news from Platt Ladies Cricket...</p>
 
           <div style={{ display: 'grid', gap: 14 }}>
             {newsItems.length > 0 ? (
               newsItems.map((item) => (
                 <div key={item.id} className="content-panel" style={{ padding: 16 }}>
                   <h3
-		    style={{
-		    fontSize: 18,
-		    fontWeight: 700,
-		    textDecoration: 'underline',
-		    marginBottom: 8
-		    }}
-		  >
-		    {item.title}
-		  </h3>
+                    style={{
+                      fontSize: 18,
+                      fontWeight: 700,
+                      textDecoration: 'underline',
+                      marginBottom: 8,
+                    }}
+                  >
+                    {item.title}
+                  </h3>
 
                   {item.paragraph_1 ? (
-                    <p className="footer-note"
-		      style={{
-		      marginTop: 8,
-		      marginBottom: 0,
-		      lineHeight: '1.6'
-		    }}
-		    >
+                    <p
+                      className="footer-note"
+                      style={{
+                        marginTop: 8,
+                        marginBottom: 0,
+                        lineHeight: '1.6',
+                      }}
+                    >
                       {item.paragraph_1}
                     </p>
                   ) : null}
 
                   {item.paragraph_2 ? (
-                    <p className="footer-note"
-		      style={{
-		      marginTop: 8,
-		      marginBottom: 0,
-		      lineHeight: '1.6'
-		    }}
-		    >
+                    <p
+                      className="footer-note"
+                      style={{
+                        marginTop: 8,
+                        marginBottom: 0,
+                        lineHeight: '1.6',
+                      }}
+                    >
                       {item.paragraph_2}
                     </p>
                   ) : null}
 
                   {item.paragraph_3 ? (
-                    <p className="footer-note"
-		    style={{
-		    marginTop: 8,
-		    marginBottom: 0,
-		    lineHeight: '1.6'
-		    }}
-		    >
+                    <p
+                      className="footer-note"
+                      style={{
+                        marginTop: 8,
+                        marginBottom: 0,
+                        lineHeight: '1.6',
+                      }}
+                    >
                       {item.paragraph_3}
                     </p>
                   ) : null}
@@ -133,13 +135,14 @@ export default async function HomePage() {
             ) : (
               <div className="content-panel" style={{ padding: 18 }}>
                 <strong>No news items yet</strong>
-                <p className="footer-note"
-		  style={{
-		    marginTop: 8,
-		    marginBottom: 0,
-		    lineHeight: '1.6'
-		  }}
-		>
+                <p
+                  className="footer-note"
+                  style={{
+                    marginTop: 8,
+                    marginBottom: 0,
+                    lineHeight: '1.6',
+                  }}
+                >
                   Add a published row to the news_items table in Supabase and it will appear here.
                 </p>
               </div>
@@ -149,32 +152,82 @@ export default async function HomePage() {
 
         <div className="section-card">
           <h2 className="small-heading">Coming Up Next</h2>
-          <p className="lead">
-            Upcoming fixtures, events and training sessions...
-          </p>
+          <p className="lead">Upcoming fixtures, events and training sessions...</p>
 
           <div style={{ display: 'grid', gap: 14 }}>
             {upcomingItems.length > 0 ? (
-              upcomingItems.map((item, index) => (
-                <div key={`${item.item_type}-${item.id}`} className="content-panel" style={{ padding: 18 }}>
+              upcomingItems.map((item) => (
+                <div
+                  key={`${item.item_type}-${item.id}`}
+                  className="content-panel"
+                  style={{ padding: 18 }}
+                >
                   <strong>
-                    {formatDate(item.date)} -{' '}
-  			{item.type === 'fixture'
-    			? `${item.competition_code || ''} ${item.home_team} vs ${item.away_team}`
-			    : item.title}
+                    {item.item_type === 'fixture'
+                      ? `${formatDate(item.item_datetime)} - ${
+                          item.competition_code ? `${item.competition_code} ` : ''
+                        }${item.home_team || ''} vs ${item.away_team || ''}`
+                      : `${formatDate(item.item_datetime)} - ${item.title}`}
                   </strong>
 
-                  <p className="footer-note"
-		    style={{
-		    marginTop: 8,
-		    marginBottom: 0,
-		    lineHeight: '1.6'
-		  }}
-		  >
-                    {[item.location_text, formatTime(item.item_datetime)]
-                      .filter(Boolean)
-                      .join(', ')}
-                  </p>
+                  {item.item_type === 'event' ? (
+                    <>
+                      {item.summary_text ? (
+                        <p
+                          className="footer-note"
+                          style={{
+                            marginTop: 8,
+                            marginBottom: 0,
+                            lineHeight: '1.6',
+                          }}
+                        >
+                          {item.summary_text}
+                        </p>
+                      ) : null}
+
+                      <p
+                        className="footer-note"
+                        style={{
+                          marginTop: 8,
+                          marginBottom: 0,
+                          lineHeight: '1.6',
+                        }}
+                      >
+                        {formatTime(item.item_datetime)}
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p
+                        className="footer-note"
+                        style={{
+                          marginTop: 8,
+                          marginBottom: 0,
+                          lineHeight: '1.6',
+                        }}
+                      >
+                        {[
+                          item.competition_code || item.competition_name || '',
+                          item.format_label || '',
+                        ]
+                          .filter(Boolean)
+                          .join(' ')}
+                      </p>
+
+                      <p
+                        className="footer-note"
+                        style={{
+                          marginTop: 8,
+                          marginBottom: 0,
+                          lineHeight: '1.6',
+                        }}
+                      >
+                        {[formatTime(item.item_datetime), item.venue_name || '']
+                          .filter(Boolean)
+                          .join(' · ')}
+                      </p>
+                    </>
+                  )}
 
                   {item.link_url ? (
                     <div style={{ marginTop: 14 }}>
@@ -193,13 +246,14 @@ export default async function HomePage() {
             ) : (
               <div className="content-panel" style={{ padding: 18 }}>
                 <strong>No upcoming items</strong>
-                <p className="footer-note"
-		    style={{
-		    marginTop: 8,
-		    marginBottom: 0,
-		    lineHeight: '1.6'
-		  }}
-		>
+                <p
+                  className="footer-note"
+                  style={{
+                    marginTop: 8,
+                    marginBottom: 0,
+                    lineHeight: '1.6',
+                  }}
+                >
                   Add future fixtures or events in the database and they will appear here automatically.
                 </p>
               </div>
