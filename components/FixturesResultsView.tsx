@@ -3,76 +3,186 @@
 import { useMemo, useState } from 'react';
 import type { FixtureResult } from '@/lib/types';
 
-const competitionOptions: FixtureResult['competition_code'][] = ['KWSCIL', 'TIL', 'KWSCL', 'KWSB', 'Tournaments', 'Friendlies'];
+type ModeFilter = 'all' | 'fixtures' | 'results';
 
-export function FixturesResultsView({ fixtures }: { fixtures: FixtureResult[] }) {
-  const years = useMemo(() => [...new Set(fixtures.map((item) => item.season_year))].sort((a, b) => b - a), [fixtures]);
-  const [fixtureType, setFixtureType] = useState<'all' | 'fixture' | 'result'>('all');
-  const [season, setSeason] = useState<'all' | number>('all');
-  const [competition, setCompetition] = useState<'all' | FixtureResult['competition_code']>('all');
+export function FixturesResultsView({ items }: { items: FixtureResult[] }) {
+  const [mode, setMode] = useState<ModeFilter>('all');
+  const [season, setSeason] = useState<string>('all');
+  const [competition, setCompetition] = useState<string>('all');
 
-  const filtered = useMemo(() => fixtures.filter((item) => {
-    if (fixtureType !== 'all' && item.fixture_type !== fixtureType) return false;
-    if (season !== 'all' && item.season_year !== season) return false;
-    if (competition !== 'all' && item.competition_code !== competition) return false;
-    return true;
-  }), [competition, fixtureType, fixtures, season]);
+  const seasons = useMemo(() => {
+    return Array.from(
+      new Set(items.map((item) => String(item.season_year)).filter(Boolean))
+    ).sort((a, b) => Number(b) - Number(a));
+  }, [items]);
 
-  const formatDate = (value: string) => new Date(value).toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+  const competitions = useMemo(() => {
+    return Array.from(
+      new Set(items.map((item) => item.competition_code).filter(Boolean))
+    ).sort();
+  }, [items]);
+
+  const filteredItems = useMemo(() => {
+    return items.filter((item) => {
+      const isResult =
+        Boolean(item.home_score) ||
+        Boolean(item.away_score) ||
+        Boolean(item.result_summary);
+
+      if (mode === 'fixtures' && isResult) return false;
+      if (mode === 'results' && !isResult) return false;
+      if (season !== 'all' && String(item.season_year) !== season) return false;
+      if (competition !== 'all' && item.competition_code !== competition) return false;
+
+      return true;
+    });
+  }, [items, mode, season, competition]);
+
+  function formatDate(dateString: string) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', {
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    });
+  }
+
+  function formatTime(dateString: string) {
+    const date = new Date(dateString);
+    return date.toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    });
+  }
 
   return (
-    <div className="fixture-layout">
-      <aside className="content-panel filters-panel">
-        <div className="filter-group">
-          <h3>Show</h3>
-          {['all', 'fixture', 'result'].map((value) => (
-            <button key={value} type="button" className="nav-pill" style={{ marginRight: 8, marginBottom: 8, cursor: 'pointer' }} onClick={() => setFixtureType(value as 'all' | 'fixture' | 'result')}>
-              {value === 'all' ? 'All' : value === 'fixture' ? 'Fixtures' : 'Results'}
-            </button>
-          ))}
-        </div>
-        <div className="filter-group">
-          <h3>Season</h3>
-          <button type="button" className="nav-pill" style={{ marginRight: 8, marginBottom: 8 }} onClick={() => setSeason('all')}>All</button>
-          {years.map((year) => <button key={year} type="button" className="nav-pill" style={{ marginRight: 8, marginBottom: 8 }} onClick={() => setSeason(year)}>{year}</button>)}
-        </div>
-        <div className="filter-group">
-          <h3>Competition</h3>
-          <button type="button" className="nav-pill" style={{ marginRight: 8, marginBottom: 8 }} onClick={() => setCompetition('all')}>All</button>
-          {competitionOptions.map((item) => <button key={item} type="button" className="nav-pill" style={{ marginRight: 8, marginBottom: 8 }} onClick={() => setCompetition(item)}>{item}</button>)}
-        </div>
-      </aside>
+    <div className="page-stack">
       <section className="section-card">
-        <h1 className="page-title">Fixtures and Results</h1>
-        <p className="lead">This page now includes your imported 2026 schedule and the completed results from the match-results workbook tab.</p>
-        <div style={{ display: 'grid', gap: 16 }}>
-          {filtered.map((item) => (
-            <article key={item.id} className="fixture-card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
-                <h2 className="small-heading">{item.title}</h2>
-                <span className="muted-label">{item.fixture_type === 'fixture' ? 'Fixture' : 'Result'}</span>
-              </div>
-              <div className="fixture-meta">
-                <div><strong>Date</strong><br />{formatDate(item.starts_at)}</div>
-                <div><strong>Season</strong><br />{item.season_year}</div>
-                <div><strong>Competition</strong><br />{item.competition_division ? `${item.competition_code} • ${item.competition_division}` : item.competition_code}</div>
-                <div><strong>Venue</strong><br />{item.venue_name || 'TBC'}</div>
-              </div>
-              <div><strong>{item.home_team}</strong> vs <strong>{item.away_team}</strong></div>
-              {item.fixture_type === 'result' ? (
-                <>
-                  <div className="fixture-meta">
-                    <div><strong>Platt score</strong><br />{item.home_score || '—'}</div>
-                    <div><strong>Opponent score</strong><br />{item.away_score || '—'}</div>
-                    <div style={{ gridColumn: 'span 2' }}><strong>Summary</strong><br />{item.result_summary || '—'}</div>
-                  </div>
-                  {item.report ? <p className="lead" style={{ margin: 0 }}>{item.report}</p> : null}
-                </>
-              ) : null}
-            </article>
-          ))}
-          {filtered.length === 0 ? <p className="lead">No items match the selected filters.</p> : null}
+        <div className="fixtures-filters-top">
+          <div className="filter-inline-group">
+            <label htmlFor="mode-filter">Show</label>
+            <select
+              id="mode-filter"
+              value={mode}
+              onChange={(e) => setMode(e.target.value as ModeFilter)}
+            >
+              <option value="all">All</option>
+              <option value="fixtures">Fixtures</option>
+              <option value="results">Results</option>
+            </select>
+          </div>
+
+          <div className="filter-inline-group">
+            <label htmlFor="season-filter">Season</label>
+            <select
+              id="season-filter"
+              value={season}
+              onChange={(e) => setSeason(e.target.value)}
+            >
+              <option value="all">All seasons</option>
+              {seasons.map((seasonOption) => (
+                <option key={seasonOption} value={seasonOption}>
+                  {seasonOption}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="filter-inline-group">
+            <label htmlFor="competition-filter">Competition</label>
+            <select
+              id="competition-filter"
+              value={competition}
+              onChange={(e) => setCompetition(e.target.value)}
+            >
+              <option value="all">All competitions</option>
+              {competitions.map((competitionOption) => (
+                <option key={competitionOption} value={competitionOption}>
+                  {competitionOption}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
+      </section>
+
+      <section className="page-stack">
+        {filteredItems.length > 0 ? (
+          filteredItems.map((item) => {
+            const isResult =
+              Boolean(item.home_score) ||
+              Boolean(item.away_score) ||
+              Boolean(item.result_summary);
+
+            return (
+              <article key={item.id} className="fixture-card">
+                <div className="fixture-card__header">
+                  <h2 className="small-heading">{item.title}</h2>
+                  <span className="muted-label">
+                    {isResult ? 'Result' : 'Fixture'}
+                  </span>
+                </div>
+
+                <p className="footer-note" style={{ margin: 0 }}>
+                  {formatDate(item.starts_at)} · {formatTime(item.starts_at)}
+                </p>
+
+                <p className="footer-note" style={{ margin: 0 }}>
+                  {[item.competition_code, item.competition_division, item.venue_name]
+                    .filter(Boolean)
+                    .join(' · ')}
+                </p>
+
+                {isResult ? (
+                  <>
+                    <p className="lead" style={{ margin: 0 }}>
+                      {[item.home_team, item.home_score].filter(Boolean).join(' ')}{' '}
+                      {item.home_score || item.away_score ? 'vs' : ''}{' '}
+                      {[item.away_score, item.away_team].filter(Boolean).join(' ')}
+                    </p>
+
+                    {item.result_summary ? (
+                      <p className="footer-note" style={{ margin: 0 }}>
+                        {item.result_summary}
+                      </p>
+                    ) : null}
+                  </>
+                ) : (
+                  <p className="lead" style={{ margin: 0 }}>
+                    {[item.home_team, 'vs', item.away_team].filter(Boolean).join(' ')}
+                  </p>
+                )}
+
+                {item.report ? (
+                  <p className="footer-note" style={{ margin: 0 }}>
+                    {item.report}
+                  </p>
+                ) : null}
+
+                {item.external_link ? (
+                  <div>
+                    <a
+                      className="button-link"
+                      href={item.external_link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View details
+                    </a>
+                  </div>
+                ) : null}
+              </article>
+            );
+          })
+        ) : (
+          <div className="section-card">
+            <p className="lead" style={{ margin: 0 }}>
+              No fixtures or results match the selected filters.
+            </p>
+          </div>
+        )}
       </section>
     </div>
   );
