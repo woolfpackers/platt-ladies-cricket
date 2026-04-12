@@ -33,17 +33,23 @@ export default async function HomePage() {
           {content?.title || 'Welcome to Platt Ladies Cricket'}
         </h1>
 
-        {content?.intro ? (
-          <p className="lead" style={{ marginBottom: 6 }}>
-            {content.intro}
-          </p>
-        ) : null}
+        {content?.intro && (
+	  <p className="lead" style={{ marginBottom: 6 }}>
+	    {content.intro}
+	  </p>
+	)}
 
-        {content?.body ? (
-          <p className="lead" style={{ marginBottom: 10, fontSize: 14 }}>
-            {content.body}
-          </p>
-        ) : null}
+	{content?.body && (
+	  <p className="lead" style={{ marginBottom: 6 }}>
+	    {content.body}
+	  </p>
+	)}
+
+	{content?.body_2 && (
+	  <p className="lead" style={{ marginBottom: 10 }}>
+	    {content.body_2}
+	  </p>
+	)}
 
         <div className="grid-3" style={{ marginTop: 12 }}>
           {sections.map((section) => (

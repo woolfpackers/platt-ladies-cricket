@@ -16,7 +16,8 @@ export default async function EventsPage() {
 		  title={content.title ?? 'Events'}
 		  intro={content.intro ?? ''}
 		/>
-              {content.body ? <p className="lead">{content.body}</p> : null}
+              {content.body && <p className="lead">{content.body}</p>}
+	      {content.body_2 && <p className="lead">{content.body_2}</p>}
 
               {content.cta_label && content.cta_url ? (
                 <div style={{ marginTop: 18 }}>
