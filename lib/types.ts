@@ -30,9 +30,14 @@ export type UpcomingItem = {
   id: string;
   item_datetime: string;
   title: string;
-  location_text: string;
-  short_details: string;
-  link_url: string;
+  summary_text: string | null;
+  competition_code: string | null;
+  competition_name: string | null;
+  format_label: string | null;
+  venue_name: string | null;
+  home_team: string | null;
+  away_team: string | null;
+  link_url: string | null;
 };
 
 export type NewsItem = {
