@@ -2,6 +2,8 @@ import { PageShell } from '@/components/PageShell';
 import { SponsorsGrid } from '@/components/SponsorsGrid';
 import { getSponsors } from '@/lib/data';
 
+export const dynamic = 'force-dynamic';
+
 export default async function SponsorsPage() {
   const sponsors = await getSponsors();
 

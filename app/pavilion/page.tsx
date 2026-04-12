@@ -3,6 +3,8 @@ import { PageShell } from '@/components/PageShell';
 import { SectionIntro } from '@/components/SectionIntro';
 import { getPageContent } from '@/lib/data';
 
+export const revalidate = 86400;
+
 export default async function PavilionPage() {
   const content = await getPageContent('pavilion');
 
