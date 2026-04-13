@@ -14,6 +14,7 @@ const navItems = [
   { label: 'Pavilion', href: '/pavilion' },
   { label: 'Sponsors', href: '/sponsors' },
   { label: 'Events', href: '/events' },
+  { label: 'Gallery', href: '/gallery' },
 ];
 
 export function NavBanner() {

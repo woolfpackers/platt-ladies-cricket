@@ -146,6 +146,29 @@ export async function getUpcomingItems(limit = 5): Promise<UpcomingItem[]> {
   return (data as UpcomingItem[]) ?? [];
 }
 
+export type GalleryImage = {
+  id: string;
+  title: string | null;
+  image_filename: string;
+  alt_text: string | null;
+  sort_order: number;
+};
+
+export async function getGalleryImages(): Promise<GalleryImage[]> {
+  const { data, error } = await supabase
+    .from('gallery_images')
+    .select('id, title, image_filename, alt_text, sort_order')
+    .eq('is_active', true)
+    .order('sort_order', { ascending: true });
+
+  if (error) {
+    console.error('Error fetching gallery images:', error);
+    return [];
+  }
+
+  return data ?? [];
+}
+
 export async function getPlayers(): Promise<PlayerWithSponsor[]> {
   const db = requireSupabase();
 
