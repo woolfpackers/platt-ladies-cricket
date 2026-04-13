@@ -1,4 +1,8 @@
+'use client';
+
 import Link from 'next/link';
+import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -12,10 +16,32 @@ const navItems = [
   { label: 'Events', href: '/events' },
 ];
 
-export async function NavBanner() {
+export function NavBanner() {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const savedScroll = sessionStorage.getItem('navBannerScroll');
+    if (scrollRef.current && savedScroll !== null) {
+      scrollRef.current.scrollLeft = Number(savedScroll);
+    }
+  }, [pathname]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      sessionStorage.setItem('navBannerScroll', String(el.scrollLeft));
+    };
+
+    el.addEventListener('scroll', handleScroll);
+    return () => el.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <nav className="nav-banner">
-      <div className="site-wrap nav-banner__scroll">
+      <div ref={scrollRef} className="site-wrap nav-banner__scroll">
         <div className="nav-banner__inner">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href} className="nav-pill">

@@ -1,15 +1,8 @@
 import type { ReactNode } from 'react';
-import { NavBanner } from './NavBanner';
-import { SiteHeader } from './SiteHeader';
 
-export async function PageShell({ children }: { children: ReactNode }) {
+export function PageShell({ children }: { children: ReactNode }) {
   return (
     <div className="page-shell">
-      <div className="site-fixed-header">
-        <SiteHeader />
-        <NavBanner />
-      </div>
-
       <main className="site-main">
         <div className="site-wrap">{children}</div>
       </main>
