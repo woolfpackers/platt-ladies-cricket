@@ -20,7 +20,7 @@ export default async function TourPage() {
 	      />
               {content.body ? <p className="lead">{content.body}</p> : null}
 	      {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
-	      {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : mull}
+	      {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
  	      {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
 
               {content.cta_label && content.cta_url ? (
