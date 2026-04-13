@@ -221,10 +221,16 @@ img {
   flex: 0 0 auto;
 }
 
-.nav-pill:hover,
 .nav-pill.active {
   transform: translateY(-1px);
   background: linear-gradient(180deg, rgba(255,42,161,0.95), rgba(24,119,210,0.95));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-pill:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(180deg, rgba(255,42,161,0.95), rgba(24,119,210,0.95));
+  }
 }
 
 .section-card,

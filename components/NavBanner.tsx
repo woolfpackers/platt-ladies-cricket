@@ -22,8 +22,13 @@ export function NavBanner() {
 
   useEffect(() => {
     const savedScroll = sessionStorage.getItem('navBannerScroll');
+
     if (scrollRef.current && savedScroll !== null) {
-      scrollRef.current.scrollLeft = Number(savedScroll);
+      requestAnimationFrame(() => {
+        if (scrollRef.current) {
+          scrollRef.current.scrollLeft = Number(savedScroll);
+        }
+      });
     }
   }, [pathname]);
 
@@ -43,11 +48,20 @@ export function NavBanner() {
     <nav className="nav-banner">
       <div ref={scrollRef} className="site-wrap nav-banner__scroll">
         <div className="nav-banner__inner">
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="nav-pill">
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`nav-pill${isActive ? ' active' : ''}`}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </nav>
