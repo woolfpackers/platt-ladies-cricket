@@ -810,3 +810,13 @@ img {
     max-height: 30vh;
   }
 }
+
+.gallery-layout {
+  grid-template-columns: 1fr 2fr;
+}
+
+@media (max-width: 768px) {
+  .gallery-layout {
+    grid-template-columns: 1fr;
+  }
+}

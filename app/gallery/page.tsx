@@ -10,10 +10,10 @@ export default async function GalleryPage() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 2fr',
           gap: '24px',
           alignItems: 'start',
         }}
+        className="gallery-layout"
       >
         <section className="section-card">
           <h1 className="page-title">Gallery</h1>
