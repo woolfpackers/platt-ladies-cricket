@@ -697,8 +697,17 @@ img {
     font-size: 0.7rem;
     padding: 6px 8px;
   }
-  .gallery-card {
+  
+.gallery-card {
+  width: min(50%, 700px);
+  margin: 0 auto;
   padding: 18px;
+}
+
+@media (max-width: 768px) {
+  .gallery-card {
+    width: 100%;
+  }
 }
 
 .gallery-stage {
