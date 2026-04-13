@@ -17,7 +17,7 @@ export default async function EventsPage() {
 		  intro={content.intro ?? ''}
 		/>
               {content.body && <p className="lead">{content.body}</p>}
-	      {content.body_2 && <p className="lead">{content.body_2}</p>}
+	      {content.body_2 && <p className="lead body-2-mobile-hide">{content.body_2}</p>}
 
               {content.cta_label && content.cta_url ? (
                 <div style={{ marginTop: 18 }}>

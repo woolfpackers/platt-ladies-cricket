@@ -46,7 +46,7 @@ export default async function HomePage() {
 	)}
 
 	{content?.body_2 && (
-	  <p className="lead" style={{ marginBottom: 10 }}>
+	  <p className="lead body-2-mobile-hide" style={{ marginBottom: 10 }}>
 	    {content.body_2}
 	  </p>
 	)}

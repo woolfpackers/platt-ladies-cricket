@@ -641,6 +641,11 @@ img {
   }
 }
 
+@media (max-width: 768px) {
+  .body-2-mobile-hide {
+    display: none;
+  }
+}
 @media (max-width: 480px) {
   .site-wrap {
     width: min(var(--max-width), calc(100% - 16px));

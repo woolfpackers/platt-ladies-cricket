@@ -17,6 +17,8 @@ export default async function JoinUsPage() {
 		  intro={content.intro ?? ''}
 		/>
               {content.body ? <p className="lead">{content.body}</p> : null}
+	      {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
+
 
               {content.cta_label && content.cta_url ? (
                 <div style={{ marginTop: 18 }}>
