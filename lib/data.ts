@@ -155,6 +155,10 @@ export type GalleryImage = {
 };
 
 export async function getGalleryImages(): Promise<GalleryImage[]> {
+  if (!supabase) {
+    return [];
+  }
+
   const { data, error } = await supabase
     .from('gallery_images')
     .select('id, title, image_filename, alt_text, sort_order')
