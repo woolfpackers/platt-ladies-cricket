@@ -22,6 +22,8 @@ export default async function AboutPage() {
               </div>
               {content.body && <p className="lead">{content.body}</p>}
 	      {content.body_2 && <p className="lead">{content.body_2}</p>}
+	      {content.body_3 && <p className="lead body-2-mobile-hide">{content.body_3}</p>}
+ 	      {content.body_4 && <p className="lead body-2-mobile-hide">{content.body_4}</p>}
 
               {content.cta_label && content.cta_url ? (
                 <div style={{ marginTop: 18 }}>

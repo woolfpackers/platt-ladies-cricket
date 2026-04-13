@@ -50,6 +50,18 @@ export default async function HomePage() {
 	    {content.body_2}
 	  </p>
 	)}
+	
+	{content?.body_3 && (
+	  <p className="lead body-2-mobile-hide" style={{ marginBottom: 10 }}>
+	    {content.body_3}
+	  </p>
+	)}
+
+	{content?.body_4 && (
+	  <p className="lead body-2-mobile-hide" style={{ marginBottom: 10 }}>
+	    {content.body_4}
+	  </p>
+	)}
 
         <div className="grid-3" style={{ marginTop: 12 }}>
           {sections.map((section) => (
