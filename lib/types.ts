@@ -132,6 +132,8 @@ export type PageContent = {
   intro: string | null;
   body: string | null;
   body_2: string | null;
+  body_3: string | null;
+  body_4: string | null;
   cta_label: string | null;
   cta_url: string | null;
   image_url: string | null;
