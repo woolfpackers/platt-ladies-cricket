@@ -46,31 +46,93 @@ export function GalleryCarousel({ images }: { images: GalleryImage[] }) {
   };
 
   return (
-    <div className="section-card gallery-card">
-      <div className="gallery-stage">
-        <button type="button" className="gallery-nav gallery-nav--left" onClick={goPrev} aria-label="Previous image">
+    <div className="section-card" style={{ padding: '20px' }}>
+      <div
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          borderRadius: '20px',
+          border: '1px solid rgba(255,255,255,0.12)',
+          background: 'rgba(255,255,255,0.04)',
+        }}
+      >
+        <button
+          type="button"
+          onClick={goPrev}
+          aria-label="Previous image"
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '12px',
+            transform: 'translateY(-50%)',
+            zIndex: 2,
+            width: '44px',
+            height: '44px',
+            border: 'none',
+            borderRadius: '999px',
+            background: 'rgba(7, 18, 34, 0.78)',
+            color: 'white',
+            fontSize: '2rem',
+            lineHeight: 1,
+            cursor: 'pointer',
+          }}
+        >
           ‹
         </button>
 
-        <a href={imageSrc} target="_blank" rel="noopener noreferrer" className="gallery-image-link">
+        <a href={imageSrc} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
           <Image
             src={imageSrc}
             alt={currentImage.alt_text || currentImage.title || 'Gallery image'}
             width={1400}
             height={900}
-            className="gallery-image"
             priority
+            style={{
+              width: '100%',
+              height: 'auto',
+              maxHeight: '65vh',
+              objectFit: 'contain',
+              display: 'block',
+            }}
           />
         </a>
 
-        <button type="button" className="gallery-nav gallery-nav--right" onClick={goNext} aria-label="Next image">
+        <button
+          type="button"
+          onClick={goNext}
+          aria-label="Next image"
+          style={{
+            position: 'absolute',
+            top: '50%',
+            right: '12px',
+            transform: 'translateY(-50%)',
+            zIndex: 2,
+            width: '44px',
+            height: '44px',
+            border: 'none',
+            borderRadius: '999px',
+            background: 'rgba(7, 18, 34, 0.78)',
+            color: 'white',
+            fontSize: '2rem',
+            lineHeight: 1,
+            cursor: 'pointer',
+          }}
+        >
           ›
         </button>
       </div>
 
-      <div className="gallery-meta">
-        <h2 className="small-heading">{currentImage.title || 'Platt Ladies Gallery'}</h2>
-        <p className="lead gallery-count">
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '12px',
+          marginTop: '14px',
+        }}
+      >
+        <h2 style={{ margin: 0 }}>{currentImage.title || 'Platt Ladies Gallery'}</h2>
+        <p className="lead" style={{ margin: 0 }}>
           {currentIndex + 1} of {safeImages.length}
         </p>
       </div>

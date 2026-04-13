@@ -7,21 +7,20 @@ export default async function GalleryPage() {
 
   return (
     <PageShell>
-      <div style={{ display: 'grid', justifyContent: 'center' }}>
-        <div style={{ width: '100%', maxWidth: '600px' }}>
-          
-          <section className="section-card">
-            <h1 className="page-title">Gallery</h1>
-            <p className="lead">
-              Photos from our club, matches and events.
-            </p>
-          </section>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 2fr',
+          gap: '24px',
+          alignItems: 'start',
+        }}
+      >
+        <section className="section-card">
+          <h1 className="page-title">Gallery</h1>
+          <p className="lead">Photos from our club, matches and events.</p>
+        </section>
 
-          <div style={{ marginTop: 20 }}>
-            <GalleryCarousel images={images} />
-          </div>
-
-        </div>
+        <GalleryCarousel images={images} />
       </div>
     </PageShell>
   );
