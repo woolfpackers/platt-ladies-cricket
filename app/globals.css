@@ -790,3 +790,23 @@ img {
     align-items: flex-start;
   }
 }
+
+.gallery-card {
+  width: 50%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.gallery-image {
+  max-height: 35vh;
+}
+
+@media (max-width: 768px) {
+  .gallery-card {
+    width: 100%;
+  }
+
+  .gallery-image {
+    max-height: 30vh;
+  }
+}
