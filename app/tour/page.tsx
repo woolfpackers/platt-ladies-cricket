@@ -23,7 +23,7 @@ export default async function TourPage() {
 
               <div style={{ marginTop: 18 }}>
                 <a className="button-link" href="/contact">
-                  Learn More
+                  Get in touch
                 </a>
               </div>
             </>
