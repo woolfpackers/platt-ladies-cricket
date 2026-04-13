@@ -25,8 +25,9 @@ export default async function TourPage() {
 
               {content.cta_label && content.cta_url ? (
                 <div style={{ marginTop: 18 }}>
-                  <a className="button-link" href={content.cta_url}>
-                    {content.cta_label}
+                  <a className="button-link" href="/contact">
+		    Contact us
+		  </a>
                   </a>
                 </div>
               ) : null}
