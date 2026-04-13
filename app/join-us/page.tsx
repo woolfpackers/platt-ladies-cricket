@@ -27,9 +27,11 @@ export default async function JoinUsPage() {
 
               {content.cta_label && content.cta_url ? (
                 <div style={{ marginTop: 18 }}>
-                  <a className="button-link" href={content.cta_url}>
-                    {content.cta_label}
-                  </a>
+                  <div style={{ marginTop: 18 }}>
+              	    <a className="button-link" href="/contact">
+                    Get in touch
+               	    </a>
+                  </div>
                 </div>
               ) : null}
             </>
