@@ -699,15 +699,10 @@ img {
   }
   
 .gallery-card {
-  width: min(50%, 700px);
-  margin: 0 auto;
+  width: 50% !important;
+  max-width: 520px !important;
+  margin: 0 auto !important;
   padding: 18px;
-}
-
-@media (max-width: 768px) {
-  .gallery-card {
-    width: 100%;
-  }
 }
 
 .gallery-stage {
@@ -725,10 +720,22 @@ img {
 .gallery-image {
   width: 100%;
   height: auto;
-  max-height: 70vh;
+  max-height: 35vh;
   object-fit: cover;
   display: block;
 }
+
+@media (max-width: 768px) {
+  .gallery-card {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .gallery-image {
+    max-height: 30vh;
+  }
+}
+
 
 .gallery-nav {
   position: absolute;
