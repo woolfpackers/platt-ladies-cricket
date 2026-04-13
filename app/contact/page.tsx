@@ -14,18 +14,28 @@ export default function ContactPage() {
   const [success, setSuccess] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
+  setLoading(true);
+  setSuccess(false);
 
-    await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
+  const res = await fetch('/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(form),
+  });
 
-    setLoading(false);
+  const data = await res.json();
+  console.log(data);
+
+  setLoading(false);
+
+  if (res.ok) {
     setSuccess(true);
+    setForm({ name: '', email: '', message: '' });
+  } else {
+    alert('There was a problem sending your message.');
   }
+}
 
   return (
     <PageShell>
