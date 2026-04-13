@@ -3,7 +3,7 @@ import { PageShell } from '@/components/PageShell';
 import { SectionIntro } from '@/components/SectionIntro';
 import { getPageContent } from '@/lib/data';
 
-export const revalidate = 86400;
+export const dynamic = 'force-dynamic';
 
 export default async function TourPage() {
   const content = await getPageContent('tour');
