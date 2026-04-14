@@ -55,11 +55,11 @@ export default async function PavilionPage() {
       
       <div className="cards-grid" style={{ marginTop: 24 }}>
 	  <div className="media-frame">
-	    <img src="/images/pavilion/pavilion_3.png" alt="Pavilion view 3" />
+	    <img src="/images/pavilion/pavilion_4.png" alt="Pavilion view 3" />
 	  </div>
 
 	  <div className="media-frame">
-	    <img src="/images/pavilion/pavilion_4.png" alt="Pavilion view 4" />
+	    <img src="/images/pavilion/pavilion_5.png" alt="Pavilion view 4" />
 	  </div>
 
   	<div className="media-frame">
