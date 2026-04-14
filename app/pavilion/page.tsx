@@ -54,18 +54,12 @@ export default async function PavilionPage() {
       </div>
       
       <div className="cards-grid" style={{ marginTop: 24 }}>
-	  <div className="media-frame">
-	    <img src="/images/pavilion/pavilion_4.png" alt="Pavilion view 3" />
-	  </div>
-
-	  <div className="media-frame">
-	    <img src="/images/pavilion/pavilion_5.png" alt="Pavilion view 4" />
-	  </div>
-
-  	<div className="media-frame">
-	    <img src="/images/pavilion/pavilion_8.png" alt="Pavilion view 8" />
-	</div>
-      </div>
+  {['pavilion_4.jpg', 'pavilion_5.jpg', 'pavilion_8.jpg'].map((img) => (
+    <div className="media-frame pavilion-image" key={img}>
+      <img src={`/images/pavilion/${img}`} alt="Pavilion" />
+    </div>
+  ))}
+</div>
 
     </PageShell>
   );
