@@ -889,3 +889,9 @@ img {
   font-family: inherit;
   font-size: 1rem;
 }
+
+@media (min-width: 1025px) {
+  .two-col {
+    align-items: center;
+  }
+}
