@@ -15,13 +15,13 @@ export default async function PavilionPage() {
           {content ? (
             <>
               <SectionIntro
-		  title={content.title ?? 'New Pavilion Project'}
-		  intro={content.intro ?? ''}
-		/>
+                title={content.title ?? 'New Pavilion Project'}
+                intro={content.intro ?? ''}
+              />
               {content.body ? <p className="lead">{content.body}</p> : null}
-	      {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
-	      {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
- 	      {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
+              {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
+              {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
+              {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
 
               {content.cta_label && content.cta_url ? (
                 <div style={{ marginTop: 18 }}>
@@ -52,28 +52,14 @@ export default async function PavilionPage() {
           ) : null}
         </aside>
       </div>
-      
+
       <div className="cards-grid" style={{ marginTop: 24 }}>
-  {['pavilion_4.png', 'pavilion_5.png', 'pavilion_8.png'].map((img) => (
-    <div className="media-frame pavilion-image" key={img}>
-      <img src={`/images/pavilion/${img}`} alt="Pavilion" />
-    </div>
-  ))}
-</div><div className="cards-grid" style={{ marginTop: 24 }}>
-  {['pavilion_3', 'pavilion_4', 'pavilion_8'].map((name) => (
-    <div className="media-frame pavilion-image" key={name}>
-      <img
-        src={`/images/pavilion/${name}.png`}
-        alt="Pavilion"
-        onError={(e) => {
-          e.currentTarget.src = `/images/pavilion/${name}.jpg`;
-        }}
-      />
-    </div>
-  ))}
-</div>
-
-
+        {['pavilion_4.png', 'pavilion_5.png', 'pavilion_8.png'].map((img) => (
+          <div className="media-frame pavilion-image" key={img}>
+            <img src={`/images/pavilion/${img}`} alt="Pavilion" />
+          </div>
+        ))}
+      </div>
     </PageShell>
   );
 }
