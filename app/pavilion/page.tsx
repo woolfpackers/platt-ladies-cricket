@@ -25,9 +25,9 @@ export default async function PavilionPage() {
 
               {content.cta_label && content.cta_url ? (
                 <div style={{ marginTop: 18 }}>
-                  <a className="button-link" href={content.cta_url}>
-                    {content.cta_label}
-                  </a>
+                  <a className="button-link" href="/crowdfunding">
+  		    Support Our Project
+		  </a>
                 </div>
               ) : null}
             </>
