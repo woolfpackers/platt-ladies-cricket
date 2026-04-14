@@ -130,7 +130,7 @@ export async function getNewsItems(): Promise<NewsItem[]> {
   return (data as NewsItem[]) ?? [];
 }
 
-export async function getUpcomingItems(limit = 5): Promise<UpcomingItem[]> {
+export async function getUpcomingItems(limit = 6): Promise<UpcomingItem[]> {
   const db = requireSupabase();
 
   const { data, error } = await db
