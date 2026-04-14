@@ -17,7 +17,9 @@ export default async function GalleryPage() {
       >
         <section className="section-card">
           <h1 className="page-title">Gallery</h1>
-          <p className="lead">Photos from our club, matches and events.</p>
+          <p className="lead">Photos from our club, matches and events.<br><br>
+	  If you have any photos you would like to include in our gallery please send them our way
+	  </p>
         </section>
 
         <GalleryCarousel images={images} />
