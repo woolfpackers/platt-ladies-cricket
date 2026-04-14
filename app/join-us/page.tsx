@@ -15,25 +15,17 @@ export default async function JoinUsPage() {
           {content ? (
             <>
               <SectionIntro
-  		  title={content.title ?? 'Join Platt Ladies Cricket'}
+		  title={content.title ?? '...'}
 		  intro={content.intro ?? ''}
-		/>
+		  ctaLabel={content.cta_label}
+		  ctaUrl={content.cta_url}
+	      />
+
               {content.body ? <p className="lead">{content.body}</p> : null}
 	      {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
 	      {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
 	      {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
 
-
-
-              {content.cta_label && content.cta_url ? (
-                <div style={{ marginTop: 18 }}>
-                  <div style={{ marginTop: 18 }}>
-              	    <a className="button-link" href="/contact">
-                    Get in touch
-               	    </a>
-                  </div>
-                </div>
-              ) : null}
             </>
           ) : (
             <>

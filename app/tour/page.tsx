@@ -15,20 +15,18 @@ export default async function TourPage() {
           {content ? (
             <>
               <SectionIntro
-                title={content.title ?? 'Tour'}
-                intro={content.intro ?? ''}
-              />
+		  title={content.title ?? '...'}
+		  intro={content.intro ?? ''}
+		  ctaLabel={content.cta_label}
+		  ctaUrl={content.cta_url}
+	      />
+
               {content.body ? <p className="lead">{content.body}</p> : null}
               {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
               {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
               {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
 
-              <div style={{ marginTop: 18 }}>
-                <a className="button-link" href="/contact">
-                  Get in touch
-                </a>
-              </div>
-            </>
+                          </>
           ) : (
             <>
               <h1 className="page-title">Tour</h1>

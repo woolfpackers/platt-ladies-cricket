@@ -15,21 +15,17 @@ export default async function PavilionPage() {
           {content ? (
             <>
               <SectionIntro
-                title={content.title ?? 'New Pavilion Project'}
-                intro={content.intro ?? ''}
-              />
+		  title={content.title ?? '...'}
+		  intro={content.intro ?? ''}
+		  ctaLabel={content.cta_label}
+		  ctaUrl={content.cta_url}
+	      />
+
               {content.body ? <p className="lead">{content.body}</p> : null}
               {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
               {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
               {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
 
-              {content.cta_label && content.cta_url ? (
-                <div style={{ marginTop: 18 }}>
-                  <a className="button-link" href="/fundraising">
-  		    Support Our Project
-		  </a>
-                </div>
-              ) : null}
             </>
           ) : (
             <>
