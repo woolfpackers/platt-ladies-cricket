@@ -24,7 +24,7 @@ export default async function HomePage() {
   const content = await getPageContent('home');
   const sections = await getPageSections('home');
   const newsItems = await getNewsItems();
-  const upcomingItems = await getUpcomingItems(5);
+  const upcomingItems = await getUpcomingItems(6);
 
   return (
     <PageShell>
