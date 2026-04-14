@@ -12,16 +12,24 @@ export default function CrowdfundingPage() {
           </p>
         </section>
 
-        <section className="section-card" style={{ padding: 0, overflow: 'hidden' }}>
-          <iframe
-            src="https://www.crowdfunder.co.uk/p/platt-cricket-club-pavilion-project"
-            style={{
-              width: '100%',
-              height: '80vh',
-              border: 'none',
-            }}
-          />
-        </section>
+        <section className="section-card" style={{ overflow: 'hidden', padding: 0 }}>
+	  <a
+	    href="https://www.crowdfunder.co.uk/p/platt-cricket-club-pavilion-project?_cbrk=69dea6afcd997"
+	    target="_blank"
+	    rel="noopener noreferrer"
+	    style={{ display: 'block' }}
+	  >
+	    <img
+	      src="/images/crowdfunding.png"
+	      alt="Crowdfunding"
+	      style={{
+	        width: '100%',
+	        height: 'auto',
+	        display: 'block',
+	      }}
+	    />
+	  </a>
+	</section>
 
       </div>
     </PageShell>
