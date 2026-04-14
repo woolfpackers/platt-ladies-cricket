@@ -105,10 +105,28 @@ export async function getEvents(): Promise<EventItem[]> {
     .from('events')
     .select('*')
     .eq('status', 'published')
-    .order('event_date', { ascending: true });
+    .order('event_date', { ascending: true })
+    .order('event_time', { ascending: true });
 
   if (error) {
     throw new Error(`Failed to load events: ${error.message}`);
+  }
+
+  return (data as EventItem[]) ?? [];
+}
+
+export async function getPublishedEvents(): Promise<EventItem[]> {
+  const db = requireSupabase();
+
+  const { data, error } = await db
+    .from('events')
+    .select('id, title, event_type, event_date, event_time, location, status')
+    .eq('status', 'published')
+    .order('event_date', { ascending: true })
+    .order('event_time', { ascending: true });
+
+  if (error) {
+    throw new Error(`Failed to load published events: ${error.message}`);
   }
 
   return (data as EventItem[]) ?? [];

@@ -155,10 +155,16 @@ export type PageSection = {
 export type EventItem = {
   id: string;
   title: string;
-  event_date?: string | null;
+  event_type?: string | null;
+  slug?: string | null;
+  event_date: string | null;
+  event_time?: string | null;
   summary?: string | null;
   description?: string | null;
   image_url?: string | null;
+  location?: string | null;
+  short_description?: string | null;
+  link_url?: string | null;
   status: 'draft' | 'published';
 };
 

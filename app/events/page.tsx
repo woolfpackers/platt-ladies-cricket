@@ -1,10 +1,65 @@
 import Image from 'next/image';
 import { PageShell } from '@/components/PageShell';
 import { SectionIntro } from '@/components/SectionIntro';
-import { getPageContent } from '@/lib/data';
+import { getPageContent, getPublishedEvents } from '@/lib/data';
+import type { EventItem } from '@/lib/types';
+
+function formatEventDate(dateString: string | null) {
+  if (!dateString) return 'Date TBC';
+
+  const date = new Date(`${dateString}T00:00:00`);
+  return new Intl.DateTimeFormat('en-GB', {
+    weekday: 'short',
+    day: '2-digit',
+    month: 'short',
+  }).format(date);
+}
+
+function formatEventTime(timeString: string | null) {
+  if (!timeString) return 'Time TBC';
+  return timeString.slice(0, 5);
+}
+
+function EventList({
+  events,
+  emptyMessage,
+}: {
+  events: EventItem[];
+  emptyMessage: string;
+}) {
+  if (!events.length) {
+    return <p className="events-empty">{emptyMessage}</p>;
+  }
+
+  return (
+    <div className="events-list">
+      {events.map((event) => (
+        <div key={event.id} className="event-row">
+          <div className="event-row-title">
+            {formatEventDate(event.event_date)} - {event.title}
+          </div>
+          <div className="event-row-meta">
+            {event.location ?? 'Location TBC'} - {formatEventTime(event.event_time)}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default async function EventsPage() {
-  const content = await getPageContent('events');
+  const [content, events] = await Promise.all([
+    getPageContent('events'),
+    getPublishedEvents(),
+  ]);
+
+  const trainingEvents = events.filter(
+    (event) => event.event_type?.toLowerCase() === 'training'
+  );
+
+  const otherEvents = events.filter(
+    (event) => event.event_type?.toLowerCase() !== 'training'
+  );
 
   return (
     <PageShell>
@@ -16,40 +71,54 @@ export default async function EventsPage() {
                 title={content.title ?? 'Events'}
                 intro={content.intro ?? ''}
               />
-              {content.body ? <p className="lead">{content.body}</p> : null}
-              {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
-              {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
-              {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
 
-              {content.cta_label && content.cta_url ? (
-                <div style={{ marginTop: 18 }}>
-                  <a className="button-link" href={content.cta_url}>
-                    {content.cta_label}
-                  </a>
+              {content.body && (
+                <div className="body-text">
+                  <p>{content.body}</p>
                 </div>
-              ) : null}
+              )}
             </>
           ) : (
             <>
-              <h1 className="page-title">Events</h1>
-              <p className="lead">Join us for matches, festivals and social events.</p>
+              <SectionIntro
+                title="Events"
+                intro="Keep up to date with training, socials, tours, fundraising and other club events."
+              />
             </>
           )}
         </section>
 
-        <aside>
-          {content?.image_url ? (
-            <Image
-              src={content.image_url}
-              alt={content.image_alt || 'Events'}
-              width={900}
-              height={650}
-              className="about-image-only"
-              priority
-            />
-          ) : null}
+        <aside className="image-card">
+          <Image
+            src="/images/events.jpg"
+            alt="Platt Ladies events"
+            width={800}
+            height={600}
+            className="feature-image"
+            priority
+          />
         </aside>
       </div>
+
+      <section className="events-section">
+        <div className="events-grid">
+          <div className="section-card">
+            <h2 className="events-heading">Training</h2>
+            <EventList
+              events={trainingEvents}
+              emptyMessage="No training sessions listed yet."
+            />
+          </div>
+
+          <div className="section-card">
+            <h2 className="events-heading">Other Events</h2>
+            <EventList
+              events={otherEvents}
+              emptyMessage="No other events listed yet."
+            />
+          </div>
+        </div>
+      </section>
     </PageShell>
   );
 }
