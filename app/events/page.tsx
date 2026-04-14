@@ -4,7 +4,7 @@ import { SectionIntro } from '@/components/SectionIntro';
 import { getPageContent, getPublishedEvents } from '@/lib/data';
 import type { EventItem } from '@/lib/types';
 
-function formatEventDate(dateString: string | null) {
+function formatEventDate(dateString?: string | null) {
   if (!dateString) return 'Date TBC';
 
   const date = new Date(`${dateString}T00:00:00`);
@@ -15,7 +15,7 @@ function formatEventDate(dateString: string | null) {
   }).format(date);
 }
 
-function formatEventTime(timeString: string | null) {
+function formatEventTime(timeString?: string | null) {
   if (!timeString) return 'Time TBC';
   return timeString.slice(0, 5);
 }
