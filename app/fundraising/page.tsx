@@ -12,15 +12,8 @@ export default function FundraisingPage() {
           </p>
         </section>
 
-        <div
-          className="fundraising-layout"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '2fr 1fr',
-            gap: '24px',
-            alignItems: 'start',
-          }}
-        >
+        <div className="fundraising-layout">
+
           {/* LEFT */}
           <section className="section-card fundraising-left" style={{ padding: 0, overflow: 'hidden' }}>
             <a
