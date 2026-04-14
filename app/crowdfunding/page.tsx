@@ -20,7 +20,7 @@ export default function CrowdfundingPage() {
 	    style={{ display: 'block' }}
 	  >
 	    <img
-	      src="/images/crowdfunding.png"
+	      src="/images/crowdfunding2.png"
 	      alt="Crowdfunding"
 	      style={{
 	        width: '100%',
