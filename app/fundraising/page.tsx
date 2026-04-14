@@ -39,7 +39,7 @@ export default function FundraisingPage() {
           {/* RIGHT: IT20 flyer */}
           <section className="section-card" style={{ padding: 0, overflow: 'hidden' }}>
             <img
-              src="/images/IT20.png"
+              src="/images/IT20.jpg"
               alt="IT20 Competition"
               style={{ width: '100%', height: 'auto', display: 'block' }}
             />
