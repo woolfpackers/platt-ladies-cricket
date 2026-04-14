@@ -13,6 +13,7 @@ export default function FundraisingPage() {
         </section>
 
         <div
+          className="fundraising-layout"
           style={{
             display: 'grid',
             gridTemplateColumns: '2fr 1fr',
@@ -20,8 +21,8 @@ export default function FundraisingPage() {
             alignItems: 'start',
           }}
         >
-          {/* LEFT: Crowdfunding card (2/3 width) */}
-          <section className="section-card" style={{ padding: 0, overflow: 'hidden' }}>
+          {/* LEFT */}
+          <section className="section-card fundraising-left" style={{ padding: 0, overflow: 'hidden' }}>
             <a
               href="https://www.crowdfunder.co.uk/p/platt-cricket-club-pavilion-project?_cbrk=69dea6afcd997"
               target="_blank"
@@ -36,8 +37,8 @@ export default function FundraisingPage() {
             </a>
           </section>
 
-          {/* RIGHT: IT20 flyer */}
-          <section className="section-card" style={{ padding: 0, overflow: 'hidden' }}>
+          {/* RIGHT */}
+          <section className="section-card fundraising-right" style={{ padding: 0, overflow: 'hidden' }}>
             <img
               src="/images/IT20.jpg"
               alt="IT20 Competition"

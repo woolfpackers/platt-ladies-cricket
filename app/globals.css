@@ -833,3 +833,17 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+  .fundraising-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .fundraising-left {
+    order: 1;
+  }
+
+  .fundraising-right {
+    order: 2;
+  }
+}
