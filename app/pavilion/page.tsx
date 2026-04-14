@@ -59,7 +59,20 @@ export default async function PavilionPage() {
       <img src={`/images/pavilion/${img}`} alt="Pavilion" />
     </div>
   ))}
+</div><div className="cards-grid" style={{ marginTop: 24 }}>
+  {['pavilion_3', 'pavilion_4', 'pavilion_8'].map((name) => (
+    <div className="media-frame pavilion-image" key={name}>
+      <img
+        src={`/images/pavilion/${name}.png`}
+        alt="Pavilion"
+        onError={(e) => {
+          e.currentTarget.src = `/images/pavilion/${name}.jpg`;
+        }}
+      />
+    </div>
+  ))}
 </div>
+
 
     </PageShell>
   );
