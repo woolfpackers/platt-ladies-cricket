@@ -15,6 +15,7 @@ const navItems = [
   { label: 'Sponsors', href: '/sponsors' },
   { label: 'Events', href: '/events' },
   { label: 'Gallery', href: '/gallery' },
+  { label: 'Crowdfunding', href: '/crowdfunding' },
 ];
 
 export function NavBanner() {
