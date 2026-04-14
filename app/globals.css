@@ -844,3 +844,40 @@ img {
     margin-top: 10px;
   }
 }
+
+.section-intro {
+  display: grid;
+  gap: 12px;
+}
+
+.section-intro-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.section-intro-body .lead {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.section-intro-cta {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .section-intro-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-intro-cta {
+    order: 1;
+  }
+
+  .section-intro-body .lead {
+    order: 2;
+  }
+}
