@@ -54,7 +54,7 @@ export default async function PavilionPage() {
       </div>
       
       <div className="cards-grid" style={{ marginTop: 24 }}>
-  {['pavilion_4.jpg', 'pavilion_5.jpg', 'pavilion_8.jpg'].map((img) => (
+  {['pavilion_4.png', 'pavilion_5.png', 'pavilion_8.png'].map((img) => (
     <div className="media-frame pavilion-image" key={img}>
       <img src={`/images/pavilion/${img}`} alt="Pavilion" />
     </div>
