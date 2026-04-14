@@ -63,7 +63,8 @@ export default async function EventsPage() {
 
   return (
     <PageShell>
-      <div className="two-col">
+      {/* UPDATED GRID CONTROL */}
+      <div className="events-top-row">
         <section className="section-card">
           {content ? (
             <>
@@ -79,25 +80,22 @@ export default async function EventsPage() {
               )}
             </>
           ) : (
-            <>
-              <SectionIntro
-                title="Events"
-                intro="Keep up to date with training, socials, tours, fundraising and other club events."
-              />
-            </>
+            <SectionIntro
+              title="Events"
+              intro="Keep up to date with training, socials, tours, fundraising and other club events."
+            />
           )}
         </section>
 
-        <aside className="image-card">
+        <div className="events-image">
           <Image
-            src="/images/events.jpg"
+            src="/images/event-placeholder.png"
             alt="Platt Ladies events"
-            width={800}
-            height={600}
-            className="feature-image"
+            fill
+            className="events-image-inner"
             priority
           />
-        </aside>
+        </div>
       </div>
 
       <section className="events-section">
