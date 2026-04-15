@@ -55,7 +55,7 @@ export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
               </span>
             ) : (
               <Link
-                href={`/squad/${player.id}/sponsorship`}
+                href={`/player-sponsorship?id=${encodeURIComponent(player.id)}`}
                 className="button"
               >
                 Available for sponsorship
