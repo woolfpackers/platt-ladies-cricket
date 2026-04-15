@@ -1224,3 +1224,44 @@ img {
 .small-text .lead {
   font-size: 0.9rem;
 }
+
+.sponsorship-player-top-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.sponsorship-player-image-card,
+.sponsorship-player-copy-card {
+  height: 100%;
+}
+
+.sponsorship-player-image-wrap--small {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.sponsorship-player-image--small {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.sponsorship-player-copy-card .body-text:first-child {
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .sponsorship-player-top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sponsorship-player-image--small {
+    max-width: 220px;
+  }
+}

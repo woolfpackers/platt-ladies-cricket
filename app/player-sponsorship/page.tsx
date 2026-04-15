@@ -55,39 +55,45 @@ export default async function PlayerSponsorshipPage({
         />
       </section>
 
-      <section className="section-card sponsorship-player-top">
-        <div className="sponsorship-player-flex">
-          <div className="sponsorship-player-image-wrap">
+      <section className="sponsorship-player-top-grid">
+        <section className="section-card sponsorship-player-image-card">
+          <div className="sponsorship-player-image-wrap sponsorship-player-image-wrap--small">
             <Image
               src={player.image_url || '/images/player-placeholder.jpg'}
               alt={player.display_name}
-              width={450}
-              height={450}
-              className="sponsorship-player-image"
+              width={360}
+              height={360}
+              className="sponsorship-player-image sponsorship-player-image--small"
               priority
             />
           </div>
+        </section>
 
-          <div className="sponsorship-player-copy">
-            {player.player_profile_intro && (
-              <div className="body-text">
-                <p>{player.player_profile_intro}</p>
-              </div>
-            )}
+        <section className="section-card sponsorship-player-copy-card">
+          {player.bio && (
+            <div className="body-text">
+              <p>{player.bio}</p>
+            </div>
+          )}
 
-            {player.player_profile_1 && (
-              <div className="body-text">
-                <p>{player.player_profile_1}</p>
-              </div>
-            )}
+          {player.player_profile_intro && (
+            <div className="body-text">
+              <p>{player.player_profile_intro}</p>
+            </div>
+          )}
 
-            {player.player_profile_2 && (
-              <div className="body-text">
-                <p>{player.player_profile_2}</p>
-              </div>
-            )}
-          </div>
-        </div>
+          {player.player_profile_1 && (
+            <div className="body-text">
+              <p>{player.player_profile_1}</p>
+            </div>
+          )}
+
+          {player.player_profile_2 && (
+            <div className="body-text">
+              <p>{player.player_profile_2}</p>
+            </div>
+          )}
+        </section>
       </section>
 
       <section className="section-card sponsorship-player-stats">
