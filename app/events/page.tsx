@@ -94,7 +94,7 @@ export default async function EventsPage() {
 
         <div className="events-image">
           <Image
-            src="/images/events.jpg"
+            src="/images/event-placeholder.png"
             alt="Platt Ladies events"
             fill
             className="events-image-inner"
