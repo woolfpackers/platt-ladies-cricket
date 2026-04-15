@@ -38,74 +38,56 @@ export default async function PlayerSponsorshipPage({
   if (!player) {
     return (
       <PageShell>
-        <section className="section-card sponsorship-player-top">
-	  <div className="sponsorship-player-flex">
-    
-	    <div className="sponsorship-player-image-wrap">
-	      <Image
-	        src={player.image_url || '/images/player-placeholder.jpg'}
-	        alt={player.display_name}
-	        width={450}   
-	        height={450}
-	        className="sponsorship-player-image"
-	        priority
-	      />
-	    </div>
+        <section className="section-card">
+          <h1 className="page-title">Player not found</h1>
+          <p className="lead">We could not find that player sponsorship page.</p>
+        </section>
+      </PageShell>
+    );
+  }
 
-	    <div className="sponsorship-player-copy">
-	      {player.player_profile_intro && (
-	        <div className="body-text">
-	          <p>{player.player_profile_intro}</p>
-	        </div>
-	      )}
-
-	      {player.player_profile_1 && (
-	        <div className="body-text">
-	          <p>{player.player_profile_1}</p>
-	        </div>
-	      )}
-
-	      {player.player_profile_2 && (
-	        <div className="body-text">
-	          <p>{player.player_profile_2}</p>
-	        </div>
-	      )}
-	    </div>
-
-	  </div>
-	</section>
-
-      <section className="section-card sponsorship-player-image-card">
-        <div className="sponsorship-player-image-wrap">
-          <Image
-            src={player.image_url || '/images/player-placeholder.jpg'}
-            alt={player.display_name}
-            width={900}
-            height={900}
-            className="sponsorship-player-image"
-            priority
-          />
-        </div>
+  return (
+    <PageShell>
+      <section className="section-card sponsorship-player-header">
+        <SectionIntro
+          title={`Player Sponsorship - ${player.display_name}`}
+          intro=""
+        />
       </section>
 
-      <section className="section-card sponsorship-player-copy">
-        {player.player_profile_intro && (
-          <div className="body-text">
-            <p>{player.player_profile_intro}</p>
+      <section className="section-card sponsorship-player-top">
+        <div className="sponsorship-player-flex">
+          <div className="sponsorship-player-image-wrap">
+            <Image
+              src={player.image_url || '/images/player-placeholder.jpg'}
+              alt={player.display_name}
+              width={450}
+              height={450}
+              className="sponsorship-player-image"
+              priority
+            />
           </div>
-        )}
 
-        {player.player_profile_1 && (
-          <div className="body-text">
-            <p>{player.player_profile_1}</p>
-          </div>
-        )}
+          <div className="sponsorship-player-copy">
+            {player.player_profile_intro && (
+              <div className="body-text">
+                <p>{player.player_profile_intro}</p>
+              </div>
+            )}
 
-        {player.player_profile_2 && (
-          <div className="body-text">
-            <p>{player.player_profile_2}</p>
+            {player.player_profile_1 && (
+              <div className="body-text">
+                <p>{player.player_profile_1}</p>
+              </div>
+            )}
+
+            {player.player_profile_2 && (
+              <div className="body-text">
+                <p>{player.player_profile_2}</p>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </section>
 
       <section className="section-card sponsorship-player-stats">
