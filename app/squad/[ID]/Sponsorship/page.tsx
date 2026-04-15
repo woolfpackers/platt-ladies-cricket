@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 import { PageShell } from '@/components/PageShell';
 import { SectionIntro } from '@/components/SectionIntro';
 import { getPageContent, getPlayerById } from '@/lib/data';
@@ -25,17 +24,20 @@ function StatItem({
 export default async function PlayerSponsorshipPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
-  const { id } = await params;
-
-  const [player, sponsorshipContent] = await Promise.all([
-    getPlayerById(id),
-    getPageContent('player-sponsorship'),
-  ]);
+  const player = await getPlayerById(params.id);
+  const sponsorshipContent = await getPageContent('player-sponsorship');
 
   if (!player) {
-    notFound();
+    return (
+      <PageShell>
+        <section className="section-card">
+          <h1 className="page-title">Player not found</h1>
+          <p className="lead">We could not find that player sponsorship page.</p>
+        </section>
+      </PageShell>
+    );
   }
 
   return (

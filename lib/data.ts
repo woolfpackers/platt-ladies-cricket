@@ -314,6 +314,91 @@ export async function getPlayers(): Promise<PlayerWithSponsor[]> {
 }
 
 export async function getPlayerById(playerId: string): Promise<PlayerWithSponsor | null> {
-  const players = await getPlayers();
-  return players.find((player) => player.id === playerId) ?? null;
+  const db = requireSupabase();
+
+  const { data: player, error: playerError } = await db
+    .from('player_profiles_public')
+    .select('*')
+    .eq('id', playerId)
+    .maybeSingle();
+
+  if (playerError) {
+    throw new Error(`Failed to load player: ${playerError.message}`);
+  }
+
+  if (!player) {
+    return null;
+  }
+
+  const { data: stats, error: statsError } = await db
+    .from('player_career_stats_public')
+    .select('*')
+    .eq('player_id', playerId)
+    .maybeSingle();
+
+  if (statsError) {
+    throw new Error(`Failed to load player career stats: ${statsError.message}`);
+  }
+
+  return {
+    id: player.id,
+    first_name: player.first_name,
+    last_name: player.last_name,
+    display_name: player.display_name,
+    short_name: player.short_name,
+    role_label: player.role_label,
+    batting_style: player.batting_style,
+    bowling_style: player.bowling_style,
+    bio: player.bio,
+    image_url: player.image_url,
+    player_profile_intro: player.player_profile_intro,
+    player_profile_1: player.player_profile_1,
+    player_profile_2: player.player_profile_2,
+    is_active: player.is_active,
+    sort_order: player.sort_order,
+
+    sponsor: player.sponsor_id
+      ? {
+          id: player.sponsor_id,
+          name: player.sponsor_name,
+          slug: player.sponsor_slug,
+          description: player.sponsor_description,
+          sponsor_type: 'player',
+          sort_order: 100,
+          active: true,
+        }
+      : null,
+
+    batting_2026: {
+      id: `bat-${player.id}`,
+      player_id: player.id,
+      season_year: 2026,
+      competition_code: null,
+      balls: player.batting_balls ?? 0,
+      wkts: player.batting_wickets ?? 0,
+      runs: player.batting_runs ?? 0,
+      net_runs: player.batting_net_runs ?? 0,
+      strike_rate: player.batting_strike_rate ?? null,
+      balls_per_wkt: player.batting_balls_per_wicket ?? null,
+      net_strike_rate: player.batting_net_strike_rate ?? null,
+    },
+
+    bowling_2026: {
+      id: `bowl-${player.id}`,
+      player_id: player.id,
+      season_year: 2026,
+      competition_code: null,
+      balls: player.bowling_balls ?? 0,
+      wkts: player.bowling_wickets ?? 0,
+      runs: player.bowling_runs ?? 0,
+      wides: player.bowling_wides ?? 0,
+      nbs: player.bowling_no_balls ?? 0,
+      balls_per_wkt: player.bowling_balls_per_wicket ?? null,
+      runs_per_over: player.bowling_runs_per_over ?? null,
+      net_runs_per_over: player.bowling_net_runs_per_over ?? null,
+      extras_per_over: player.bowling_extras_per_over ?? null,
+    },
+
+    career_stats: (stats as PlayerCareerStats | null) ?? null,
+  };
 }
