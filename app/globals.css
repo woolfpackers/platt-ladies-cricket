@@ -1045,3 +1045,177 @@ img {
     order: 3;
   }
 }
+
+.sponsors-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.sponsors-header-copy {
+  flex: 1;
+}
+
+.sponsors-header-action {
+  flex-shrink: 0;
+}
+
+.button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.15rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  background: #1177c3;
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  opacity: 0.92;
+}
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.sponsor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.sponsor-logo-link {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.sponsor-logo-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sponsor-logo {
+  display: block;
+  object-fit: contain;
+  max-width: 100%;
+  height: auto;
+}
+
+.sponsor-title {
+  margin-bottom: 0.75rem;
+}
+
+.sponsor-intro,
+.sponsor-body {
+  margin: 0 0 0.9rem;
+}
+
+.partnership-image-card {
+  margin-top: 2rem;
+}
+
+.partnership-image-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.partnership-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.partnership-table-card {
+  margin-top: 2rem;
+}
+
+.partnership-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.partnership-table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: collapse;
+  background: #0b0b0b;
+  color: #ffffff;
+}
+
+.partnership-table th,
+.partnership-table td {
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  padding: 0.45rem 0.65rem;
+  vertical-align: top;
+}
+
+.partnership-table th {
+  background: #1177c3;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.partnership-table th:first-child,
+.partnership-table td:first-child {
+  text-align: left;
+}
+
+.partnership-table td {
+  background: #0b0b0b;
+}
+
+.partnership-cell-text {
+  white-space: pre-line;
+  line-height: 1.25;
+}
+
+@media (max-width: 768px) {
+  .sponsors-header-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sponsors-header-action {
+    width: 100%;
+  }
+
+  .button-primary {
+    width: 100%;
+  }
+
+  .sponsors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sponsor-order-1 {
+    order: 1;
+  }
+
+  .sponsor-order-2 {
+    order: 2;
+  }
+
+  .sponsor-order-3 {
+    order: 3;
+  }
+}

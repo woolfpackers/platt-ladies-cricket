@@ -14,6 +14,26 @@ export type Sponsor = {
   active: boolean;
 };
 
+export type PartnershipOpportunityLongTerm = {
+  id: string;
+  partner_opportunity: string;
+  founder_partner: string | null;
+  platinum_partner: string | null;
+  gold_partner: string | null;
+  silver_partner: string | null;
+  sort_order: number;
+  active: boolean;
+};
+
+export type PartnershipOpportunityShortTerm = {
+  id: string;
+  partner_opportunity: string;
+  minimum_exposure_benefit: string | null;
+  investment_required_min: string | null;
+  sort_order: number;
+  active: boolean;
+};
+
 export type PlayerCareerStats = {
   player_id: string;
   batting_total_runs: number;

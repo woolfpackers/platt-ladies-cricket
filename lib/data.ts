@@ -5,6 +5,8 @@ import type {
   NewsItem,
   PageContent,
   PageSection,
+  PartnershipOpportunityLongTerm,
+  PartnershipOpportunityShortTerm,
   PlayerCareerStats,
   PlayerWithSponsor,
   SiteSettings,
@@ -130,6 +132,38 @@ export async function getPublishedEvents(): Promise<EventItem[]> {
   }
 
   return (data as EventItem[]) ?? [];
+}
+
+export async function getPartnershipOpportunitiesLongTerm(): Promise<PartnershipOpportunityLongTerm[]> {
+  const db = requireSupabase();
+
+  const { data, error } = await db
+    .from('partnership_opportunities_long_term')
+    .select('*')
+    .eq('active', true)
+    .order('sort_order', { ascending: true });
+
+  if (error) {
+    throw new Error(`Failed to load long-term partnership opportunities: ${error.message}`);
+  }
+
+  return (data as PartnershipOpportunityLongTerm[]) ?? [];
+}
+
+export async function getPartnershipOpportunitiesShortTerm(): Promise<PartnershipOpportunityShortTerm[]> {
+  const db = requireSupabase();
+
+  const { data, error } = await db
+    .from('partnership_opportunities_short_term')
+    .select('*')
+    .eq('active', true)
+    .order('sort_order', { ascending: true });
+
+  if (error) {
+    throw new Error(`Failed to load short-term partnership opportunities: ${error.message}`);
+  }
+
+  return (data as PartnershipOpportunityShortTerm[]) ?? [];
 }
 
 export async function getNewsItems(): Promise<NewsItem[]> {

@@ -35,10 +35,23 @@ export default async function SponsorsPage() {
   return (
     <PageShell>
       <section className="section-card">
-        <SectionIntro
-          title={pageContent?.title ?? 'Our Sponsors'}
-          intro={pageContent?.intro ?? 'We are incredibly grateful to our sponsors for their support.'}
-        />
+        <div className="sponsors-header-row">
+          <div className="sponsors-header-copy">
+            <SectionIntro
+              title={pageContent?.title ?? 'Our Sponsors'}
+              intro={
+                pageContent?.intro ??
+                'We are incredibly grateful to our sponsors for their support.'
+              }
+            />
+          </div>
+
+          <div className="sponsors-header-action">
+            <Link href="/partnership-opportunities" className="button-primary">
+              Partnership Opportunities
+            </Link>
+          </div>
+        </div>
 
         {pageContent?.body && (
           <div className="body-text">
