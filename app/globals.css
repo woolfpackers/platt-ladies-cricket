@@ -1227,23 +1227,30 @@ img {
 
 .sponsorship-player-top-grid {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 1fr 1fr; /* ✅ exact 50/50 */
   gap: 24px;
-  align-items: start;
+  align-items: stretch; /* ✅ makes both cards same height */
   margin-top: 2rem;
 }
 
+/* Make cards fill full height */
 .sponsorship-player-image-card,
 .sponsorship-player-copy-card {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically centre content */
 }
 
+/* Image centering */
 .sponsorship-player-image-wrap--small {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  height: 100%;
 }
 
+/* Keep image nicely sized */
 .sponsorship-player-image--small {
   width: 100%;
   max-width: 280px;
@@ -1252,10 +1259,7 @@ img {
   object-fit: cover;
 }
 
-.sponsorship-player-copy-card .body-text:first-child {
-  margin-top: 0;
-}
-
+/* Mobile stack */
 @media (max-width: 768px) {
   .sponsorship-player-top-grid {
     grid-template-columns: 1fr;
