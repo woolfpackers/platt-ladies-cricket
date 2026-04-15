@@ -36,7 +36,7 @@ export default async function PartnershipOpportunitiesPage() {
           </div>
 
           <div className="partnership-header-action">
-            <Link href="/contact" className="button-primary">
+            <Link href="/contact" className="button">
               Contact Us
             </Link>
           </div>
