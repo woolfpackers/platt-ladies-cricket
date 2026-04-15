@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import type { PlayerWithSponsor } from '@/lib/types';
 
 function formatStat(value: number | null | undefined, decimals = 2) {
@@ -48,9 +49,18 @@ export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
           </div>
 
           <div>
-            <span className="muted-label">
-              {player.sponsor ? `Sponsored by ${player.sponsor.name}` : 'Available for sponsorship'}
-            </span>
+            {player.sponsor ? (
+              <span className="muted-label">
+                Sponsored by {player.sponsor.name}
+              </span>
+            ) : (
+              <Link
+                href={`/squad/${player.id}/sponsorship`}
+                className="button"
+              >
+                Available for sponsorship
+              </Link>
+            )}
           </div>
         </article>
       ))}

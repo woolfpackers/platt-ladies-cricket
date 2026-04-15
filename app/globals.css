@@ -1131,3 +1131,51 @@ img {
     padding: 18px;
   }
 }
+
+.sponsorship-player-header,
+.sponsorship-player-image-card,
+.sponsorship-player-copy,
+.sponsorship-player-stats,
+.sponsorship-benefits-card {
+  margin-top: 2rem;
+}
+
+.sponsorship-player-image-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.sponsorship-player-image {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.sponsorship-section-title {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+}
+
+.sponsorship-player-stats .stat-grid + .sponsorship-section-title {
+  margin-top: 2rem;
+}
+
+.sponsorship-player-cta-wrap {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .sponsorship-player-image {
+    max-width: 100%;
+  }
+
+  .sponsorship-player-cta-wrap .button {
+    width: 100%;
+    justify-content: center;
+  }
+}

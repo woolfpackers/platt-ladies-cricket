@@ -261,6 +261,9 @@ export async function getPlayers(): Promise<PlayerWithSponsor[]> {
     bowling_style: player.bowling_style,
     bio: player.bio,
     image_url: player.image_url,
+    player_profile_intro: player.player_profile_intro,
+    player_profile_1: player.player_profile_1,
+    player_profile_2: player.player_profile_2,
     is_active: player.is_active,
     sort_order: player.sort_order,
 
@@ -308,4 +311,9 @@ export async function getPlayers(): Promise<PlayerWithSponsor[]> {
 
     career_stats: statsMap.get(player.id) ?? null,
   }));
+}
+
+export async function getPlayerById(playerId: string): Promise<PlayerWithSponsor | null> {
+  const players = await getPlayers();
+  return players.find((player) => player.id === playerId) ?? null;
 }

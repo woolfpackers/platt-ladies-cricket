@@ -120,6 +120,9 @@ export type Player = {
   bowling_style?: string | null;
   bio?: string | null;
   image_url?: string | null;
+  player_profile_intro?: string | null;
+  player_profile_1?: string | null;
+  player_profile_2?: string | null;
   is_active: boolean;
   sort_order: number;
 };
