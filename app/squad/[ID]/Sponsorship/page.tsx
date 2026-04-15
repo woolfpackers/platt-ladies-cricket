@@ -33,7 +33,7 @@ export default async function PlayerSponsorshipPage({
     getPageContent('player-sponsorship'),
   ]);
 
-  const player = players.find((p) => p.id === id);
+  const player = players.find((p) => String(p.id) === String(id));
 
   if (!player) {
     return (
@@ -41,6 +41,7 @@ export default async function PlayerSponsorshipPage({
         <section className="section-card">
           <h1 className="page-title">Player not found</h1>
           <p className="lead">We could not find that player sponsorship page.</p>
+          <p className="lead">Route id: {id}</p>
         </section>
       </PageShell>
     );
