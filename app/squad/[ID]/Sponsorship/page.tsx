@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PageShell } from '@/components/PageShell';
 import { SectionIntro } from '@/components/SectionIntro';
-import { getPageContent, getPlayerById } from '@/lib/data';
+import { getPageContent, getPlayers } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
 
@@ -28,8 +28,12 @@ export default async function PlayerSponsorshipPage({
 }) {
   const { id } = await params;
 
-  const player = await getPlayerById(id);
-  const sponsorshipContent = await getPageContent('player-sponsorship');
+  const [players, sponsorshipContent] = await Promise.all([
+    getPlayers(),
+    getPageContent('player-sponsorship'),
+  ]);
+
+  const player = players.find((p) => p.id === id);
 
   if (!player) {
     return (
