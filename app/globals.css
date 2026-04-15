@@ -982,3 +982,31 @@ img {
     height: 250px;
   }
 }
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.sponsor-card {
+  text-align: center;
+}
+
+.sponsor-logo-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.sponsor-logo {
+  object-fit: contain;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .sponsors-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
