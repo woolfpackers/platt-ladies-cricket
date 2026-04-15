@@ -24,9 +24,11 @@ function StatItem({
 export default async function PlayerSponsorshipPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const player = await getPlayerById(params.id);
+  const { id } = await params;
+
+  const player = await getPlayerById(id);
   const sponsorshipContent = await getPageContent('player-sponsorship');
 
   if (!player) {
