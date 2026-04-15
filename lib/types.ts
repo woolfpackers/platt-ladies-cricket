@@ -2,6 +2,10 @@ export type Sponsor = {
   id: string;
   name: string;
   slug: string;
+  title?: string | null;
+  intro?: string | null;
+  body?: string | null;
+  body_2?: string | null;
   description: string;
   website_url?: string | null;
   logo_url?: string | null;
