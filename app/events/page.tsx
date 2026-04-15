@@ -4,6 +4,8 @@ import { SectionIntro } from '@/components/SectionIntro';
 import { getPageContent, getPublishedEvents } from '@/lib/data';
 import type { EventItem } from '@/lib/types';
 
+export const dynamic = 'force-dynamic';
+
 function formatEventDate(dateString?: string | null) {
   if (!dateString) return 'Date TBC';
 
