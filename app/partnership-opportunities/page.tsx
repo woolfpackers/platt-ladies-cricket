@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { PageShell } from '@/components/PageShell';
 import { SectionIntro } from '@/components/SectionIntro';
 import {
@@ -22,14 +23,24 @@ export default async function PartnershipOpportunitiesPage() {
 
   return (
     <PageShell>
-      <section className="section-card">
-        <SectionIntro
-          title={content?.title ?? 'Partnership Opportunities'}
-          intro={
-            content?.intro ??
-            'Explore ways to support the club through long-term and short-term partnerships.'
-          }
-        />
+      <section className="section-card partnership-header-card">
+        <div className="partnership-header-row">
+          <div className="partnership-header-copy">
+            <SectionIntro
+              title={content?.title ?? 'Partnership Opportunities'}
+              intro={
+                content?.intro ??
+                'Explore ways to support the club through long-term and short-term partnerships.'
+              }
+            />
+          </div>
+
+          <div className="partnership-header-action">
+            <Link href="/contact" className="button-primary">
+              Contact Us
+            </Link>
+          </div>
+        </div>
 
         {content?.body_2 && (
           <div className="body-text">
