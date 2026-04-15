@@ -952,15 +952,15 @@ img {
 
 .events-top-row {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr; /* 👈 slightly >50% for card */
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 2rem;
-  align-items: center;
+  align-items: center; 
 }
 
 .events-image {
   position: relative;
   width: 100%;
-  height: 260px; 
+  height: 260px;
   display: flex;
   align-items: center;
   justify-content: center;

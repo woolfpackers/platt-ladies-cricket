@@ -53,17 +53,22 @@ export default async function EventsPage() {
     getPublishedEvents(),
   ]);
 
-  const trainingEvents = events.filter(
+  const today = new Date().toISOString().slice(0, 10);
+
+  const futureEvents = events.filter(
+    (event) => event.event_date && event.event_date >= today
+  );
+
+  const trainingEvents = futureEvents.filter(
     (event) => event.event_type?.toLowerCase() === 'training'
   );
 
-  const otherEvents = events.filter(
+  const otherEvents = futureEvents.filter(
     (event) => event.event_type?.toLowerCase() !== 'training'
   );
 
   return (
     <PageShell>
-      {/* UPDATED GRID CONTROL */}
       <div className="events-top-row">
         <section className="section-card">
           {content ? (
@@ -89,7 +94,7 @@ export default async function EventsPage() {
 
         <div className="events-image">
           <Image
-            src="/images/event-placeholder.png"
+            src="/images/events.jpg"
             alt="Platt Ladies events"
             fill
             className="events-image-inner"
@@ -104,7 +109,7 @@ export default async function EventsPage() {
             <h2 className="events-heading">Training</h2>
             <EventList
               events={trainingEvents}
-              emptyMessage="No training sessions listed yet."
+              emptyMessage="No upcoming training sessions."
             />
           </div>
 
@@ -112,7 +117,7 @@ export default async function EventsPage() {
             <h2 className="events-heading">Other Events</h2>
             <EventList
               events={otherEvents}
-              emptyMessage="No other events listed yet."
+              emptyMessage="No upcoming events."
             />
           </div>
         </div>
