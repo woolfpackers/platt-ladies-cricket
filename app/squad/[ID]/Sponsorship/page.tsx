@@ -48,18 +48,16 @@ export default async function PlayerSponsorshipPage({
       </section>
 
       <section className="section-card sponsorship-player-image-card">
-        {player.image_url && (
-          <div className="sponsorship-player-image-wrap">
-            <Image
-              src={player.image_url}
-              alt={player.display_name}
-              width={900}
-              height={900}
-              className="sponsorship-player-image"
-              priority
-            />
-          </div>
-        )}
+        <div className="sponsorship-player-image-wrap">
+          <Image
+            src={player.image_url || '/images/player-placeholder.jpg'}
+            alt={player.display_name}
+            width={900}
+            height={900}
+            className="sponsorship-player-image"
+            priority
+          />
+        </div>
       </section>
 
       <section className="section-card sponsorship-player-copy">
