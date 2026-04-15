@@ -323,7 +323,8 @@ export async function getPlayerById(playerId: string): Promise<PlayerWithSponsor
     .maybeSingle();
 
   if (playerError) {
-    throw new Error(`Failed to load player: ${playerError.message}`);
+    console.error('getPlayerById player_profiles_public error:', playerError);
+    return null;
   }
 
   if (!player) {
@@ -337,7 +338,7 @@ export async function getPlayerById(playerId: string): Promise<PlayerWithSponsor
     .maybeSingle();
 
   if (statsError) {
-    throw new Error(`Failed to load player career stats: ${statsError.message}`);
+    console.error('getPlayerById player_career_stats_public error:', statsError);
   }
 
   return {
