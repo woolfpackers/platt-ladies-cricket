@@ -8,6 +8,10 @@ export const dynamic = 'force-dynamic';
 export default async function TourPage() {
   const content = await getPageContent('tour');
 
+  const tourContactUrl = `/contact?subject=${encodeURIComponent(
+    "New enquiry: Baltic Bash tour"
+  )}`;
+
   return (
     <PageShell>
       <div className="two-col">
@@ -15,18 +19,17 @@ export default async function TourPage() {
           {content ? (
             <>
               <SectionIntro
-		  title={content.title ?? '...'}
-		  intro={content.intro ?? ''}
-		  ctaLabel={content.cta_label}
-		  ctaUrl={content.cta_url}
-	      />
+                title={content.title ?? '...'}
+                intro={content.intro ?? ''}
+                ctaLabel={content.cta_label}
+                ctaUrl={tourContactUrl}
+              />
 
               {content.body ? <p className="lead">{content.body}</p> : null}
               {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
               {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
               {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
-
-                          </>
+            </>
           ) : (
             <>
               <h1 className="page-title">Tour</h1>

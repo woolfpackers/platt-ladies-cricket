@@ -8,6 +8,10 @@ export const dynamic = 'force-dynamic';
 export default async function JoinUsPage() {
   const content = await getPageContent('join-us');
 
+  const joinUsContactUrl = `/contact?subject=${encodeURIComponent(
+    "New enquiry: Joining Platt Ladies"
+  )}`;
+
   return (
     <PageShell>
       <div className="two-col">
@@ -15,17 +19,16 @@ export default async function JoinUsPage() {
           {content ? (
             <>
               <SectionIntro
-		  title={content.title ?? '...'}
-		  intro={content.intro ?? ''}
-		  ctaLabel={content.cta_label}
-		  ctaUrl={content.cta_url}
-	      />
+                title={content.title ?? '...'}
+                intro={content.intro ?? ''}
+                ctaLabel={content.cta_label}
+                ctaUrl={joinUsContactUrl}
+              />
 
               {content.body ? <p className="lead">{content.body}</p> : null}
-	      {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
-	      {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
-	      {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
-
+              {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
+              {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
+              {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
             </>
           ) : (
             <>
