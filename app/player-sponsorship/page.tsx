@@ -33,7 +33,9 @@ export default async function PlayerSponsorshipPage({
     getPageContent('player-sponsorship'),
   ]);
 
-  const player = players.find((p) => String(p.id).trim() === String(id ?? '').trim());
+  const player = players.find(
+    (p) => String(p.id).trim() === String(id ?? '').trim()
+  );
 
   if (!player) {
     return (
@@ -55,76 +57,67 @@ export default async function PlayerSponsorshipPage({
         />
       </section>
 
-      <section className="sponsorship-player-top-grid">
-        <section className="section-card sponsorship-player-image-card">
-          <div className="sponsorship-player-image-wrap sponsorship-player-image-wrap--small">
-            <Image
-              src={player.image_url || '/images/player-placeholder.jpg'}
-              alt={player.display_name}
-              width={360}
-              height={360}
-              className="sponsorship-player-image sponsorship-player-image--small"
-              priority
-            />
+      <section className="sponsorship-player-main-grid">
+        <section className="section-card sponsorship-player-profile-card">
+          <div className="sponsorship-player-profile-layout">
+            <div className="sponsorship-player-profile-image-wrap">
+              <Image
+                src={player.image_url || '/images/player-placeholder.jpg'}
+                alt={player.display_name}
+                width={360}
+                height={360}
+                className="sponsorship-player-profile-image"
+                priority
+              />
+            </div>
+
+            <div className="sponsorship-player-profile-copy">
+              {player.player_profile_intro && (
+                <div className="body-text">
+                  <p>{player.player_profile_intro}</p>
+                </div>
+              )}
+
+              {player.player_profile_1 && (
+                <div className="body-text">
+                  <p>{player.player_profile_1}</p>
+                </div>
+              )}
+
+              {player.player_profile_2 && (
+                <div className="body-text">
+                  <p>{player.player_profile_2}</p>
+                </div>
+              )}
+            </div>
           </div>
         </section>
 
-        <section className="section-card sponsorship-player-copy-card">
-          {player.bio && (
-            <div className="body-text">
-              <p>{player.bio}</p>
-            </div>
-          )}
+        <section className="section-card sponsorship-player-batting-card">
+          <h2 className="page-title sponsorship-section-title">Batting Stats</h2>
+          <div className="stat-grid">
+            <StatItem label="Runs" value={player.batting_2026?.runs} />
+            <StatItem label="Balls" value={player.batting_2026?.balls} />
+            <StatItem label="Wickets Lost" value={player.batting_2026?.wkts} />
+            <StatItem label="Strike Rate" value={player.batting_2026?.strike_rate} />
+            <StatItem label="Net Runs" value={player.batting_2026?.net_runs} />
+            <StatItem
+              label="Net Strike Rate"
+              value={player.batting_2026?.net_strike_rate}
+            />
+          </div>
 
-          {player.player_profile_intro && (
-            <div className="body-text">
-              <p>{player.player_profile_intro}</p>
-            </div>
-          )}
-
-          {player.player_profile_1 && (
-            <div className="body-text">
-              <p>{player.player_profile_1}</p>
-            </div>
-          )}
-
-          {player.player_profile_2 && (
-            <div className="body-text">
-              <p>{player.player_profile_2}</p>
-            </div>
-          )}
+          <div className="sponsorship-player-cta-wrap sponsorship-player-cta-wrap--inside">
+            <Link
+              href={`/contact?subject=${encodeURIComponent(
+                `Player Sponsorship - ${player.display_name}`
+              )}`}
+              className="button"
+            >
+              Click here to Sponsor Me
+            </Link>
+          </div>
         </section>
-      </section>
-
-      <section className="section-card sponsorship-player-stats">
-        <h2 className="page-title sponsorship-section-title">Batting Stats</h2>
-        <div className="stat-grid">
-          <StatItem label="Runs" value={player.batting_2026?.runs} />
-          <StatItem label="Balls" value={player.batting_2026?.balls} />
-          <StatItem label="Wickets Lost" value={player.batting_2026?.wkts} />
-          <StatItem label="Strike Rate" value={player.batting_2026?.strike_rate} />
-          <StatItem label="Net Runs" value={player.batting_2026?.net_runs} />
-          <StatItem label="Net Strike Rate" value={player.batting_2026?.net_strike_rate} />
-        </div>
-
-        <h2 className="page-title sponsorship-section-title">Bowling Stats</h2>
-        <div className="stat-grid">
-          <StatItem label="Runs" value={player.bowling_2026?.runs} />
-          <StatItem label="Balls" value={player.bowling_2026?.balls} />
-          <StatItem label="Wickets" value={player.bowling_2026?.wkts} />
-          <StatItem label="Wides" value={player.bowling_2026?.wides} />
-          <StatItem label="No Balls" value={player.bowling_2026?.nbs} />
-          <StatItem label="Runs / Over" value={player.bowling_2026?.runs_per_over} />
-        </div>
-      </section>
-
-      <section className="sponsorship-player-cta-wrap">
-        <Link
-          href={`/contact?subject=${encodeURIComponent(`New enquiry: Player Sponsorship - ${player.display_name}`)}`}
-          className="button"
-        >
-          Click here to Sponsor Me
-        </Link>
       </section>
 
       <section className="section-card sponsorship-benefits-card small-text">
@@ -132,6 +125,12 @@ export default async function PlayerSponsorshipPage({
           title={sponsorshipContent?.title ?? 'What you get with sponsorship'}
           intro={sponsorshipContent?.intro ?? ''}
         />
+
+        {sponsorshipContent?.body && (
+          <div className="body-text">
+            <p>{sponsorshipContent.body}</p>
+          </div>
+        )}
 
         {sponsorshipContent?.body_2 && (
           <div className="body-text">

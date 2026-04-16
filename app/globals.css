@@ -1137,84 +1137,13 @@ img {
 }
 
 .sponsorship-player-header,
-.sponsorship-player-stats,
 .sponsorship-benefits-card {
   margin-top: 2rem;
-}
-
-.sponsorship-player-top-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: stretch;
-  margin-top: 2rem;
-}
-
-.sponsorship-player-image-card,
-.sponsorship-player-copy-card {
-  margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
-  min-height: 540px;
-}
-
-.sponsorship-player-image-wrap--small {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100%;
-}
-
-.sponsorship-player-image--small {
-  width: 100%;
-  max-width: 280px;
-  height: auto;
-  border-radius: 16px;
-  object-fit: cover;
-}
-
-.sponsorship-player-copy-card .body-text:first-child {
-  margin-top: 0;
-}
-
-@media (max-width: 768px) {
-  .sponsorship-player-top-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .sponsorship-player-image-card,
-  .sponsorship-player-copy-card {
-    min-height: auto;
-  }
-
-  .sponsorship-player-image--small {
-    max-width: 220px;
-  }
-}
-
-.sponsorship-player-image-wrap {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.sponsorship-player-image {
-  width: 100%;
-  max-width: 560px;
-  height: auto;
-  border-radius: 20px;
-  object-fit: cover;
 }
 
 .sponsorship-section-title {
   font-size: 1.6rem;
   margin: 0 0 1rem;
-}
-
-.sponsorship-player-stats .stat-grid + .sponsorship-section-title {
-  margin-top: 2rem;
 }
 
 .sponsorship-player-cta-wrap {
@@ -1223,48 +1152,9 @@ img {
   justify-content: center;
 }
 
-@media (max-width: 768px) {
-  .sponsorship-player-image {
-    max-width: 100%;
-  }
-
-  .sponsorship-player-cta-wrap .button {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-.sponsorship-player-flex {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
-.sponsorship-player-image-wrap {
-  flex: 0 0 auto;
-}
-
-.sponsorship-player-image {
-  width: 100%;
-  max-width: 450px;
-  height: auto;
-  border-radius: 12px;
-}
-
-.sponsorship-player-copy {
-  flex: 1;
-}
-
-/* Mobile: stack */
-@media (max-width: 768px) {
-  .sponsorship-player-flex {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .sponsorship-player-image {
-    max-width: 100%;
-  }
+.sponsorship-player-cta-wrap--inside {
+  justify-content: flex-start;
+  margin-top: 1.5rem;
 }
 
 .small-text .body-text {
@@ -1277,75 +1167,6 @@ img {
 
 .small-text .lead {
   font-size: 0.9rem;
-}
-
-.sponsorship-player-header,
-.sponsorship-player-stats,
-.sponsorship-benefits-card {
-  margin-top: 2rem;
-}
-
-.sponsorship-section-title {
-  font-size: 1.6rem;
-  margin: 0 0 1rem;
-}
-
-.sponsorship-player-stats .stat-grid + .sponsorship-section-title {
-  margin-top: 2rem;
-}
-
-.sponsorship-player-cta-wrap {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-}
-
-.small-text .body-text {
-  font-size: 0.5em;
-}
-
-.small-text .page-title {
-  font-size: 1.2rem;
-}
-
-.small-text .lead {
-  font-size: 0.9rem;
-}
-
-.sponsorship-player-top-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: stretch;
-  margin-top: 2rem;
-}
-
-.sponsorship-player-image-card,
-.sponsorship-player-copy-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
-  min-height: 540px;
-}
-
-.sponsorship-player-image-wrap--small {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100%;
-}
-
-.sponsorship-player-image--small {
-  width: 100%;
-  max-width: 280px;
-  height: auto;
-  border-radius: 16px;
-  object-fit: cover;
-}
-
-.sponsorship-player-copy-card .body-text:first-child {
-  margin-top: 0;
 }
 
 .status-badge {
@@ -1398,84 +1219,68 @@ img {
   opacity: 0.7;
 }
 
-@media (max-width: 768px) {
-  .sponsorship-player-image {
-    max-width: 100%;
-  }
+.sponsorship-player-main-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 2rem;
+}
 
-  .sponsorship-player-cta-wrap .button {
+.sponsorship-player-profile-card,
+.sponsorship-player-batting-card {
+  margin-top: 0;
+  height: 100%;
+}
+
+.sponsorship-player-profile-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.sponsorship-player-profile-image-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.sponsorship-player-profile-image {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.sponsorship-player-profile-copy .body-text:first-child {
+  margin-top: 0;
+}
+
+.sponsorship-player-batting-card {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+  .sponsorship-player-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsorship-player-cta-wrap .button,
+  .sponsorship-player-cta-wrap--inside .button {
     width: 100%;
     justify-content: center;
   }
 
-  .sponsorship-player-top-grid {
+  .sponsorship-player-profile-layout {
     grid-template-columns: 1fr;
   }
 
-  .sponsorship-player-image--small {
+  .sponsorship-player-profile-image {
     max-width: 220px;
   }
-
-  .sponsorship-player-image-card,
-  .sponsorship-player-copy-card {
-    min-height: auto;
-  }
-}
-
-/* PLAYER SPONSORSHIP PAGE - force top cards to align */
-.sponsorship-player-top-grid {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 24px !important;
-  align-items: stretch !important;
-  margin-top: 2rem !important;
-}
-
-.sponsorship-player-top-grid > .sponsorship-player-image-card,
-.sponsorship-player-top-grid > .sponsorship-player-copy-card {
-  margin-top: 0 !important;
-  min-height: unset !important;
-  height: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
-}
-
-.sponsorship-player-top-grid > .sponsorship-player-image-card {
-  align-items: center !important;
-}
-
-.sponsorship-player-image-wrap--small {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: flex-start !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.sponsorship-player-image--small {
-  width: 100% !important;
-  max-width: 280px !important;
-  height: auto !important;
-  border-radius: 16px !important;
-  object-fit: cover !important;
-}
-
-@media (max-width: 768px) {
-  .sponsorship-player-top-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .sponsorship-player-top-grid > .sponsorship-player-image-card,
-  .sponsorship-player-top-grid > .sponsorship-player-copy-card {
-    min-height: auto !important;
-  }
-
-  .sponsorship-player-image--small {
-    max-width: 220px !important;
-  }
-}
-
-.sponsorship-player-image-card {
-  padding: 20px 20px 16px; /* slightly tighter bottom */
 }
