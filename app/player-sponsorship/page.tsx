@@ -120,7 +120,7 @@ export default async function PlayerSponsorshipPage({
 
       <section className="sponsorship-player-cta-wrap">
         <Link
-          href={`/contact?subject=${encodeURIComponent(`Player Sponsorship - ${player.display_name}`)}`}
+          href={`/contact?subject=${encodeURIComponent(`New enquiry: Player Sponsorship - ${player.display_name}`)}`}
           className="button"
         >
           Click here to Sponsor Me

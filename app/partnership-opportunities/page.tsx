@@ -33,9 +33,12 @@ export default async function PartnershipOpportunitiesPage() {
           </div>
 
           <div className="partnership-header-action">
-            <Link href="/contact" className="button">
-              Contact Us
-            </Link>
+            <Link
+	      href={`/contact?subject=${encodeURIComponent("New enquiry: Partnership opportunities")}`}
+	      className="button"
+	    >
+	      Get in touch
+	    </Link>
           </div>
         </div>
 
