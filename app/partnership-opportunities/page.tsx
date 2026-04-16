@@ -28,10 +28,7 @@ export default async function PartnershipOpportunitiesPage() {
           <div className="partnership-header-copy">
             <SectionIntro
               title={content?.title ?? 'Partnership Opportunities'}
-              intro={
-                content?.intro ??
-                'Explore ways to support the club through long-term and short-term partnerships.'
-              }
+              intro={content?.intro ?? ''}
             />
           </div>
 
@@ -41,6 +38,12 @@ export default async function PartnershipOpportunitiesPage() {
             </Link>
           </div>
         </div>
+
+        {content?.body && (
+          <div className="body-text">
+            <p>{content.body}</p>
+          </div>
+        )}
 
         {content?.body_2 && (
           <div className="body-text">
