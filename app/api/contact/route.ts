@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
@@ -12,31 +14,11 @@ export async function POST(req: Request) {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT ?? 587),
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
-    const toEmail = process.env.CONTACT_TO_EMAIL ?? process.env.SMTP_USER;
-
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM ?? process.env.SMTP_USER,
-      to: toEmail,
-      replyTo: email,
-      subject,
-      text: `
-Name: ${name}
-Email: ${email}
-Subject: ${subject}
-
-Message:
-${message}
-      `.trim(),
+    await resend.emails.send({
+      from: 'Platt Ladies Cricket <PlattLadiesCricket@divelive.co.uk>'
+      to: 'Platt Ladies Cricket <PlattLadiesCricket@divelive.co.uk>',
+      reply_to: email,
+      subject: subject,
       html: `
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
