@@ -1345,9 +1345,9 @@ img {
   margin-bottom: 1rem;
 }
 
-/* Bigger section titles */
+/* Section titles (slightly bigger than before) */
 .sponsorship-section-title {
-  font-size: 2.4rem; /* ~50% bigger */
+  font-size: 2.6rem; /* bumped up a bit more */
   margin: 0 0 1rem;
 }
 
@@ -1360,28 +1360,19 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.15rem; /* increased to match value */
   width: 100%;
+}
+
+/* Stat name (LEFT) — slightly bigger */
+.sponsorship-stat-label {
+  font-size: 1.25rem;
   font-weight: 700;
-}
-
-.sponsorship-stat-label {
-  font-size: 1.15rem;
-}
-
-.sponsorship-stat-value {
-  font-size: 1.15rem;
-  font-weight: 800;
-}
-
-/* Left label */
-.sponsorship-stat-label {
   text-align: left;
 }
 
-/* Right value */
+/* Stat value (RIGHT) — slightly smaller but still strong */
 .sponsorship-stat-value {
-  text-align: right;
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 600;
+  text-align: right;
 }

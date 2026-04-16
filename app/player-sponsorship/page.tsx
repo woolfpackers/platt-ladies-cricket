@@ -16,7 +16,8 @@ function StatItem({
   return (
     <div className="stat-pill sponsorship-stat-pill">
       <strong>
-        {label} - <span className="sponsorship-stat-value">{value ?? '-'}</span>
+        <span className="sponsorship-stat-label">{label}:</span>
+        <span className="sponsorship-stat-value">{value ?? '-'}</span>
       </strong>
     </div>
   );
