@@ -1280,8 +1280,6 @@ img {
 }
 
 .sponsorship-player-header,
-.sponsorship-player-image-card,
-.sponsorship-player-copy,
 .sponsorship-player-stats,
 .sponsorship-benefits-card {
   margin-top: 2rem;
@@ -1421,5 +1419,59 @@ img {
   .sponsorship-player-image-card,
   .sponsorship-player-copy-card {
     min-height: auto;
+  }
+}
+
+/* PLAYER SPONSORSHIP PAGE - force top cards to align */
+.sponsorship-player-top-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+  align-items: stretch !important;
+  margin-top: 2rem !important;
+}
+
+.sponsorship-player-top-grid > .sponsorship-player-image-card,
+.sponsorship-player-top-grid > .sponsorship-player-copy-card {
+  margin-top: 0 !important;
+  min-height: 540px !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.sponsorship-player-top-grid > .sponsorship-player-image-card {
+  align-items: center !important;
+}
+
+.sponsorship-player-image-wrap--small {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.sponsorship-player-image--small {
+  width: 100% !important;
+  max-width: 280px !important;
+  height: auto !important;
+  border-radius: 16px !important;
+  object-fit: cover !important;
+}
+
+@media (max-width: 768px) {
+  .sponsorship-player-top-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sponsorship-player-top-grid > .sponsorship-player-image-card,
+  .sponsorship-player-top-grid > .sponsorship-player-copy-card {
+    min-height: auto !important;
+  }
+
+  .sponsorship-player-image--small {
+    max-width: 220px !important;
   }
 }
