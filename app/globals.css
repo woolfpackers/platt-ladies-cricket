@@ -1284,3 +1284,29 @@ img {
     max-width: 220px;
   }
 }
+
+.sponsorship-player-batting-card .stat-grid {
+  gap: 8px;
+}
+
+.sponsorship-player-batting-card .stat-pill {
+  padding: 8px;
+}
+
+.sponsorship-player-batting-card .stat-pill strong {
+  font-size: 0.7rem;
+}
+
+.sponsorship-player-batting-card .muted-label {
+  padding: 4px 8px;
+  font-size: 0.46rem;
+}
+
+.sponsorship-player-batting-card .sponsorship-section-title {
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+
+.sponsorship-player-batting-card .stat-grid + .sponsorship-section-title {
+  margin-top: 1rem;
+}
