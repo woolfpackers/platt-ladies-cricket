@@ -172,7 +172,7 @@ export async function getNewsItems(): Promise<NewsItem[]> {
   const { data, error } = await db
     .from('news_items')
     .select('*')
-    .eq('is_published', true)
+    .or('is_published.eq.true,published_at.not.is.null')
     .order('published_at', { ascending: false });
 
   if (error) {

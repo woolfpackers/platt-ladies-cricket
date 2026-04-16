@@ -21,10 +21,12 @@ function formatTime(dateString: string) {
 }
 
 export default async function HomePage() {
-  const content = await getPageContent('home');
-  const sections = await getPageSections('home');
-  const newsItems = await getNewsItems();
-  const upcomingItems = await getUpcomingItems(6);
+  const [content, sections, newsItems, upcomingItems] = await Promise.all([
+    getPageContent('home'),
+    getPageSections('home'),
+    getNewsItems(),
+    getUpcomingItems(6),
+  ]);
 
   return (
     <PageShell>
@@ -34,34 +36,34 @@ export default async function HomePage() {
         </h1>
 
         {content?.intro && (
-	  <p className="lead" style={{ marginBottom: 6 }}>
-	    {content.intro}
-	  </p>
-	)}
+          <p className="lead" style={{ marginBottom: 6 }}>
+            {content.intro}
+          </p>
+        )}
 
-	{content?.body && (
-	  <p className="lead" style={{ marginBottom: 6 }}>
-	    {content.body}
-	  </p>
-	)}
+        {content?.body && (
+          <p className="lead" style={{ marginBottom: 6 }}>
+            {content.body}
+          </p>
+        )}
 
-	{content?.body_2 && (
-	  <p className="lead body-2-mobile-hide" style={{ marginBottom: 10 }}>
-	    {content.body_2}
-	  </p>
-	)}
-	
-	{content?.body_3 && (
-	  <p className="lead body-2-mobile-hide" style={{ marginBottom: 10 }}>
-	    {content.body_3}
-	  </p>
-	)}
+        {content?.body_2 && (
+          <p className="lead body-2-mobile-hide" style={{ marginBottom: 10 }}>
+            {content.body_2}
+          </p>
+        )}
 
-	{content?.body_4 && (
-	  <p className="lead body-2-mobile-hide" style={{ marginBottom: 10 }}>
-	    {content.body_4}
-	  </p>
-	)}
+        {content?.body_3 && (
+          <p className="lead body-2-mobile-hide" style={{ marginBottom: 10 }}>
+            {content.body_3}
+          </p>
+        )}
+
+        {content?.body_4 && (
+          <p className="lead body-2-mobile-hide" style={{ marginBottom: 10 }}>
+            {content.body_4}
+          </p>
+        )}
 
         <div className="grid-3" style={{ marginTop: 12 }}>
           {sections.map((section) => (

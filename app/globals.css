@@ -646,7 +646,14 @@ img {
 
 @media (min-width: 1025px) {
   .two-col {
+    align-items: start;
+  }
+
+  .events-top-row {
     align-items: center;
+  .pavilion-top-row {
+    align-items: center;
+
   }
 }
 
