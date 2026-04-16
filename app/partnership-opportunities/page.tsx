@@ -108,19 +108,25 @@ export default async function PartnershipOpportunitiesPage() {
         <div className="partnership-table-scroll">
           <table className="partnership-table partnership-table-short">
             <thead>
-              <tr>
-                <th>Partner Opportunity</th>
-                <th>Minimum exposure/benefit</th>
-                <th>Investment Required (Min)</th>
-              </tr>
-            </thead>
+	      <tr>
+	        <th>Partner Opportunity</th>
+	        <th>Minimum exposure/benefit</th>
+	        <th>Investment Required (Min)</th>
+	        <th>Status</th>
+	      </tr>
+	    </thead>
             <tbody>
               {shortTermRows.map((row) => (
                 <tr key={row.id}>
-                  <td><TableCell value={row.partner_opportunity} /></td>
-                  <td><TableCell value={row.minimum_exposure_benefit} /></td>
-                  <td><TableCell value={row.investment_required_min} /></td>
-                </tr>
+		  <td><TableCell value={row.partner_opportunity} /></td>
+		  <td><TableCell value={row.minimum_exposure_benefit} /></td>
+		  <td><TableCell value={row.investment_required_min} /></td>
+		  <td>
+		    <span className={`status-badge ${row.status?.toLowerCase()}`}>
+	              {row.status ?? 'Available'}
+	            </span>
+		  </td>
+		</tr>
               ))}
             </tbody>
           </table>

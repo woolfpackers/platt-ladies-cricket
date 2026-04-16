@@ -28,10 +28,11 @@ export type PartnershipOpportunityLongTerm = {
 export type PartnershipOpportunityShortTerm = {
   id: string;
   partner_opportunity: string;
-  minimum_exposure_benefit: string | null;
-  investment_required_min: string | null;
-  sort_order: number;
+  minimum_exposure_benefit: string;
+  investment_required_min: string;
+  status: string | null;
   active: boolean;
+  sort_order: number;
 };
 
 export type PlayerCareerStats = {

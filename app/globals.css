@@ -1273,3 +1273,26 @@ img {
     max-width: 220px;
   }
 }
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-badge.available {
+  background: rgba(0, 200, 100, 0.2);
+  color: #00c864;
+}
+
+.status-badge.sold {
+  background: rgba(255, 80, 80, 0.2);
+  color: #ff5050;
+}
+
+.status-badge.pending {
+  background: rgba(255, 180, 0, 0.2);
+  color: #ffb400;
+}
