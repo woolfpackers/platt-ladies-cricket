@@ -14,9 +14,10 @@ function StatItem({
   value: string | number | null | undefined;
 }) {
   return (
-    <div className="stat-pill">
-      <span className="muted-label">{label}</span>
-      <strong>{value ?? '-'}</strong>
+    <div className="stat-pill sponsorship-stat-pill">
+      <strong>
+        {label} - <span className="sponsorship-stat-value">{value ?? '-'}</span>
+      </strong>
     </div>
   );
 }
@@ -89,13 +90,24 @@ export default async function PlayerSponsorshipPage({
                   <p>{player.player_profile_2}</p>
                 </div>
               )}
+
+              <div className="sponsorship-player-cta-wrap sponsorship-player-cta-wrap--inside">
+                <Link
+                  href={`/contact?subject=${encodeURIComponent(
+                    `Player Sponsorship - ${player.display_name}`
+                  )}`}
+                  className="button"
+                >
+                  Click here to Sponsor Me
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
         <section className="section-card sponsorship-player-batting-card">
           <h2 className="page-title sponsorship-section-title">Batting Stats</h2>
-          <div className="stat-grid">
+          <div className="stat-grid sponsorship-stats-grid">
             <StatItem label="Runs" value={player.batting_2026?.runs} />
             <StatItem label="Balls" value={player.batting_2026?.balls} />
             <StatItem label="Wickets Lost" value={player.batting_2026?.wkts} />
@@ -107,15 +119,14 @@ export default async function PlayerSponsorshipPage({
             />
           </div>
 
-          <div className="sponsorship-player-cta-wrap sponsorship-player-cta-wrap--inside">
-            <Link
-              href={`/contact?subject=${encodeURIComponent(
-                `Player Sponsorship - ${player.display_name}`
-              )}`}
-              className="button"
-            >
-              Click here to Sponsor Me
-            </Link>
+          <h2 className="page-title sponsorship-section-title">Bowling Stats</h2>
+          <div className="stat-grid sponsorship-stats-grid">
+            <StatItem label="Runs" value={player.bowling_2026?.runs} />
+            <StatItem label="Balls" value={player.bowling_2026?.balls} />
+            <StatItem label="Wickets" value={player.bowling_2026?.wkts} />
+            <StatItem label="Wides" value={player.bowling_2026?.wides} />
+            <StatItem label="No Balls" value={player.bowling_2026?.nbs} />
+            <StatItem label="Runs / Over" value={player.bowling_2026?.runs_per_over} />
           </div>
         </section>
       </section>

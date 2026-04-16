@@ -1310,3 +1310,37 @@ img {
 .sponsorship-player-batting-card .stat-grid + .sponsorship-section-title {
   margin-top: 1rem;
 }
+
+.sponsorship-player-profile-copy {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sponsorship-player-cta-wrap--inside {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.sponsorship-stats-grid {
+  gap: 10px;
+}
+
+.sponsorship-stat-pill {
+  padding: 10px 12px;
+}
+
+.sponsorship-stat-pill strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.sponsorship-stat-value {
+  font-size: 1.08rem;
+}
+
+.sponsorship-player-batting-card .sponsorship-section-title + .sponsorship-stats-grid {
+  margin-bottom: 1rem;
+}
