@@ -1345,15 +1345,13 @@ img {
   margin-bottom: 1rem;
 }
 
-/* Section titles (slightly bigger than before) */
 .sponsorship-section-title {
-  font-size: 2.6rem; /* bumped up a bit more */
+  font-size: 2.2rem;
   margin: 0 0 1rem;
 }
 
-/* Stat card layout */
 .sponsorship-stat-pill {
-  padding: 10px 14px;
+  padding: 8px 12px;
 }
 
 .sponsorship-stat-pill strong {
@@ -1361,18 +1359,18 @@ img {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  gap: 8px;
 }
 
-/* Stat name (LEFT) — slightly bigger */
 .sponsorship-stat-label {
-  font-size: 1.25rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  text-align: left;
+  white-space: nowrap;
 }
 
-/* Stat value (RIGHT) — slightly smaller but still strong */
 .sponsorship-stat-value {
-  font-size: 1.15rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-align: right;
+  white-space: nowrap;
 }
