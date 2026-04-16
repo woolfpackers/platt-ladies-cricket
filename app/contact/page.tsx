@@ -1,79 +1,118 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { PageShell } from '@/components/PageShell';
 
 export default function ContactPage() {
+  const searchParams = useSearchParams();
+
   const [form, setForm] = useState({
     name: '',
     email: '',
+    subject: '',
     message: '',
   });
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  useEffect(() => {
+    const subject = searchParams.get('subject') ?? '';
+    if (subject) {
+      setForm((prev) => ({ ...prev, subject }));
+    }
+  }, [searchParams]);
+
+  function updateField(field: 'name' | 'email' | 'subject' | 'message', value: string) {
+    setForm((prev) => ({ ...prev, [field]: value }));
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setSuccess(false);
 
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
 
-    const data = await res.json();
-    console.log(data);
+      if (!res.ok) {
+        throw new Error('Failed to send');
+      }
 
-    setLoading(false);
-
-    if (res.ok) {
       setSuccess(true);
-      setForm({ name: '', email: '', message: '' });
-    } else {
-      alert('There was a problem sending your message.');
+      setForm({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+    } catch (error) {
+      console.error(error);
+      alert('Something went wrong sending your message.');
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
     <PageShell>
-      <div className="section-card">
+      <section className="section-card">
         <h1 className="page-title">Contact Us</h1>
+        <p className="lead">
+          Get in touch with Platt Ladies Cricket using the form below.
+        </p>
 
-        {success ? (
-          <p className="lead">Thanks! We’ll be in touch.</p>
-        ) : (
-          <div className="contact-form-wrapper">
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <input
-                placeholder="Name"
-                required
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-              />
-              <input
-                placeholder="Email"
-                type="email"
-                required
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-              />
-              <textarea
-                placeholder="Message"
-                required
-                rows={5}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-              />
-              <button className="button-link" type="submit" disabled={loading}>
-                {loading ? 'Sending...' : 'Submit'}
-              </button>
-            </form>
-          </div>
-        )}
-      </div>
+        <div className="contact-form-wrapper">
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Your name"
+              value={form.name}
+              onChange={(e) => updateField('name', e.target.value)}
+              required
+            />
+
+            <input
+              type="email"
+              placeholder="Your email"
+              value={form.email}
+              onChange={(e) => updateField('email', e.target.value)}
+              required
+            />
+
+            <input
+              type="text"
+              placeholder="Subject"
+              value={form.subject}
+              onChange={(e) => updateField('subject', e.target.value)}
+              required
+            />
+
+            <textarea
+              placeholder="Your message"
+              rows={6}
+              value={form.message}
+              onChange={(e) => updateField('message', e.target.value)}
+              required
+            />
+
+            <button type="submit" className="button" disabled={loading}>
+              {loading ? 'Sending...' : 'Get in touch'}
+            </button>
+
+            {success && (
+              <p className="lead" style={{ marginTop: 12 }}>
+                Thanks — your message has been sent.
+              </p>
+            )}
+          </form>
+        </div>
+      </section>
     </PageShell>
   );
 }

@@ -1,32 +1,56 @@
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message } = await req.json();
+    const { name, email, subject, message } = await req.json();
 
-    const result = await resend.emails.send({
-      from: 'Platt Ladies <plattladiescricket@divelive.co.uk>',
-      to: ['plattladiescricket@divelive.co.uk'],
+    if (!name || !email || !subject || !message) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT ?? 587),
+      secure: false,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
+
+    const toEmail = process.env.CONTACT_TO_EMAIL ?? process.env.SMTP_USER;
+
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM ?? process.env.SMTP_USER,
+      to: toEmail,
       replyTo: email,
-      subject: `New Contact Form Message from ${name}`,
+      subject,
+      text: `
+Name: ${name}
+Email: ${email}
+Subject: ${subject}
+
+Message:
+${message}
+      `.trim(),
       html: `
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
         <p><strong>Message:</strong></p>
         <p>${String(message).replace(/\n/g, '<br />')}</p>
       `,
     });
 
-    console.log('Resend result:', result);
-
-    return NextResponse.json({ success: true, result });
+    return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error('Contact form send failed:', error);
+    console.error('Contact form error:', error);
     return NextResponse.json(
-      { success: false, error: 'Failed to send email' },
+      { error: 'Failed to send message' },
       { status: 500 }
     );
   }

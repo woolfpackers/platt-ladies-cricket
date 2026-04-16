@@ -1296,3 +1296,18 @@ img {
   background: rgba(255, 180, 0, 0.2);
   color: #ffb400;
 }
+
+.request-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,42,161,0.95), rgba(24,119,210,0.95));
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+}

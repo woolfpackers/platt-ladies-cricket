@@ -10,7 +10,7 @@ import {
 
 export const dynamic = 'force-dynamic';
 
-function TableCell({ value }: { value: string | null }) {
+function TableCell({ value }: { value: string | null | undefined }) {
   return <div className="partnership-cell-text">{value ?? ''}</div>;
 }
 
@@ -108,25 +108,28 @@ export default async function PartnershipOpportunitiesPage() {
         <div className="partnership-table-scroll">
           <table className="partnership-table partnership-table-short">
             <thead>
-	      <tr>
-	        <th>Partner Opportunity</th>
-	        <th>Minimum exposure/benefit</th>
-	        <th>Investment Required (Min)</th>
-	        <th>Status</th>
-	      </tr>
-	    </thead>
+              <tr>
+                <th>Partner Opportunity</th>
+                <th>Minimum exposure/benefit</th>
+                <th>Investment Required (Min)</th>
+                <th>Request</th>
+              </tr>
+            </thead>
             <tbody>
               {shortTermRows.map((row) => (
                 <tr key={row.id}>
-		  <td><TableCell value={row.partner_opportunity} /></td>
-		  <td><TableCell value={row.minimum_exposure_benefit} /></td>
-		  <td><TableCell value={row.investment_required_min} /></td>
-		  <td>
-		    <span className={`status-badge ${row.status?.toLowerCase()}`}>
-	              {row.status ?? 'Available'}
-	            </span>
-		  </td>
-		</tr>
+                  <td><TableCell value={row.partner_opportunity} /></td>
+                  <td><TableCell value={row.minimum_exposure_benefit} /></td>
+                  <td><TableCell value={row.investment_required_min} /></td>
+                  <td>
+                    <Link
+                      href={`/contact?subject=${encodeURIComponent(`${row.slug ?? 'partnership-opportunity'} enquiry`)}`}
+                      className="request-badge"
+                    >
+                      Request
+                    </Link>
+                  </td>
+                </tr>
               ))}
             </tbody>
           </table>
