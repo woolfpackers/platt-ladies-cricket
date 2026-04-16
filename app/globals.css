@@ -1229,32 +1229,65 @@ img {
   font-size: 0.9rem;
 }
 
-.sponsorship-player-top-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* ✅ exact 50/50 */
-  gap: 24px;
-  align-items: stretch; /* ✅ makes both cards same height */
+.sponsorship-player-header,
+.sponsorship-player-image-card,
+.sponsorship-player-copy,
+.sponsorship-player-stats,
+.sponsorship-benefits-card {
   margin-top: 2rem;
 }
 
-/* Make cards fill full height */
-.sponsorship-player-image-card,
-.sponsorship-player-copy-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* vertically centre content */
+.sponsorship-section-title {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
 }
 
-/* Image centering */
+.sponsorship-player-stats .stat-grid + .sponsorship-section-title {
+  margin-top: 2rem;
+}
+
+.sponsorship-player-cta-wrap {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.small-text .body-text {
+  font-size: 0.5em;
+}
+
+.small-text .page-title {
+  font-size: 1.2rem;
+}
+
+.small-text .lead {
+  font-size: 0.9rem;
+}
+
+.sponsorship-player-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 2rem;
+}
+
+.sponsorship-player-image-card,
+.sponsorship-player-copy-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  min-height: 540px;
+}
+
 .sponsorship-player-image-wrap--small {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100%;
 }
 
-/* Keep image nicely sized */
 .sponsorship-player-image--small {
   width: 100%;
   max-width: 280px;
@@ -1263,15 +1296,8 @@ img {
   object-fit: cover;
 }
 
-/* Mobile stack */
-@media (max-width: 768px) {
-  .sponsorship-player-top-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .sponsorship-player-image--small {
-    max-width: 220px;
-  }
+.sponsorship-player-copy-card .body-text:first-child {
+  margin-top: 0;
 }
 
 .status-badge {
@@ -1324,3 +1350,26 @@ img {
   opacity: 0.7;
 }
 
+@media (max-width: 768px) {
+  .sponsorship-player-image {
+    max-width: 100%;
+  }
+
+  .sponsorship-player-cta-wrap .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sponsorship-player-top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sponsorship-player-image--small {
+    max-width: 220px;
+  }
+
+  .sponsorship-player-image-card,
+  .sponsorship-player-copy-card {
+    min-height: auto;
+  }
+}
