@@ -116,22 +116,31 @@ export default async function PartnershipOpportunitiesPage() {
               </tr>
             </thead>
             <tbody>
-              {shortTermRows.map((row) => (
-                <tr key={row.id}>
-                  <td><TableCell value={row.partner_opportunity} /></td>
-                  <td><TableCell value={row.minimum_exposure_benefit} /></td>
-                  <td><TableCell value={row.investment_required_min} /></td>
-                  <td>
-                    <Link
-                      href={`/contact?subject=${encodeURIComponent(`${row.slug ?? 'partnership-opportunity'} enquiry`)}`}
-                      className="request-badge"
-                    >
-                      Request
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+	      {shortTermRows.map((row) => {
+	        const isAvailable = row.status?.toLowerCase() === 'available';
+	
+	        return (
+	          <tr key={row.id}>
+	            <td><TableCell value={row.partner_opportunity} /></td>
+	            <td><TableCell value={row.minimum_exposure_benefit} /></td>
+	            <td><TableCell value={row.investment_required_min} /></td>
+	            <td>
+	              {isAvailable ? (
+ 	                <Link
+	                  href={`/contact?subject=${encodeURIComponent(`New enquiry: ${row.slug ?? 'partnership-opportunity'}`)}`}
+	                  className="request-badge"
+	                >
+	                  Request
+	                </Link>
+	              ) : (
+	                <span className="taken-badge">Taken</span>
+	              )}
+	            </td>
+	          </tr>
+	        );
+	      })}
+	    </tbody>
+
           </table>
         </div>
       </section>
