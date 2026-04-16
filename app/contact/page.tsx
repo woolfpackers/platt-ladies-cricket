@@ -1,30 +1,29 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import { PageShell } from '@/components/PageShell';
 
-export default function ContactPage() {
-  const searchParams = useSearchParams();
+export const dynamic = 'force-dynamic';
 
+export default function ContactPage({
+  searchParams,
+}: {
+  searchParams: { subject?: string };
+}) {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    subject: '',
+    subject: searchParams?.subject ?? '',
     message: '',
   });
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    const subject = searchParams.get('subject') ?? '';
-    if (subject) {
-      setForm((prev) => ({ ...prev, subject }));
-    }
-  }, [searchParams]);
-
-  function updateField(field: 'name' | 'email' | 'subject' | 'message', value: string) {
+  function updateField(
+    field: 'name' | 'email' | 'subject' | 'message',
+    value: string
+  ) {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
