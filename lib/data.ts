@@ -172,8 +172,8 @@ export async function getNewsItems(): Promise<NewsItem[]> {
   const { data, error } = await db
     .from('news_items')
     .select('*')
-    .or('is_published.eq.true,published_at.not.is.null')
-    .order('published_at', { ascending: false });
+    .eq('is_published', true)
+    .order('published_at', { ascending: false, nullsFirst: false });
 
   if (error) {
     throw new Error(`Failed to load news items: ${error.message}`);
