@@ -9,7 +9,7 @@ export default async function JoinUsPage() {
   const content = await getPageContent('join-us');
 
   const joinUsContactUrl = `/contact?subject=${encodeURIComponent(
-    "New enquiry: Joining Platt Ladies"
+    'New enquiry: Joining Platt Ladies'
   )}`;
 
   return (
@@ -17,24 +17,45 @@ export default async function JoinUsPage() {
       <div className="two-col">
         <section className="section-card">
           {content ? (
-            <>
+            <div className="content-copy">
               <SectionIntro
-                title={content.title ?? '...'}
+                title={content.title ?? 'Join Platt Ladies Cricket'}
                 intro={content.intro ?? ''}
                 ctaLabel={content.cta_label}
                 ctaUrl={joinUsContactUrl}
               />
 
-              {content.body ? <p className="lead">{content.body}</p> : null}
-              {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
-              {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
-              {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
-            </>
+              {content.body && (
+                <div className="body-text">
+                  <p>{content.body}</p>
+                </div>
+              )}
+
+              {content.body_2 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{content.body_2}</p>
+                </div>
+              )}
+
+              {content.body_3 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{content.body_3}</p>
+                </div>
+              )}
+
+              {content.body_4 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{content.body_4}</p>
+                </div>
+              )}
+            </div>
           ) : (
-            <>
+            <div className="content-copy">
               <h1 className="page-title page-title--main">Join Platt Ladies Cricket</h1>
-              <p className="lead">New players always welcome — no experience needed!</p>
-            </>
+              <div className="body-text">
+                <p>New players always welcome — no experience needed!</p>
+              </div>
+            </div>
           )}
         </section>
 
