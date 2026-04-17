@@ -16,7 +16,7 @@ export function SectionIntro({
   return (
     <div className="section-intro">
       <div className="section-intro-top">
-        <h1 className="page-title">{title}</h1>
+        <h1 className="page-title page-title--main">{title}</h1>
 
         {ctaLabel && ctaUrl ? (
           <Link href={ctaUrl} className="button-link section-intro-cta">
