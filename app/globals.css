@@ -271,15 +271,13 @@ img {
   margin: 0;
 }
 
-.body-text,
-.body-text p {
+.body-text {
   color: var(--muted);
   font-size: 1.08rem;
   line-height: 1.7;
-}
-
-.body-text {
   margin-top: 0.9rem;
+  display: grid;
+  gap: 0.9rem;
 }
 
 .body-text p {
