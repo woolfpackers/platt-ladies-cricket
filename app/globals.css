@@ -538,13 +538,6 @@ img {
   border-radius: 24px;
 }
 
-.about-intro h1,
-.about-page-title {
-  font-size: clamp(2rem, 4vw, 3.25rem) !important;
-  line-height: 1.15;
-  margin: 0 0 10px;
-}
-
 .gallery-card {
   width: 50%;
   max-width: 520px;

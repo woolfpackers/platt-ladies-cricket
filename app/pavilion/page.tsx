@@ -29,7 +29,7 @@ export default async function PavilionPage() {
             </>
           ) : (
             <>
-              <h1 className="page-title">New Pavilion Project</h1>
+              <h1 className="page-title page-title--main">New Pavilion Project</h1>
               <p className="lead">Building a modern, inclusive space for our growing club.</p>
             </>
           )}

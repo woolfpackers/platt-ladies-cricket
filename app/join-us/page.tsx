@@ -32,7 +32,7 @@ export default async function JoinUsPage() {
             </>
           ) : (
             <>
-              <h1 className="page-title">Join Platt Ladies Cricket</h1>
+              <h1 className="page-title page-title--main">Join Platt Ladies Cricket</h1>
               <p className="lead">New players always welcome — no experience needed!</p>
             </>
           )}

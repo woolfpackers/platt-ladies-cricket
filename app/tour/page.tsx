@@ -32,7 +32,7 @@ export default async function TourPage() {
             </>
           ) : (
             <>
-              <h1 className="page-title">Tour</h1>
+              <h1 className="page-title page-title--main">Tour</h1>
               <p className="lead">Find out more about our tour plans and how to get involved.</p>
             </>
           )}
