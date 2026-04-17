@@ -13,17 +13,37 @@ export default async function AboutPage() {
       <div className="two-col">
         <section className="section-card">
           {content ? (
-            <>
+            <div className="content-copy">
               <div className="about-intro">
-                <SectionIntro	
-		  title={content.title ?? 'Our club'}
-		  intro={content.intro ?? ''}
-		/>
+                <SectionIntro
+                  title={content.title ?? 'Our club'}
+                  intro={content.intro ?? ''}
+                />
               </div>
-              {content.body && <p className="lead">{content.body}</p>}
-	      {content.body_2 && <p className="lead">{content.body_2}</p>}
-	      {content.body_3 && <p className="lead body-2-mobile-hide">{content.body_3}</p>}
- 	      {content.body_4 && <p className="lead body-2-mobile-hide">{content.body_4}</p>}
+
+              {content.body && (
+                <div className="body-text">
+                  <p>{content.body}</p>
+                </div>
+              )}
+
+              {content.body_2 && (
+                <div className="body-text">
+                  <p>{content.body_2}</p>
+                </div>
+              )}
+
+              {content.body_3 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{content.body_3}</p>
+                </div>
+              )}
+
+              {content.body_4 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{content.body_4}</p>
+                </div>
+              )}
 
               {content.cta_label && content.cta_url ? (
                 <div style={{ marginTop: 18 }}>
@@ -32,7 +52,7 @@ export default async function AboutPage() {
                   </a>
                 </div>
               ) : null}
-            </>
+            </div>
           ) : (
             <>
               <h1 className="about-page-title">About our club</h1>

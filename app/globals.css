@@ -1357,3 +1357,23 @@ img {
     font-size: 1.55rem;
   }
 }
+
+.content-copy {
+  display: grid;
+  gap: 1rem;
+}
+
+.body-text,
+.body-text p {
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.body-text {
+  margin: 0;
+}
+
+.body-text p {
+  margin: 0;
+}
