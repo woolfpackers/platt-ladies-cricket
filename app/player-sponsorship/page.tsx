@@ -132,12 +132,14 @@ export default async function PlayerSponsorshipPage({
         </section>
       </section>
 
-      <section className="section-card sponsorship-benefits-card small-text">
-        <SectionIntro
-          title={sponsorshipContent?.title ?? 'What you get with sponsorship'}
-          intro={sponsorshipContent?.intro ?? ''}
-        />
-
+      <section className="section-card sponsorship-benefits-card">
+        <div className="sponsorship-benefits-intro">
+          <SectionIntro
+            title={sponsorshipContent?.title ?? 'What you get with sponsorship'}
+            intro={sponsorshipContent?.intro ?? ''}
+          />
+        </div>
+ 
         {sponsorshipContent?.body && (
           <div className="body-text">
             <p>{sponsorshipContent.body}</p>

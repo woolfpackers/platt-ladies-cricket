@@ -1382,3 +1382,14 @@ img {
   color: var(--muted);
   margin: 0 0 0.9rem;
 }
+
+.sponsorship-benefits-intro .page-title,
+.sponsorship-benefits-intro h2,
+.sponsorship-benefits-intro h1 {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+}
+
+.sponsorship-benefits-intro .lead,
+.sponsorship-benefits-intro p {
+  font-size: 1.125rem;
+}
