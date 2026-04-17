@@ -137,18 +137,6 @@ export default async function SponsorsPage() {
                   <p>{sponsor.body_2}</p>
                 </div>
               )}
-
-              {sponsor.body_3 && (
-                <div className="body-text body-2-mobile-hide">
-                  <p>{sponsor.body_3}</p>
-                </div>
-              )}
-
-              {sponsor.body_4 && (
-                <div className="body-text body-2-mobile-hide">
-                  <p>{sponsor.body_4}</p>
-                </div>
-              )}
             </div>
           </article>
         ))}
