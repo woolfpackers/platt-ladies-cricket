@@ -37,33 +37,47 @@ export default async function SponsorsPage() {
       <section className="section-card">
         <div className="sponsors-header-row">
           <div className="sponsors-header-copy">
-            <SectionIntro
-              title={pageContent?.title ?? 'Our Sponsors'}
-              intro={
-                pageContent?.intro ??
-                'We are incredibly grateful to our sponsors for their support.'
-              }
-            />
+            <div className="content-copy">
+              <SectionIntro
+                title={pageContent?.title ?? 'Our Sponsors'}
+                intro={
+                  pageContent?.intro ??
+                  'We are incredibly grateful to our sponsors for their support.'
+                }
+              />
+
+              {pageContent?.body && (
+                <div className="body-text">
+                  <p>{pageContent.body}</p>
+                </div>
+              )}
+
+              {pageContent?.body_2 && (
+                <div className="body-text">
+                  <p>{pageContent.body_2}</p>
+                </div>
+              )}
+
+              {pageContent?.body_3 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{pageContent.body_3}</p>
+                </div>
+              )}
+
+              {pageContent?.body_4 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{pageContent.body_4}</p>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="sponsors-header-action">
             <Link href="/partnership-opportunities" className="button">
-  Partnership Opportunities
-	    </Link>
+              Partnership Opportunities
+            </Link>
           </div>
         </div>
-
-        {pageContent?.body && (
-          <div className="body-text">
-            <p>{pageContent.body}</p>
-          </div>
-        )}
-
-        {pageContent?.body_2 && (
-          <div className="body-text">
-            <p>{pageContent.body_2}</p>
-          </div>
-        )}
       </section>
 
       <section className="sponsors-grid">
@@ -103,10 +117,39 @@ export default async function SponsorsPage() {
               )
             ) : null}
 
-            {sponsor.title && <h2 className="sponsor-title">{sponsor.title}</h2>}
-            {sponsor.intro && <p className="sponsor-intro">{sponsor.intro}</p>}
-            {sponsor.body && <p className="sponsor-body">{sponsor.body}</p>}
-            {sponsor.body_2 && <p className="sponsor-body">{sponsor.body_2}</p>}
+            <div className="content-copy">
+              {sponsor.title && <h2 className="sponsor-title">{sponsor.title}</h2>}
+
+              {sponsor.intro && (
+                <div className="body-text">
+                  <p>{sponsor.intro}</p>
+                </div>
+              )}
+
+              {sponsor.body && (
+                <div className="body-text">
+                  <p>{sponsor.body}</p>
+                </div>
+              )}
+
+              {sponsor.body_2 && (
+                <div className="body-text">
+                  <p>{sponsor.body_2}</p>
+                </div>
+              )}
+
+              {sponsor.body_3 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{sponsor.body_3}</p>
+                </div>
+              )}
+
+              {sponsor.body_4 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{sponsor.body_4}</p>
+                </div>
+              )}
+            </div>
           </article>
         ))}
       </section>

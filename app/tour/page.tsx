@@ -9,7 +9,7 @@ export default async function TourPage() {
   const content = await getPageContent('tour');
 
   const tourContactUrl = `/contact?subject=${encodeURIComponent(
-    "New enquiry: Baltic Bash tour"
+    'New enquiry: Baltic Bash tour'
   )}`;
 
   return (
@@ -17,24 +17,45 @@ export default async function TourPage() {
       <div className="two-col">
         <section className="section-card">
           {content ? (
-            <>
+            <div className="content-copy">
               <SectionIntro
-                title={content.title ?? '...'}
+                title={content.title ?? 'Tour'}
                 intro={content.intro ?? ''}
                 ctaLabel={content.cta_label}
                 ctaUrl={tourContactUrl}
               />
 
-              {content.body ? <p className="lead">{content.body}</p> : null}
-              {content.body_2 ? <p className="lead body-2-mobile-hide">{content.body_2}</p> : null}
-              {content.body_3 ? <p className="lead body-2-mobile-hide">{content.body_3}</p> : null}
-              {content.body_4 ? <p className="lead body-2-mobile-hide">{content.body_4}</p> : null}
-            </>
+              {content.body && (
+                <div className="body-text">
+                  <p>{content.body}</p>
+                </div>
+              )}
+
+              {content.body_2 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{content.body_2}</p>
+                </div>
+              )}
+
+              {content.body_3 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{content.body_3}</p>
+                </div>
+              )}
+
+              {content.body_4 && (
+                <div className="body-text body-2-mobile-hide">
+                  <p>{content.body_4}</p>
+                </div>
+              )}
+            </div>
           ) : (
-            <>
+            <div className="content-copy">
               <h1 className="page-title page-title--main">Tour</h1>
-              <p className="lead">Find out more about our tour plans and how to get involved.</p>
-            </>
+              <div className="body-text">
+                <p>Find out more about our tour plans and how to get involved.</p>
+              </div>
+            </div>
           )}
         </section>
 
