@@ -232,7 +232,7 @@ export async function getPlayers(): Promise<PlayerWithSponsor[]> {
     .from('player_profiles_public')
     .select('*')
     .eq('is_active', true)
-    .order('batting_balls', { ascending: false, nullsFirst: false });
+    .order('sort_order', { ascending: false, nullsFirst: false });
 
   if (playersError) {
     throw new Error(`Failed to load players: ${playersError.message}`);
