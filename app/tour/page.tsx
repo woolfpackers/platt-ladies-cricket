@@ -61,31 +61,28 @@ export default async function TourPage() {
 
         <aside>
 	  <div className="tour-media-stack">
-
-	    {/* Video */}
 	    <div className="tour-video-wrap">
-	      <iframe
-	        src="/public/images/baltic_bash_preview.mp4"
-	        width="100%"
-	        height="420"
-	        style={{ border: 'none', overflow: 'hidden' }}
-	        scrolling="no"
-	        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-	        allowFullScreen
-	      />
+	      <video
+	        className="tour-video"
+	        controls
+	        playsInline
+	        preload="metadata"
+	      >
+	        <source src="/videos/baltic_bash_tour.mp4" type="video/mp4" />
+	        Your browser does not support the video tag.
+	      </video>
 	    </div>
 
-	    {/* Existing Image */}
-	    {content?.image_url && (
+	    {content?.image_url ? (
 	      <Image
 	        src={content.image_url}
 	        alt={content.image_alt || 'Tour'}
 	        width={900}
 	        height={650}
 	        className="about-image-only"
+	        priority
 	      />
-	    )}
-
+	    ) : null}
 	  </div>
 	</aside>
 
