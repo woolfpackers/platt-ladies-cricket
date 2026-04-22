@@ -64,12 +64,13 @@ export default async function TourPage() {
 	    <div className="tour-video-wrap">
 	      <video
 	        className="tour-video"
-	        controls
+	        autoPlay
+	        loop
+	        muted
 	        playsInline
-	        preload="metadata"
 	      >
-	        <source src="/videos/baltic_bash_preview.mp4" type="video/mp4" />
-	        Your browser does not support the video tag.
+	        <source src="/videos/baltic-bash-tour.mp4" type="video/mp4" />
+  	      Your browser does not support the video tag.
 	      </video>
 	    </div>
 
