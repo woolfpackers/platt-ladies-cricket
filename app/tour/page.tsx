@@ -66,7 +66,6 @@ export default async function TourPage() {
 	        className="tour-video"
 	        autoPlay
 	        loop
-	        muted
 	        playsInline
 	      >
 	        <source src="/videos/baltic_bash_preview.mp4" type="video/mp4" />
