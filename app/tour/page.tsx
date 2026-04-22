@@ -65,7 +65,7 @@ export default async function TourPage() {
 	    {/* Video */}
 	    <div className="tour-video-wrap">
 	      <iframe
-	        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2326832281140622%2F&show_text=false&width=267&t=0"
+	        src="https://canva.link/7xnroiuijrr4wy8"
 	        width="100%"
 	        height="420"
 	        style={{ border: 'none', overflow: 'hidden' }}
