@@ -68,7 +68,7 @@ export default async function TourPage() {
 	        playsInline
 	        preload="metadata"
 	      >
-	        <source src="/videos/baltic_bash_tour.mp4" type="video/mp4" />
+	        <source src="/videos/baltic_bash_preview.mp4" type="video/mp4" />
 	        Your browser does not support the video tag.
 	      </video>
 	    </div>
