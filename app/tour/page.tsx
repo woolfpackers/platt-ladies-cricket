@@ -60,17 +60,35 @@ export default async function TourPage() {
         </section>
 
         <aside>
-          {content?.image_url ? (
-            <Image
-              src={content.image_url}
-              alt={content.image_alt || 'Tour'}
-              width={900}
-              height={650}
-              className="about-image-only"
-              priority
-            />
-          ) : null}
-        </aside>
+	  <div className="tour-media-stack">
+
+	    {/* Video */}
+	    <div className="tour-video-wrap">
+	      <iframe
+	        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2326832281140622%2F&show_text=false&width=267&t=0"
+	        width="100%"
+	        height="420"
+	        style={{ border: 'none', overflow: 'hidden' }}
+	        scrolling="no"
+	        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+	        allowFullScreen
+	      />
+	    </div>
+
+	    {/* Existing Image */}
+	    {content?.image_url && (
+	      <Image
+	        src={content.image_url}
+	        alt={content.image_alt || 'Tour'}
+	        width={900}
+	        height={650}
+	        className="about-image-only"
+	      />
+	    )}
+
+	  </div>
+	</aside>
+
       </div>
     </PageShell>
   );
