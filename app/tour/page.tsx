@@ -65,7 +65,7 @@ export default async function TourPage() {
 	    {/* Video */}
 	    <div className="tour-video-wrap">
 	      <iframe
-	        src="https://canva.link/7xnroiuijrr4wy8"
+	        src="/public/images/baltic_bash_preview.mp4"
 	        width="100%"
 	        height="420"
 	        style={{ border: 'none', overflow: 'hidden' }}
