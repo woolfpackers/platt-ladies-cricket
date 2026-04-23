@@ -63,7 +63,7 @@ export default async function PlayerSponsorshipPage({
         <div className="sponsorship-player-header-row">
           <div className="sponsorship-player-header-copy">
             <SectionIntro
-              title={`Player Sponsorship - ${player.display_name}`}
+              title={`Player Profile - ${player.display_name}`}
               intro=""
             />
           </div>
