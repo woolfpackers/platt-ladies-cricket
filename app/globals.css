@@ -1424,3 +1424,30 @@ img {
   70% { opacity: 1; }
   100% { opacity: 0; }
 }
+
+.fundraising-images-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* 50% / 25% / 25% */
+  gap: 24px;
+  align-items: stretch;
+}
+
+.fundraising-image-large,
+.fundraising-image-small {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.fundraising-image-large img,
+.fundraising-image-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .fundraising-images-row {
+    grid-template-columns: 1fr;
+  }
+}
