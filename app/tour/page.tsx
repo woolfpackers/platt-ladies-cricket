@@ -62,23 +62,21 @@ export default async function TourPage() {
         <aside>
 	  <div className="tour-media-stack">
 	    <div className="tour-video-wrap">
-	      <div className="tour-video-label" id="tourVideoLabel">
-	        Click video for sound
-	      </div>
+	      <div className="tour-video-label">Click video for sound</div>
 
 	      <video
-	        id="tourVideo"
-	        className="tour-video"
-	        autoPlay
-	        loop
-    	        muted
-	        playsInline
-	      >
+        	className="tour-video"
+        	autoPlay
+        	loop
+        	muted
+        	controls
+        	playsInline
+      	      >
 	        <source src="/videos/baltic_bash_preview.mp4" type="video/mp4" />
-    	      Your browser does not support the video tag.
+        	Your browser does not support the video tag.
 	      </video>
 	    </div>
-	
+
 	    {content?.image_url ? (
 	      <Image
 	        src={content.image_url}
