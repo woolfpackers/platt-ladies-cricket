@@ -1451,3 +1451,9 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+.fundraising-right a:hover img {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+

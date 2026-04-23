@@ -42,15 +42,23 @@ export default function FundraisingPage() {
           </section>
 
           <section
-            className="section-card fundraising-right"
-            style={{ padding: 0, overflow: 'hidden' }}
-          >
-            <img
-              src="/images/quiz_night.jpg"
-              alt="Quiz Night"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            />
-          </section>
+	    className="section-card fundraising-right"
+	    style={{ padding: 0, overflow: 'hidden' }}
+	  >
+	  <a
+	    href={`/contact?subject=${encodeURIComponent(
+	    "I'd like to reserve a table for the quiz night"
+	    )}`}
+	    style={{ display: 'block' }}
+	  >
+	    <img
+	      src="/images/quiz_night.png"
+	      alt="Quiz Night"
+	      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+	    />
+	  </a>
+	</section>
+
         </div>
       </div>
     </PageShell>

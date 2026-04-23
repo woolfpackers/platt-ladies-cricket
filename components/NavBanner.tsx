@@ -17,6 +17,8 @@ const navItems = [
   { label: 'Gallery', href: '/gallery' },
   { label: 'Fundraising', href: '/fundraising' },
   { label: 'Partner With Us', href: '/partnership-opportunities' },
+  { label: 'Contact', href: '/contact' },
+  
 ];
 
 export function NavBanner() {
