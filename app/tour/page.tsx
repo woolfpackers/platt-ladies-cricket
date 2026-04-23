@@ -62,18 +62,23 @@ export default async function TourPage() {
         <aside>
 	  <div className="tour-media-stack">
 	    <div className="tour-video-wrap">
+	      <div className="tour-video-label" id="tourVideoLabel">
+	        Click video for sound
+	      </div>
+
 	      <video
+	        id="tourVideo"
 	        className="tour-video"
 	        autoPlay
 	        loop
-                controls
+    	        muted
 	        playsInline
 	      >
 	        <source src="/videos/baltic_bash_preview.mp4" type="video/mp4" />
-  	      Your browser does not support the video tag.
+    	      Your browser does not support the video tag.
 	      </video>
 	    </div>
-
+	
 	    {content?.image_url ? (
 	      <Image
 	        src={content.image_url}
@@ -87,7 +92,31 @@ export default async function TourPage() {
 	  </div>
 	</aside>
 
+
       </div>
+
+      <script
+	  dangerouslySetInnerHTML={{
+	    __html: `
+	      document.addEventListener('DOMContentLoaded', function () {
+	        const video = document.getElementById('tourVideo');
+	        const label = document.getElementById('tourVideoLabel');
+
+	        if (!video) return;
+
+	        video.addEventListener('click', function () {
+	          video.muted = !video.muted;
+
+	          if (!video.muted && label) {
+	            label.style.opacity = '0';
+	          } else if (video.muted && label) {
+	            label.style.opacity = '1';
+	          }
+	        });
+	      });
+	    `,
+	  }}
+	/>
     </PageShell>
   );
 }
