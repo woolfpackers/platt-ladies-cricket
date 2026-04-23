@@ -62,7 +62,7 @@ export default async function TourPage() {
         <aside>
 	  <div className="tour-media-stack">
 	    <div className="tour-video-wrap">
-	      <div className="tour-video-label">Click video for sound</div>
+	      <div className="tour-video-label">Click video for sound controls</div>
 
 	      <video
         	className="tour-video"
@@ -81,8 +81,8 @@ export default async function TourPage() {
 	      <Image
 	        src={content.image_url}
 	        alt={content.image_alt || 'Tour'}
-	        width={900}
-	        height={650}
+	        width={750}
+	        height={550}
 	        className="about-image-only"
 	        priority
 	      />
