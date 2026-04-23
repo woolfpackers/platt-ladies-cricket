@@ -1457,3 +1457,16 @@ img {
   transition: transform 0.2s ease;
 }
 
+.fixtures-results-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .fixtures-results-split {
+    grid-template-columns: 1fr;
+  }
+}
+

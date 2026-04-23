@@ -22,21 +22,41 @@ export function FixturesResultsView({ items }: { items: FixtureResult[] }) {
     ).sort();
   }, [items]);
 
-  const filteredItems = useMemo(() => {
+  const baseFilteredItems = useMemo(() => {
     return items.filter((item) => {
-      const isResult =
-        Boolean(item.home_score) ||
-        Boolean(item.away_score) ||
-        Boolean(item.result_summary);
-
-      if (mode === 'fixtures' && isResult) return false;
-      if (mode === 'results' && !isResult) return false;
       if (season !== 'all' && String(item.season_year) !== season) return false;
       if (competition !== 'all' && item.competition_code !== competition) return false;
-
       return true;
     });
-  }, [items, mode, season, competition]);
+  }, [items, season, competition]);
+
+  const results = useMemo(() => {
+    return [...baseFilteredItems]
+      .filter((item) => {
+        return (
+          Boolean(item.home_score) ||
+          Boolean(item.away_score) ||
+          Boolean(item.result_summary)
+        );
+      })
+      .sort((a, b) => {
+        return new Date(b.starts_at).getTime() - new Date(a.starts_at).getTime();
+      });
+  }, [baseFilteredItems]);
+
+  const fixtures = useMemo(() => {
+    return [...baseFilteredItems]
+      .filter((item) => {
+        return !(
+          Boolean(item.home_score) ||
+          Boolean(item.away_score) ||
+          Boolean(item.result_summary)
+        );
+      })
+      .sort((a, b) => {
+        return new Date(a.starts_at).getTime() - new Date(b.starts_at).getTime();
+      });
+  }, [baseFilteredItems]);
 
   function formatDate(dateString: string) {
     const date = new Date(dateString);
@@ -45,6 +65,56 @@ export function FixturesResultsView({ items }: { items: FixtureResult[] }) {
     const year = date.getFullYear();
     return `${day}-${month}-${year}`;
   }
+
+  function renderItem(item: FixtureResult) {
+    const isResult =
+      Boolean(item.home_score) ||
+      Boolean(item.away_score) ||
+      Boolean(item.result_summary);
+
+    return (
+      <article key={item.id} className="fixture-card">
+        <p className="fixture-line-main">
+          {formatDate(item.starts_at)} -{' '}
+          {item.competition_code || item.competition_name || 'Competition'} -{' '}
+          {item.home_team || 'Home Team'} vs {item.away_team || 'Away Team'}
+        </p>
+
+        {isResult ? (
+          <>
+            <p className="fixture-line-sub">
+              {item.home_team || 'Home Team'}: {item.home_score || '-'}
+            </p>
+
+            <p className="fixture-line-sub">
+              {item.away_team || 'Away Team'}: {item.away_score || '-'}
+            </p>
+
+            <p className="fixture-line-sub">
+              Result: {item.result_summary || 'Result recorded'}
+            </p>
+          </>
+        ) : null}
+
+        {item.external_link ? (
+          <div style={{ marginTop: isResult ? 12 : 4 }}>
+            <a
+              className="button-link"
+              href={item.external_link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View details
+            </a>
+          </div>
+        ) : null}
+      </article>
+    );
+  }
+
+  const showAll = mode === 'all';
+  const showResultsOnly = mode === 'results';
+  const showFixturesOnly = mode === 'fixtures';
 
   return (
     <div className="page-stack">
@@ -97,61 +167,71 @@ export function FixturesResultsView({ items }: { items: FixtureResult[] }) {
         </div>
       </section>
 
-      <section className="page-stack">
-        {filteredItems.length > 0 ? (
-          filteredItems.map((item) => {
-            const isResult =
-              Boolean(item.home_score) ||
-              Boolean(item.away_score) ||
-              Boolean(item.result_summary);
+      {showAll ? (
+        <section className="fixtures-results-split">
+          <div className="page-stack">
+            <div className="section-card">
+              <h2 className="sponsorship-section-title">Results</h2>
+            </div>
 
-            return (
-	      <article key={item.id} className="fixture-card">
-	        <p className="fixture-line-main">
-	        {formatDate(item.starts_at)} - {item.competition_code || item.competition_name || 'Competition'} -{' '}
-	        {item.home_team || 'Home Team'} vs {item.away_team || 'Away Team'}
-    		</p>
-
-    		{isResult ? (
-      		<>
-        	<p className="fixture-line-sub">
-          	{item.home_team || 'Home Team'}: {item.home_score || '-'}
-        	</p>
-
-        	<p className="fixture-line-sub">
-          	{item.away_team || 'Away Team'}: {item.away_score || '-'}
-	        </p>
-
-        	<p className="fixture-line-sub">
-	          Result: {item.result_summary || 'Result recorded'}
-        	</p>
-      		</>
-    	) : null}
-	
-	    {item.external_link ? (
-	      <div style={{ marginTop: isResult ? 12 : 4 }}>
-	        <a
-	          className="button-link"
-	          href={item.external_link}
-	          target="_blank"	
-	          rel="noreferrer"
-	        >
-	          View details
-	        </a>
-	      </div>
-	    ) : null}
-	  </article>
-	);
-
-          })
-        ) : (
-          <div className="section-card">
-            <p className="lead" style={{ margin: 0 }}>
-              No fixtures or results match the selected filters.
-            </p>
+            {results.length > 0 ? (
+              results.map(renderItem)
+            ) : (
+              <div className="section-card">
+                <p className="lead" style={{ margin: 0 }}>
+                  No results match the selected filters.
+                </p>
+              </div>
+            )}
           </div>
-        )}
-      </section>
+
+          <div className="page-stack">
+            <div className="section-card">
+              <h2 className="sponsorship-section-title">Fixtures</h2>
+            </div>
+
+            {fixtures.length > 0 ? (
+              fixtures.map(renderItem)
+            ) : (
+              <div className="section-card">
+                <p className="lead" style={{ margin: 0 }}>
+                  No fixtures match the selected filters.
+                </p>
+              </div>
+            )}
+          </div>
+        </section>
+      ) : (
+        <section className="page-stack">
+          {showResultsOnly && (
+            <>
+              {results.length > 0 ? (
+                results.map(renderItem)
+              ) : (
+                <div className="section-card">
+                  <p className="lead" style={{ margin: 0 }}>
+                    No results match the selected filters.
+                  </p>
+                </div>
+              )}
+            </>
+          )}
+
+          {showFixturesOnly && (
+            <>
+              {fixtures.length > 0 ? (
+                fixtures.map(renderItem)
+              ) : (
+                <div className="section-card">
+                  <p className="lead" style={{ margin: 0 }}>
+                    No fixtures match the selected filters.
+                  </p>
+                </div>
+              )}
+            </>
+          )}
+        </section>
+      )}
     </div>
   );
 }
