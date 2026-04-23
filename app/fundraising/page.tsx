@@ -52,7 +52,7 @@ export default function FundraisingPage() {
 	    style={{ display: 'block' }}
 	  >
 	    <img
-	      src="/images/quiz_night.png"
+	      src="/images/quiz_night.jpg"
 	      alt="Quiz Night"
 	      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
 	    />
