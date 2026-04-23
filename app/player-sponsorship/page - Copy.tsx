@@ -35,22 +35,15 @@ export default async function PlayerSponsorshipPage({
     getPageContent('player-sponsorship'),
   ]);
 
-  const currentIndex = players.findIndex(
+  const player = players.find(
     (p) => String(p.id).trim() === String(id ?? '').trim()
   );
-
-  const player = currentIndex >= 0 ? players[currentIndex] : null;
-  const previousPlayer = currentIndex > 0 ? players[currentIndex - 1] : null;
-  const nextPlayer =
-    currentIndex >= 0 && currentIndex < players.length - 1
-      ? players[currentIndex + 1]
-      : null;
 
   if (!player) {
     return (
       <PageShell>
         <section className="section-card">
-          <h1 className="page-title page-title--main">Player not found</h1>
+          <h1 className="page-title">Player not found</h1>
           <p className="lead">We could not find that player sponsorship page.</p>
         </section>
       </PageShell>
@@ -60,38 +53,10 @@ export default async function PlayerSponsorshipPage({
   return (
     <PageShell>
       <section className="section-card sponsorship-player-header">
-        <div className="sponsorship-player-header-row">
-          <div className="sponsorship-player-header-copy">
-            <SectionIntro
-              title={`Player Sponsorship - ${player.display_name}`}
-              intro=""
-            />
-          </div>
-
-          <div className="sponsorship-player-nav">
-            {previousPlayer ? (
-              <Link
-                href={`/player-sponsorship?id=${previousPlayer.id}`}
-                className="button-link sponsorship-player-nav-button"
-              >
-                &lt; Prev
-              </Link>
-            ) : (
-              <span className="sponsorship-player-nav-spacer" />
-            )}
-
-            {nextPlayer ? (
-              <Link
-                href={`/player-sponsorship?id=${nextPlayer.id}`}
-                className="button-link sponsorship-player-nav-button"
-              >
-                Next &gt;
-              </Link>
-            ) : (
-              <span className="sponsorship-player-nav-spacer" />
-            )}
-          </div>
-        </div>
+        <SectionIntro
+          title={`Player Sponsorship - ${player.display_name}`}
+          intro=""
+        />
       </section>
 
       <section className="sponsorship-player-main-grid">
@@ -174,7 +139,7 @@ export default async function PlayerSponsorshipPage({
             intro={sponsorshipContent?.intro ?? ''}
           />
         </div>
-
+ 
         {sponsorshipContent?.body && (
           <div className="body-text">
             <p>{sponsorshipContent.body}</p>
