@@ -90,8 +90,7 @@ export async function getFixtures(): Promise<FixtureResult[]> {
 
   const { data, error } = await db
     .from('fixtures_results_public')
-    .select('*')
-    .order('starts_at', { ascending: true });
+    .select('*');
 
   if (error) {
     throw new Error(`Failed to load fixtures: ${error.message}`);
