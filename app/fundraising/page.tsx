@@ -76,7 +76,7 @@ export default async function FundraisingPage() {
                   "I'd like to reserve a table for the quiz night"
                 )}`}
               >
-                <img src="/images/quiz_night.png" alt="Quiz Night" />
+                <img src="/images/quiz_night.jpg" alt="Quiz Night" />
               </a>
             </div>
           </div>
