@@ -24,7 +24,7 @@ export function It20Overlay() {
 
         <div className="it20-arrow-callout">
           <span className="it20-arrow">⬇</span>
-          <span>Click here to donate and enter</span>
+          <span>Scan QR code to donate and enter</span>
         </div>
 
         <img
