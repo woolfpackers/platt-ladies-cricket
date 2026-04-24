@@ -3,6 +3,15 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+function escapeHtml(value: unknown) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 export async function POST(req: Request) {
   try {
     const { name, email, subject, message } = await req.json();
@@ -17,14 +26,14 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: 'Platt Ladies Cricket <PlattLadiesCricket@divelive.co.uk>',
       to: 'Platt Ladies Cricket <PlattLadiesCricket@divelive.co.uk>',
-      replyTo: email,
-      subject: subject,
+      replyTo: escapeHtml(email),
+      subject: escapeHtml(subject),
       html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
         <p><strong>Message:</strong></p>
-        <p>${String(message).replace(/\n/g, '<br />')}</p>
+        <p>${escapeHtml(message).replace(/\n/g, '<br />')}</p>
       `,
     });
 
