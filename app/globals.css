@@ -1487,8 +1487,8 @@ img {
 
 .it20-arrow-callout {
   position: absolute;
-  left: 50%;
-  bottom: 26%;
+  left: 45%;
+  bottom: 36%;
   z-index: 4;
   transform: translateX(-50%);
 
