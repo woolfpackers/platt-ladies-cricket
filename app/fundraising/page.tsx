@@ -1,14 +1,23 @@
 import { PageShell } from '@/components/PageShell';
 import { SectionIntro } from '@/components/SectionIntro';
 import { getPageContent } from '@/lib/data';
+import { It20Overlay } from '@/components/It20Overlay';
 
 export const dynamic = 'force-dynamic';
 
-export default async function FundraisingPage() {
+export default async function FundraisingPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ it20?: string }>;
+}) {
+  const { it20 } = await searchParams;
+  const showIt20Overlay = it20 === 'true';
+
   const content = await getPageContent('fundraising');
 
   return (
     <PageShell>
+      {showIt20Overlay ? <It20Overlay /> : null}
       <div className="fundraising-page-layout">
         <section className="section-card">
           {content ? (
@@ -67,7 +76,9 @@ export default async function FundraisingPage() {
 
           <div className="fundraising-small-images-row">
             <div className="section-card fundraising-image-card">
-              <img src="/images/IT20.jpg" alt="IT20 Competition" />
+              <a href="/fundraising?it20=true">
+                <img src="/images/IT20.jpg" alt="IT20 Competition" />
+              </a>
             </div>
 
             <div className="section-card fundraising-image-card">
