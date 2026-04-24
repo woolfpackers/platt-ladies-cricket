@@ -263,13 +263,13 @@ img {
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  padding: 7px 12px;
+  padding: 6px 10px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: white;
   transition: 0.2s ease;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   line-height: 1;
   flex: 0 0 auto;
 }
@@ -1563,12 +1563,12 @@ img {
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  padding: 7px 12px;
+  padding: 6px 10px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: white;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
 }
@@ -1593,5 +1593,17 @@ img {
 
   html.compact-mode .site-main {
     padding-top: calc(var(--desktop-header-height) * 0.9);
+  }
+}
+
+@media (min-width: 1025px) {
+  .nav-pill {
+    padding: 6px 10px;
+    font-size: 0.82rem;
+  }
+
+  .compact-toggle {
+    padding: 6px 10px;
+    font-size: 0.8rem;
   }
 }
