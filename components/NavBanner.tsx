@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import { CompactModeToggle } from '@/components/CompactModeToggle';
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -18,7 +19,6 @@ const navItems = [
   { label: 'Fundraising', href: '/fundraising' },
   { label: 'Partner With Us', href: '/partnership-opportunities' },
   { label: 'Contact', href: '/contact' },
-  
 ];
 
 export function NavBanner() {
@@ -67,6 +67,8 @@ export function NavBanner() {
               </Link>
             );
           })}
+
+          <CompactModeToggle />
         </div>
       </div>
     </nav>

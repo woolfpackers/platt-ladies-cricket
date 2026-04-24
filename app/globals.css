@@ -1557,3 +1557,41 @@ img {
 }
 
 }
+
+.compact-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (min-width: 1025px) {
+  html.compact-mode {
+    font-size: 80%;
+  }
+
+  html.compact-mode .section-card {
+    padding: 22px;
+  }
+
+  html.compact-mode .page-stack,
+  html.compact-mode .two-col,
+  html.compact-mode .cards-grid,
+  html.compact-mode .sponsorship-player-main-grid,
+  html.compact-mode .fundraising-page-layout,
+  html.compact-mode .fixtures-results-split {
+    gap: 18px;
+  }
+
+  html.compact-mode .site-main {
+    padding-top: calc(var(--desktop-header-height) * 0.9);
+  }
+}
