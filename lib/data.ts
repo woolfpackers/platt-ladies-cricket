@@ -213,6 +213,7 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
   const { data, error } = await supabase
     .from('gallery_images')
     .select('id, title, image_filename, alt_text, sort_order')
+    .eq('visible_on_website', true)
     .eq('is_active', true)
     .order('sort_order', { ascending: true });
 
@@ -230,6 +231,7 @@ export async function getPlayers(): Promise<PlayerWithSponsor[]> {
   const { data: playersData, error: playersError } = await db
     .from('player_profiles_public')
     .select('*')
+    .eq('visible_on_website', true)
     .eq('is_active', true)
     .order('sort_order', { ascending: true, nullsFirst: false });
 
