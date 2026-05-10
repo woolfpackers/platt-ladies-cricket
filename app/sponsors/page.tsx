@@ -3,20 +3,8 @@ import Link from 'next/link';
 import { PageShell } from '@/components/PageShell';
 import { SectionIntro } from '@/components/SectionIntro';
 import { getPageContent, getSponsors } from '@/lib/data';
-import type { Sponsor } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
-
-function getMobileOrder(sponsor: Sponsor) {
-  const slug = sponsor.slug.toLowerCase();
-  const name = sponsor.name.toLowerCase();
-
-  if (slug.includes('shakti') || name.includes('shakti')) return 1;
-  if (slug.includes('fourways') || name.includes('fourways')) return 2;
-  if (slug.includes('parkfoot') || name.includes('parkfoot')) return 3;
-
-  return 99;
-}
 
 export default async function SponsorsPage() {
   const [pageContent, sponsors] = await Promise.all([
@@ -24,13 +12,9 @@ export default async function SponsorsPage() {
     getSponsors(),
   ]);
 
-  const orderedSponsors = [...sponsors].sort((a, b) => {
-    const aOrder = getMobileOrder(a);
-    const bOrder = getMobileOrder(b);
-
-    if (aOrder !== bOrder) return aOrder - bOrder;
-    return a.sort_order - b.sort_order;
-  });
+  const orderedSponsors = [...sponsors].sort(
+    (a, b) => a.sort_order - b.sort_order
+  );
 
   return (
     <PageShell>
@@ -84,7 +68,7 @@ export default async function SponsorsPage() {
         {orderedSponsors.map((sponsor) => (
           <article
             key={sponsor.id}
-            className={`section-card sponsor-card sponsor-order-${getMobileOrder(sponsor)}`}
+            className="section-card sponsor-card"
           >
             {sponsor.logo_url ? (
               sponsor.website_url ? (
@@ -118,7 +102,9 @@ export default async function SponsorsPage() {
             ) : null}
 
             <div className="content-copy">
-              {sponsor.title && <h2 className="sponsor-title">{sponsor.title}</h2>}
+              {sponsor.title && (
+                <h2 className="sponsor-title">{sponsor.title}</h2>
+              )}
 
               {sponsor.intro && (
                 <div className="body-text">
