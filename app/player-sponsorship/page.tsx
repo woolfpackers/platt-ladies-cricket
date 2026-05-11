@@ -193,44 +193,62 @@ export default async function PlayerSponsorshipPage({
             )}
 
             <div className="content-copy" style={{ textAlign: 'center' }}>
-              <SectionIntro
-                title={player.sponsor.title ?? player.sponsor.name}
-                intro=""
-              />
+	      <p
+	        style={{
+	          margin: 0,
+	          fontSize: '0.95rem',
+	          color: 'var(--muted)',
+	          fontWeight: 600,
+	          letterSpacing: '0.04em',
+	          textTransform: 'uppercase',
+	        }}
+	      >
+	        Sponsored by...
+	      </p>
+	    
+	      <h2
+	        style={{
+	          margin: '0.25rem 0 1rem',
+	          fontSize: '2rem',
+	          lineHeight: 1.2,
+	          fontWeight: 700,
+	          color: 'white',
+	        }}
+	      >
+	        {player.sponsor.title ?? player.sponsor.name}
+	      </h2>
+	    
+	      {player.sponsor.intro && (
+	        <div className="body-text">
+	          <p>{player.sponsor.intro}</p>
+	        </div>
+	      )}
+	    
+	      {player.sponsor.body && (
+	        <div className="body-text">
+	          <p>{player.sponsor.body}</p>
+	        </div>
+	      )}
+	    
+	      {player.sponsor.body_2 && (
+	        <div className="body-text">
+	          <p>{player.sponsor.body_2}</p>
+	        </div>
+	      )}
 
-              {player.sponsor.website_url && (
-                <div className="body-text">
-                  <p>
-                    <Link
-                      href={player.sponsor.website_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="button-link"
-                    >
-                      Visit Sponsor Website
-                    </Link>
-                  </p>
-                </div>
-              )}
-
-              {player.sponsor.intro && (
-                <div className="body-text">
-                  <p>{player.sponsor.intro}</p>
-                </div>
-              )}
-
-              {player.sponsor.body && (
-                <div className="body-text">
-                  <p>{player.sponsor.body}</p>
-                </div>
-              )}
-
-              {player.sponsor.body_2 && (
-                <div className="body-text">
-                  <p>{player.sponsor.body_2}</p>
-                </div>
-              )}
-            </div>
+	      {player.sponsor.website_url && (
+	        <div style={{ marginTop: '1rem' }}>
+	          <Link
+	            href={player.sponsor.website_url}
+	            target="_blank"
+	            rel="noopener noreferrer"
+	            className="button-link"
+	          >
+	            Visit Sponsor Website
+	          </Link>
+	        </div>
+	      )}
+	    </div>
           </>
         ) : (
           <>
