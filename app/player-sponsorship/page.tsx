@@ -127,28 +127,34 @@ export default async function PlayerSponsorshipPage({
                 </div>
               )}
 
-              <div className="sponsorship-player-cta-wrap sponsorship-player-cta-wrap--inside">
-                <Link
-                  href={`/contact?subject=${encodeURIComponent(
-                    `Player Sponsorship - ${player.display_name}`
-                  )}`}
-                  className="button"
-                >
-                  Click here to Sponsor Me
-                </Link>
-              </div>
+              {!player.sponsor && (
+                <div className="sponsorship-player-cta-wrap sponsorship-player-cta-wrap--inside">
+                  <Link
+                    href={`/contact?subject=${encodeURIComponent(
+                      `Player Sponsorship - ${player.display_name}`
+                    )}`}
+                    className="button"
+                  >
+                    Click here to Sponsor Me
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </section>
 
         <section className="section-card sponsorship-player-batting-card">
           <h2 className="page-title sponsorship-section-title">Batting Stats</h2>
+
           <div className="stat-grid sponsorship-stats-grid">
             <StatItem label="Runs" value={player.batting_2026?.runs} />
             <StatItem label="Balls" value={player.batting_2026?.balls} />
             <StatItem label="Wickets Lost" value={player.batting_2026?.wkts} />
             <StatItem label="Strike Rate" value={player.batting_2026?.strike_rate} />
-            <StatItem label="Net Runs" value={player.batting_2026?.net_runs} />
+            <StatItem
+              label="Net Runs"
+              value={player.batting_2026?.net_runs}
+            />
             <StatItem
               label="Net Strike Rate"
               value={player.batting_2026?.net_strike_rate}
@@ -156,47 +162,112 @@ export default async function PlayerSponsorshipPage({
           </div>
 
           <h2 className="page-title sponsorship-section-title">Bowling Stats</h2>
+
           <div className="stat-grid sponsorship-stats-grid">
             <StatItem label="Runs" value={player.bowling_2026?.runs} />
             <StatItem label="Balls" value={player.bowling_2026?.balls} />
             <StatItem label="Wickets" value={player.bowling_2026?.wkts} />
             <StatItem label="Wides" value={player.bowling_2026?.wides} />
             <StatItem label="No Balls" value={player.bowling_2026?.nbs} />
-            <StatItem label="Runs / Over" value={player.bowling_2026?.runs_per_over} />
+            <StatItem
+              label="Runs / Over"
+              value={player.bowling_2026?.runs_per_over}
+            />
           </div>
         </section>
       </section>
 
       <section className="section-card sponsorship-benefits-card">
-        <div className="sponsorship-benefits-intro">
-          <SectionIntro
-            title={sponsorshipContent?.title ?? 'What you get with sponsorship'}
-            intro={sponsorshipContent?.intro ?? ''}
-          />
-        </div>
+        {player.sponsor ? (
+          <>
+            {player.sponsor.logo_url && (
+              <div className="sponsor-logo-wrap">
+                <Image
+                  src={player.sponsor.logo_url}
+                  alt={player.sponsor.title ?? player.sponsor.name}
+                  width={320}
+                  height={180}
+                  className="sponsor-logo"
+                />
+              </div>
+            )}
 
-        {sponsorshipContent?.body && (
-          <div className="body-text">
-            <p>{sponsorshipContent.body}</p>
-          </div>
-        )}
+            <div className="content-copy" style={{ textAlign: 'center' }}>
+              <SectionIntro
+                title={player.sponsor.title ?? player.sponsor.name}
+                intro=""
+              />
 
-        {sponsorshipContent?.body_2 && (
-          <div className="body-text">
-            <p>{sponsorshipContent.body_2}</p>
-          </div>
-        )}
+              {player.sponsor.website_url && (
+                <div className="body-text">
+                  <p>
+                    <Link
+                      href={player.sponsor.website_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="button-link"
+                    >
+                      Visit Sponsor Website
+                    </Link>
+                  </p>
+                </div>
+              )}
 
-        {sponsorshipContent?.body_3 && (
-          <div className="body-text">
-            <p>{sponsorshipContent.body_3}</p>
-          </div>
-        )}
+              {player.sponsor.intro && (
+                <div className="body-text">
+                  <p>{player.sponsor.intro}</p>
+                </div>
+              )}
 
-        {sponsorshipContent?.body_4 && (
-          <div className="body-text">
-            <p>{sponsorshipContent.body_4}</p>
-          </div>
+              {player.sponsor.body && (
+                <div className="body-text">
+                  <p>{player.sponsor.body}</p>
+                </div>
+              )}
+
+              {player.sponsor.body_2 && (
+                <div className="body-text">
+                  <p>{player.sponsor.body_2}</p>
+                </div>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="sponsorship-benefits-intro">
+              <SectionIntro
+                title={
+                  sponsorshipContent?.title ??
+                  'What you get with sponsorship'
+                }
+                intro={sponsorshipContent?.intro ?? ''}
+              />
+            </div>
+
+            {sponsorshipContent?.body && (
+              <div className="body-text">
+                <p>{sponsorshipContent.body}</p>
+              </div>
+            )}
+
+            {sponsorshipContent?.body_2 && (
+              <div className="body-text">
+                <p>{sponsorshipContent.body_2}</p>
+              </div>
+            )}
+
+            {sponsorshipContent?.body_3 && (
+              <div className="body-text">
+                <p>{sponsorshipContent.body_3}</p>
+              </div>
+            )}
+
+            {sponsorshipContent?.body_4 && (
+              <div className="body-text">
+                <p>{sponsorshipContent.body_4}</p>
+              </div>
+            )}
+          </>
         )}
       </section>
     </PageShell>

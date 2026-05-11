@@ -49,19 +49,22 @@ export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
           </div>
 
           <div>
-            {player.sponsor ? (
-              <span className="muted-label">
-                Sponsored by {player.sponsor.name}
-              </span>
-            ) : (
-              <Link
-                href={`/player-sponsorship?id=${encodeURIComponent(player.id)}`}
-                className="button"
-              >
-                Available for sponsorship
-              </Link>
-            )}
-          </div>
+	    {player.sponsor ? (
+	      <Link
+	        href={`/player-sponsorship?id=${encodeURIComponent(player.id)}`}
+	        className="taken-badge"
+	      >
+	        Sponsored by {player.sponsor.name}
+	      </Link>
+	    ) : (
+	      <Link
+	        href={`/player-sponsorship?id=${encodeURIComponent(player.id)}`}
+	        className="button"
+	      >
+	        Available for sponsorship
+	      </Link>
+	    )}
+	  </div>
         </article>
       ))}
     </div>
