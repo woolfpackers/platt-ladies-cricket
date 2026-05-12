@@ -859,7 +859,10 @@ img {
 }
 
 .sponsor-logo-wrap {
+  display: flex;
   align-items: center;
+  justify-content: center;
+  height: 180px;
   margin-bottom: 1rem;
 }
 
@@ -872,6 +875,7 @@ img {
   object-fit: contain;
   max-width: 100%;
   height: auto;
+  max-height: 220px;
 }
 
 .sponsor-title {
