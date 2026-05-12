@@ -873,13 +873,29 @@ img {
 .sponsor-logo {
   display: block;
   object-fit: contain;
-  max-width: 100%;
+  width: 92%;
   height: auto;
   max-height: 220px;
 }
 
 .sponsor-title {
   margin-bottom: 0.75rem;
+}
+
+.sponsor-profile-logo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.sponsor-profile-logo {
+  width: 100%;
+  max-width: 520px;
+  max-height: 260px;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Partnership */

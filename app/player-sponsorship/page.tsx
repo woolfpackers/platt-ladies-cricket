@@ -181,15 +181,15 @@ export default async function PlayerSponsorshipPage({
         {player.sponsor ? (
           <>
             {player.sponsor.logo_url && (
-              <div className="sponsor-logo-wrap">
-                <Image
-                  src={player.sponsor.logo_url}
-                  alt={player.sponsor.title ?? player.sponsor.name}
-                  width={320}
-                  height={180}
-                  className="sponsor-logo"
-                />
-              </div>
+              <div className="sponsor-profile-logo-wrap">
+	        <Image
+	          src={player.sponsor.logo_url}
+	          alt={player.sponsor.title ?? player.sponsor.name}
+	          width={600}
+	          height={260}
+	          className="sponsor-profile-logo"
+	        />
+	      </div>
             )}
 
             <div className="content-copy" style={{ textAlign: 'center' }}>
