@@ -59,7 +59,7 @@ export default async function PlayerSponsorshipPage({
       <section className="section-card sponsorship-player-image-card">
         <div className="sponsorship-player-image-wrap">
           <Image
-            src={player.image_url || '/images/player-placeholder.jpg'}
+            src={player.image_url || '/images/platt-ladies/player-placeholder.jpg'}
             alt={player.display_name}
             width={900}
             height={900}
@@ -113,7 +113,7 @@ export default async function PlayerSponsorshipPage({
 
       <section className="sponsorship-player-cta-wrap">
         <Link
-          href={`/contact?subject=${encodeURIComponent(`Player Sponsorship - ${player.display_name}`)}`}
+          href={`/ladies/contact?subject=${encodeURIComponent(`Player Sponsorship - ${player.display_name}`)}`}
           className="button"
         >
           Click here to Sponsor Me

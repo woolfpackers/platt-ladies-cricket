@@ -1,11 +1,11 @@
 export const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'Our club' },
-  { href: '/squad', label: 'Squad' },
-  { href: '/fixtures', label: 'Fixtures and Results' },
-  { href: '/join-us', label: 'Join Us' },
-  { href: '/tour', label: 'Tour' },
-  { href: '/pavilion', label: 'Pavilion' },
-  { href: '/sponsors', label: 'Sponsors' },
-  { href: '/events', label: 'Events' }
+  { href: '/ladies/', label: 'Home' },
+  { href: '/ladies/about', label: 'Our club' },
+  { href: '/ladies/squad', label: 'Squad' },
+  { href: '/ladies/fixtures', label: 'Fixtures and Results' },
+  { href: '/ladies/join-us', label: 'Join Us' },
+  { href: '/ladies/tour', label: 'Tour' },
+  { href: '/ladies/pavilion', label: 'Pavilion' },
+  { href: '/ladies/sponsors', label: 'Sponsors' },
+  { href: '/ladies/events', label: 'Events' }
 ];

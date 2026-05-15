@@ -71,7 +71,7 @@ export default async function PlayerSponsorshipPage({
           <div className="sponsorship-player-nav">
             {previousPlayer ? (
               <Link
-                href={`/player-sponsorship?id=${previousPlayer.id}`}
+                href={`/ladies/player-sponsorship?id=${previousPlayer.id}`}
                 className="button-link sponsorship-player-nav-button"
               >
                 &lt; Prev
@@ -82,7 +82,7 @@ export default async function PlayerSponsorshipPage({
 
             {nextPlayer ? (
               <Link
-                href={`/player-sponsorship?id=${nextPlayer.id}`}
+                href={`/ladies/player-sponsorship?id=${nextPlayer.id}`}
                 className="button-link sponsorship-player-nav-button"
               >
                 Next &gt;
@@ -99,7 +99,7 @@ export default async function PlayerSponsorshipPage({
           <div className="sponsorship-player-profile-layout">
             <div className="sponsorship-player-profile-image-wrap">
               <Image
-                src={player.image_url || '/images/player-placeholder.jpg'}
+                src={player.image_url || '/images/platt-ladies/player-placeholder.jpg'}
                 alt={player.display_name}
                 width={360}
                 height={360}
@@ -130,7 +130,7 @@ export default async function PlayerSponsorshipPage({
               {!player.sponsor && (
                 <div className="sponsorship-player-cta-wrap sponsorship-player-cta-wrap--inside">
                   <Link
-                    href={`/contact?subject=${encodeURIComponent(
+                    href={`/ladies/contact?subject=${encodeURIComponent(
                       `Player Sponsorship - ${player.display_name}`
                     )}`}
                     className="button"

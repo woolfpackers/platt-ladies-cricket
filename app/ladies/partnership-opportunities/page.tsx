@@ -34,7 +34,7 @@ export default async function PartnershipOpportunitiesPage() {
 
           <div className="partnership-header-action">
             <Link
-	      href={`/contact?subject=${encodeURIComponent("New enquiry: Partnership opportunities")}`}
+	      href={`/ladies/contact?subject=${encodeURIComponent("New enquiry: Partnership opportunities")}`}
 	      className="button"
 	    >
 	      Get in touch
@@ -70,7 +70,7 @@ export default async function PartnershipOpportunitiesPage() {
       <section className="section-card partnership-image-card">
         <div className="partnership-image-wrap">
           <Image
-            src="/images/partnership.png"
+            src="/images/platt-ladies/partnership.png"
             alt="Overall partnership opportunities"
             width={1400}
             height={700}
@@ -130,7 +130,7 @@ export default async function PartnershipOpportunitiesPage() {
 	            <td>
 	              {isAvailable ? (
  	                <Link
-	                  href={`/contact?subject=${encodeURIComponent(`New enquiry: ${row.slug ?? 'partnership-opportunity'}`)}`}
+	                  href={`/ladies/contact?subject=${encodeURIComponent(`New enquiry: ${row.slug ?? 'partnership-opportunity'}`)}`}
 	                  className="request-badge"
 	                >
 	                  Request

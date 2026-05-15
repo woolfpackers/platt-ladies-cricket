@@ -4,7 +4,7 @@ import { SectionIntro } from './SectionIntro';
 
 export function ContentPage({
   content,
-  imageSrc = '/images/page-placeholder.jpg',
+  imageSrc = '/images/platt-ladies/page-placeholder.jpg',
   imageAlt = 'Page image',
   children
 }: {

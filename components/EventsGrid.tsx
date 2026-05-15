@@ -7,7 +7,7 @@ export function EventsGrid({ events }: { events: EventItem[] }) {
       {events.map((event) => (
         <article key={event.id} className="event-card">
           <Image
-            src={event.image_url || '/images/event-placeholder.jpg'}
+            src={event.image_url || '/images/platt-ladies/event-placeholder.jpg'}
             alt={event.title}
             width={800}
             height={500}

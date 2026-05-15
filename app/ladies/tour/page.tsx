@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 export default async function TourPage() {
   const content = await getPageContent('tour');
 
-  const tourContactUrl = `/contact?subject=${encodeURIComponent(
+  const tourContactUrl = `/ladies/contact?subject=${encodeURIComponent(
     'New enquiry: Baltic Bash tour'
   )}`;
 
@@ -72,7 +72,7 @@ export default async function TourPage() {
         	controls
         	playsInline
       	      >
-	        <source src="/videos/baltic_bash_preview.mp4" type="video/mp4" />
+	        <source src="/videos/platt-ladies/baltic_bash_preview.mp4" type="video/mp4" />
         	Your browser does not support the video tag.
 	      </video>
 	    </div>

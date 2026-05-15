@@ -28,7 +28,7 @@ export function It20Overlay() {
         </div>
 
         <img
-          src="/images/IT20.jpg"
+          src="/images/platt-ladies/IT20.jpg"
           alt="IT20 Competition"
           className="it20-overlay-image"
         />

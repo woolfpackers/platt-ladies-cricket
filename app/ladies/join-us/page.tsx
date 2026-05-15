@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 export default async function JoinUsPage() {
   const content = await getPageContent('join-us');
 
-  const joinUsContactUrl = `/contact?subject=${encodeURIComponent(
+  const joinUsContactUrl = `/ladies/contact?subject=${encodeURIComponent(
     'New enquiry: Joining Platt Ladies'
   )}`;
 

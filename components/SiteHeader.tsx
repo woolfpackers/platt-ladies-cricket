@@ -7,7 +7,7 @@ export async function SiteHeader() {
       <div className="site-wrap hero-banner__content">
         <div className="hero-left">
           <img
-            src="/images/platt-logo.png"
+            src="/images/platt-ladies/platt-logo.png"
             alt="Platt Ladies Cricket Logo"
             className="logo-only__plain"
           />
@@ -20,7 +20,7 @@ export async function SiteHeader() {
         <div className="hero-right">
           <div className="team-card">
             <Image
-              src="/images/team-placeholder.jpg"
+              src="/images/platt-ladies/team-placeholder.jpg"
               alt="Platt Ladies team"
               fill
               priority

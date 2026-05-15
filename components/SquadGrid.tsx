@@ -14,7 +14,7 @@ export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
         <article key={player.id} className="player-card">
           <div className="player-photo-wrap">
             <Image
-              src={player.image_url || '/images/player-placeholder.jpg'}
+              src={player.image_url || '/images/platt-ladies/player-placeholder.jpg'}
               alt={player.display_name}
               width={500}
               height={520}
@@ -51,14 +51,14 @@ export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
           <div>
 	    {player.sponsor ? (
 	      <Link
-	        href={`/player-sponsorship?id=${encodeURIComponent(player.id)}`}
+	        href={`/ladies/player-sponsorship?id=${encodeURIComponent(player.id)}`}
 	        className="taken-badge"
 	      >
 	        Sponsored by {player.sponsor.name}
 	      </Link>
 	    ) : (
 	      <Link
-	        href={`/player-sponsorship?id=${encodeURIComponent(player.id)}`}
+	        href={`/ladies/player-sponsorship?id=${encodeURIComponent(player.id)}`}
 	        className="button"
 	      >
 	        Available for sponsorship

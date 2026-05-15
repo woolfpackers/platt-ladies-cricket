@@ -70,24 +70,24 @@ export default async function FundraisingPage({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="/images/crowdfunding.png" alt="Crowdfunding" />
+              <img src="/images/platt-ladies/crowdfunding.png" alt="Crowdfunding" />
             </a>
           </div>
 
           <div className="fundraising-small-images-row">
             <div className="section-card fundraising-image-card">
-              <a href="/fundraising?it20=true">
-                <img src="/images/IT20.jpg" alt="IT20 Competition" />
+              <a href="/ladies/fundraising?it20=true">
+                <img src="/images/platt-ladies/IT20.jpg" alt="IT20 Competition" />
               </a>
             </div>
 
             <div className="section-card fundraising-image-card">
               <a
-                href={`/contact?subject=${encodeURIComponent(
+                href={`/ladies/contact?subject=${encodeURIComponent(
                   "I'd like to reserve a table for the quiz night"
                 )}`}
               >
-                <img src="/images/quiz_night.jpg" alt="Quiz Night" />
+                <img src="/images/platt-ladies/quiz_night.jpg" alt="Quiz Night" />
               </a>
             </div>
           </div>

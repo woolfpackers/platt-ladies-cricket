@@ -57,7 +57,7 @@ export default async function SponsorsPage() {
           </div>
 
           <div className="sponsors-header-action">
-            <Link href="/partnership-opportunities" className="button">
+            <Link href="/ladies/partnership-opportunities" className="button">
               Partnership Opportunities
             </Link>
           </div>

@@ -35,7 +35,7 @@ export function GalleryCarousel({ images }: { images: GalleryImage[] }) {
   }
 
   const currentImage = safeImages[currentIndex];
-  const imageSrc = `/images/gallery/${currentImage.image_filename}`;
+  const imageSrc = `/images/platt-ladies/gallery/${currentImage.image_filename}`;
 
   const goPrev = () => {
     setCurrentIndex((prev) => (prev - 1 + safeImages.length) % safeImages.length);
