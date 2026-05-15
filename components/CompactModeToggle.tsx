@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import { CompactModeToggle } from '@/components/CompactModeToggle';
 
 const navItems = [
   { label: 'Home', href: '/ladies/' },
