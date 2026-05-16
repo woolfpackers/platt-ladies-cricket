@@ -1594,28 +1594,9 @@ img {
 
 }
 
-  html.compact-mode .section-card {
-    padding: 22px;
-  }
-
-  html.compact-mode .page-stack,
-  html.compact-mode .two-col,
-  html.compact-mode .cards-grid,
-  html.compact-mode .sponsorship-player-main-grid,
-  html.compact-mode .fundraising-page-layout,
-  html.compact-mode .fixtures-results-split {
-    gap: 18px;
-  }
-
-  html.compact-mode .site-main {
-    padding-top: calc(var(--desktop-header-height) * 0.9);
-  }
-}
-
 @media (min-width: 1025px) {
   .nav-pill {
     padding: 6px 10px;
     font-size: 0.82rem;
   }
-
 }
