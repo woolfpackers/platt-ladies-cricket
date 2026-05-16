@@ -1,5 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
+
+import { ClubNavBanner } from '@/components/ClubNavBanner';
 import { NavBanner } from '@/components/NavBanner';
 import { SiteHeader } from '@/components/SiteHeader';
 
@@ -8,16 +10,20 @@ export const metadata: Metadata = {
   description: 'Official website starter for Platt Ladies Cricket.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function LadiesLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body>
-        <div className="site-fixed-header">
-          <SiteHeader />
-          <NavBanner />
-        </div>
-        {children}
-      </body>
-    </html>
+    <>
+      <div className="site-fixed-header">
+        <SiteHeader />
+        <ClubNavBanner />
+        <NavBanner />
+      </div>
+
+      {children}
+    </>
   );
 }
