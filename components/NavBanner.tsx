@@ -37,10 +37,17 @@ export function NavBanner() {
               item.href === '/ladies' && pathname === '/ladies';
 
             const isActive =
-	      item.href === '/'
-	        ? pathname === '/'
-	        : pathname === item.href ||
-	          pathname.startsWith(`${item.href}/`);
+              item.href === '/'
+
+                ? pathname === '/'
+
+                : item.href === '/ladies'
+
+                  ? pathname === '/ladies'
+
+                  : pathname === item.href ||
+                    pathname.startsWith(`${item.href}/`);
+
 
             return (
               <Link
