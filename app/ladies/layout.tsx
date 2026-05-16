@@ -2,7 +2,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 import { ClubNavBanner } from '@/components/ClubNavBanner';
-import { NavBanner } from '@/components/NavBanner';
 import { SiteHeader } from '@/components/SiteHeader';
 
 export const metadata: Metadata = {
@@ -20,7 +19,6 @@ export default function LadiesLayout({
       <div className="site-fixed-header">
         <SiteHeader />
         <ClubNavBanner />
-        <NavBanner />
       </div>
 
       {children}
