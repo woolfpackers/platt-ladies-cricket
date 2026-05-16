@@ -18,15 +18,15 @@ const sections = [
   {
     title: 'Platt Ladies',
     href: '/ladies',
-    image: '/images/platt-ladies/platt-logo.png',
+    image: '/images/platt-ladies/logo.png',
     accent:
       'linear-gradient(135deg, rgba(255,42,161,0.92), rgba(24,119,210,0.92))',
     text: 'Women’s softball and hardball cricket for all abilities.',
   },
 
   {
-    title: 'Development Teams',
-    href: '/development',
+    title: 'Development XI',
+    href: '/development-xi',
     image: '/images/club/development-xi-logo.png',
     accent:
       'linear-gradient(135deg, rgba(0,210,170,0.92), rgba(0,110,255,0.92))',
