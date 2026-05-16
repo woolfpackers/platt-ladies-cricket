@@ -33,9 +33,12 @@ export function NavBanner() {
       <div className="site-wrap nav-banner__scroll">
         <div className="nav-banner__inner">
           {navItems.map((item) => {
+            const isLadiesHome =
+              item.href === '/ladies' && pathname === '/ladies';
+
             const isActive =
-              pathname === item.href ||
-              (item.href !== '/' &&
+              isLadiesHome ||
+              (item.href !== '/ladies' &&
                 pathname.startsWith(item.href));
 
             return (
