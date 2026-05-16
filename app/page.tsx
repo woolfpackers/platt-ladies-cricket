@@ -56,8 +56,8 @@ export default async function ClubHomePage() {
           <Image
             src="/images/club/pcc-logo.jpeg"
             alt="Platt Cricket Club"
-            width={180}
-            height={180}
+            width={105}
+            height={105}
             style={{
               borderRadius: 24,
               objectFit: 'contain',
@@ -89,9 +89,9 @@ export default async function ClubHomePage() {
       <section
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: 24,
-          marginBottom: 24,
+          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+          gap: 18,
+          marginBottom: 20,
         }}
       >
         {sections.map((section) => (
@@ -102,7 +102,7 @@ export default async function ClubHomePage() {
             style={{
               position: 'relative',
               overflow: 'hidden',
-              minHeight: 340,
+              minHeight: 240,
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
@@ -130,8 +130,8 @@ export default async function ClubHomePage() {
               <Image
                 src={section.image}
                 alt={section.title}
-                width={150}
-                height={150}
+                width={105}
+                height={105}
                 style={{
                   objectFit: 'contain',
                 }}
@@ -146,7 +146,7 @@ export default async function ClubHomePage() {
             >
               <h2
                 style={{
-                  fontSize: '2rem',
+                  fontSize: '1.55rem',
                   marginBottom: 10,
                 }}
               >
