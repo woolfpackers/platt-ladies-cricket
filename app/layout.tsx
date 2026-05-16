@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { NavBanner } from '@/components/NavBanner';
+import { ClubNavBanner } from '@/components/NavBanner';
 import { SiteHeader } from '@/components/SiteHeader';
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="site-fixed-header">
           <SiteHeader />
-          <NavBanner />
+          <ClubNavBanner />
         </div>
         {children}
       </body>
