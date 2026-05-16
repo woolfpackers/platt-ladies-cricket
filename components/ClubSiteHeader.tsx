@@ -11,7 +11,7 @@ export function ClubSiteHeader() {
           aria-label="Platt Cricket Club home"
         >
           <Image
-            src="/images/club/pcc-logo.jpeg"
+            src="/images/club/pcc_logo.jpeg"
             alt="Platt Cricket Club"
             width={64}
             height={64}

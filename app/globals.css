@@ -1601,3 +1601,27 @@ img {
     font-size: 0.82rem;
   }
 }
+
+.hero-banner--club {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(10, 76, 38, 0.98),
+      rgba(24, 115, 58, 0.96) 45%,
+      rgba(214, 174, 32, 0.94)
+    );
+}
+
+.hero-banner--club::after {
+  background:
+    radial-gradient(
+      circle at 30% 10%,
+      rgba(255,255,255,0.10),
+      transparent 22%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(214, 174, 32, 0.88),
+      rgba(10, 76, 38, 0.96)
+    );
+}

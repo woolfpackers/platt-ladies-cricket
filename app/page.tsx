@@ -94,7 +94,7 @@ export default async function ClubHomePage() {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: 18,
+          gap: 16,
           marginBottom: 20,
         }}
       >
@@ -106,10 +106,10 @@ export default async function ClubHomePage() {
             style={{
               position: 'relative',
               overflow: 'hidden',
-              minHeight: 240,
+              minHeight: 140,
+              padding: '18px 20px',
               display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
+              alignItems: 'center',
               background: section.accent,
             }}
           >
@@ -118,7 +118,7 @@ export default async function ClubHomePage() {
                 position: 'absolute',
                 inset: 0,
                 background:
-                  'linear-gradient(rgba(5,12,25,0.18), rgba(5,12,25,0.72))',
+                  'linear-gradient(rgba(5,12,25,0.12), rgba(5,12,25,0.55))',
               }}
             />
 
@@ -127,44 +127,45 @@ export default async function ClubHomePage() {
                 position: 'relative',
                 zIndex: 2,
                 display: 'flex',
-                justifyContent: 'center',
-                marginTop: 12,
+                alignItems: 'center',
+                gap: 18,
+                width: '100%',
               }}
             >
               <Image
                 src={section.image}
                 alt={section.title}
-                width={105}
-                height={105}
+                width={74}
+                height={74}
                 style={{
                   objectFit: 'contain',
+                  flexShrink: 0,
                 }}
               />
-            </div>
 
-            <div
-              style={{
-                position: 'relative',
-                zIndex: 2,
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: '1.55rem',
-                  marginBottom: 10,
-                }}
-              >
-                {section.title}
-              </h2>
+              <div>
+                <h2
+                  style={{
+                    fontSize: '1.35rem',
+                    margin: '0 0 6px',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {section.title}
+                </h2>
 
-              <p
-                className="lead"
-                style={{
-                  color: 'white',
-                }}
-              >
-                {section.text}
-              </p>
+                <p
+                  className="lead"
+                  style={{
+                    color: 'white',
+                    fontSize: '0.92rem',
+                    margin: 0,
+                    lineHeight: 1.45,
+                  }}
+                >
+                  {section.text}
+                </p>
+              </div>
             </div>
           </Link>
         ))}
