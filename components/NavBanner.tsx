@@ -4,7 +4,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
-  { label: 'Home', href: '/ladies/' },
+  { label: 'Club Home', href: '/' },
+
+  { label: 'Ladies Home', href: '/ladies' },
+
   { label: 'Our Club', href: '/ladies/about' },
   { label: 'Squad', href: '/ladies/squad' },
   { label: 'Fixtures and Results', href: '/ladies/fixtures' },
@@ -15,7 +18,10 @@ const navItems = [
   { label: 'Events', href: '/ladies/events' },
   { label: 'Gallery', href: '/ladies/gallery' },
   { label: 'Fundraising', href: '/ladies/fundraising' },
-  { label: 'Partner With Us', href: '/ladies/partnership-opportunities' },
+  {
+    label: 'Partner With Us',
+    href: '/ladies/partnership-opportunities',
+  },
   { label: 'Contact', href: '/ladies/contact' },
 ];
 
@@ -27,7 +33,10 @@ export function NavBanner() {
       <div className="site-wrap nav-banner__scroll">
         <div className="nav-banner__inner">
           {navItems.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive =
+              pathname === item.href ||
+              (item.href !== '/' &&
+                pathname.startsWith(item.href));
 
             return (
               <Link
