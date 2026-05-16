@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { ClubNavBanner } from '@/components/ClubNavBanner';
-import { SiteHeader } from '@/components/SiteHeader';
+import { ClubSiteHeader } from '@/components/ClubSiteHeader';
 
 export const metadata: Metadata = {
   title: 'Platt Ladies Cricket',
@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <div className="site-fixed-header">
-          <SiteHeader />
+          <ClubSiteHeader />
           <ClubNavBanner />
         </div>
         {children}

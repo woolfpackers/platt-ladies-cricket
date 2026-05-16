@@ -9,7 +9,7 @@ const sections = [
   {
     title: 'Platt Juniors',
     href: '/juniors',
-    image: '/images/club/platt-juniors-logo.png',
+    image: '/images/club/platt_juniors_logo.png',
     accent:
       'linear-gradient(135deg, rgba(0,168,89,0.92), rgba(255,130,0,0.92), rgba(0,180,255,0.92))',
     text: 'All Stars, Dynamos and junior cricket from U9s to U15s.',
@@ -27,7 +27,7 @@ const sections = [
   {
     title: 'Development Teams',
     href: '/development',
-    image: '/images/club/development-xi-logo.png',
+    image: '/images/club/development_xi_logo.png',
     accent:
       'linear-gradient(135deg, rgba(0,210,170,0.92), rgba(0,110,255,0.92))',
     text: 'Creating pathways from junior and beginner cricket into adult cricket.',
@@ -54,7 +54,7 @@ export default async function ClubHomePage() {
           }}
         >
           <Image
-            src="/images/club/pcc-logo.jpeg"
+            src="/images/club/pcc_logo.jpeg"
             alt="Platt Cricket Club"
             width={110}
             height={110}
