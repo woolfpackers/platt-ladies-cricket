@@ -16,8 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <div className="site-fixed-header">
+      <body className="club-shell">
+        <div className="site-fixed-header club-fixed-header">
           <ClubSiteHeader />
           <ClubNavBanner />
         </div>

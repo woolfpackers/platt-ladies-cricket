@@ -14,13 +14,13 @@ export default function LadiesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <div className="site-fixed-header">
+    <div className="ladies-shell">
+      <div className="site-fixed-header site-fixed-header--ladies">
         <SiteHeader />
         <NavBanner />
       </div>
 
       {children}
-    </>
+    </div>
   );
 }
