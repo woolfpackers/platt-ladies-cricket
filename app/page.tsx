@@ -42,48 +42,52 @@ export default async function ClubHomePage() {
       <section
         className="section-card"
         style={{
-          marginBottom: 24,
-          textAlign: 'center',
+          marginBottom: 20,
+          padding: '20px 24px',
         }}
       >
         <div
           style={{
             display: 'flex',
-            justifyContent: 'center',
-            marginBottom: 18,
+            alignItems: 'center',
+            gap: 24,
           }}
         >
           <Image
             src="/images/club/pcc-logo.jpeg"
             alt="Platt Cricket Club"
-            width={105}
-            height={105}
+            width={110}
+            height={110}
             style={{
-              borderRadius: 24,
+              borderRadius: 18,
               objectFit: 'contain',
+              flexShrink: 0,
             }}
             priority
           />
+
+          <div>
+            <h1
+              className="page-title"
+              style={{
+                marginBottom: 10,
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+              }}
+            >
+              Platt Cricket Club
+            </h1>
+
+            <p
+              className="lead"
+              style={{
+                maxWidth: 850,
+                margin: 0,
+              }}
+            >
+              One club. Multiple pathways. Cricket for all ages, abilities and ambitions.
+            </p>
+          </div>
         </div>
-
-        <h1
-          className="page-title"
-          style={{
-            marginBottom: 12,
-          }}
-        >
-          Platt Cricket Club
-        </h1>
-
-        <p
-          className="lead"
-          style={{
-            maxWidth: 900,
-            margin: '0 auto',
-          }}
-        >
-          One club. Multiple pathways. Cricket for all ages, abilities and ambitions.
-        </p>
       </section>
 
       <section
