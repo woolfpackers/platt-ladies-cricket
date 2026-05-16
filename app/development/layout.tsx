@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { PageShell } from '@/components/PageShell';
+
 export const metadata: Metadata = {
   title: 'Platt Cricket Club',
   description: 'Official website of Platt Cricket Club.',
