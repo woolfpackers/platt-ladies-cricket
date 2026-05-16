@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { ClubNavBanner } from '@/components/NavBanner';
+import { ClubNavBanner } from '@/components/ClubNavBanner';
 import { SiteHeader } from '@/components/SiteHeader';
 
 export const metadata: Metadata = {
