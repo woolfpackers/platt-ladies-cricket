@@ -83,9 +83,7 @@ export default async function FundraisingPage({
 
             <div className="section-card fundraising-image-card">
               <a
-                href={`/ladies/contact?subject=${encodeURIComponent(
-                  "I'd like to reserve a table for the quiz night"
-                )}`}
+                href="/app/ladies/events/quiz-night/page.tsx"
               >
                 <img src="/images/platt-ladies/quiz_night.jpg" alt="Quiz Night" />
               </a>
