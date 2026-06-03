@@ -32,7 +32,7 @@ export function ClubSiteHeader() {
                 letterSpacing: '0.02em',
               }}
             >
-              Juniors • Ladies • Development
+              Juniors • Development • Ladies 
             </div>
           </div>
         </Link>
