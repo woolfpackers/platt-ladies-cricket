@@ -1,12 +1,21 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-
-const supabase = createClient(supabaseUrl, serviceRoleKey);
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    return NextResponse.json(
+      { error: 'Missing Supabase environment variables' },
+      { status: 500 }
+    );
+  }
+
+  const supabase = createClient(supabaseUrl, serviceRoleKey);
+
   const body = await request.json();
 
   const leadName = String(body.leadName ?? '').trim();
@@ -28,7 +37,8 @@ export async function POST(request: Request) {
     phone,
     team_name: teamName,
     team_members: teamMembers,
-    payment_url: 'https://www.crowdfunder.co.uk/p/platt-cricket-club-pavilion-project',
+    payment_url:
+      'https://www.crowdfunder.co.uk/p/platt-cricket-club-pavilion-project',
   });
 
   if (error) {
