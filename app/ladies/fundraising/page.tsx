@@ -83,7 +83,7 @@ export default async function FundraisingPage({
 
             <div className="section-card fundraising-image-card">
               <a
-                href="/app/ladies/events/quiz-night/page.tsx"
+                href="/ladies/events/quiz-night/page.tsx"
               >
                 <img src="/images/platt-ladies/quiz_night.jpg" alt="Quiz Night" />
               </a>
