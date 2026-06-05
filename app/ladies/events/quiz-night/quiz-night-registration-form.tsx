@@ -119,6 +119,7 @@ export function QuizNightRegistrationForm({
         />
       </label>
 
+
       <div className="quiz-night-form-actions">
         <button type="submit" disabled={status === 'saving'}>
           {status === 'saving' ? 'Registering...' : 'Register team'}
