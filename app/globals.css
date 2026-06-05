@@ -1643,6 +1643,46 @@ img {
   gap: 1.5rem;
 }
 
+.quiz-night-banner {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  text-align: center;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #ff2aa1 0%,
+    #c81d7f 35%,
+    #1877d2 100%
+  );
+
+  box-shadow:
+    0 0 20px rgba(255, 42, 161, 0.35),
+    0 0 40px rgba(24, 119, 210, 0.25);
+
+  animation: quiz-night-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes quiz-night-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.015);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .quiz-night-main-poster {
   width: min(100%, 980px);
   margin: 0 auto;

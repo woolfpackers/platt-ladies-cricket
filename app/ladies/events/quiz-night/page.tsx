@@ -13,6 +13,10 @@ export default function QuizNightPage() {
   return (
     <PageShell>
       <section className="quiz-night-page">
+        <div className="quiz-night-banner">
+          Register now for your quiz night entry... before it&apos;s too late...
+        </div>
+
         <div className="quiz-night-main-poster">
           <Image
             src="/images/platt-ladies/events/quiz-night.png"
@@ -31,7 +35,8 @@ export default function QuizNightPage() {
               <h1>Quiz Night Team Registration</h1>
               <p>
                 Register your team below, then pay through Crowdfunder using your
-                team name as the donation reference.
+                team name, or your own name for individual entries, as the donation
+                reference.
               </p>
             </div>
 
