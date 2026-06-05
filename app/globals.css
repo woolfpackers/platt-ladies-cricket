@@ -1683,6 +1683,8 @@ img {
   min-height: 700px;
   border-radius: 24px;
   overflow: hidden;
+  display: block;
+  cursor: pointer;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 

@@ -2,6 +2,7 @@ import { PageShell } from '@/components/PageShell';
 import { SectionIntro } from '@/components/SectionIntro';
 import { getPageContent } from '@/lib/data';
 import { It20Overlay } from '@/components/It20Overlay';
+import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
@@ -82,12 +83,13 @@ export default async function FundraisingPage({
             </div>
 
             <div className="section-card fundraising-image-card">
-              <a
-                href="/ladies/events/quiz-night/page.tsx"
-              >
-                <img src="/images/platt-ladies/quiz_night.jpg" alt="Quiz Night" />
-              </a>
-            </div>
+	      <Link href="/ladies/events/quiz-night">
+	        <img
+	          src="/images/platt-ladies/quiz_night.jpg"
+	          alt="Platt Ladies Cricket Quiz Night flyer"
+	        />
+	      </Link>
+	    </div>
           </div>
         </section>
       </div>
