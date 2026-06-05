@@ -51,7 +51,7 @@ export function QuizNightRegistrationForm({
 
     setStatus('success');
     setMessage(
-      'Team registered. Please now pay through Crowdfunder using your team name as the donation reference.',
+      'Registration received. Please now complete your Crowdfunder donation using your team name, or your own name for individual entries, as the donation reference so we can match your payment to your registration.',
     );
 
     event.currentTarget.reset();
