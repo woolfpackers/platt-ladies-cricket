@@ -26,9 +26,9 @@ export function QuizNightRegistrationForm({
       body: JSON.stringify({
         leadName: formData.get('leadName'),
         email: formData.get('email'),
-        phone: formData.get('phone'),
         teamName: formData.get('teamName'),
         teamMembers: formData.get('teamMembers'),
+        notes: formData.get('notes'),
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ export function QuizNightRegistrationForm({
 
     setStatus('success');
     setMessage(
-      'Team registered. Please now pay through Crowdfunder using your team name as the donation reference.'
+      'Team registered. Please now pay through Crowdfunder using your team name as the donation reference.',
     );
 
     form.reset();
@@ -51,32 +51,37 @@ export function QuizNightRegistrationForm({
 
   return (
     <form className="quiz-night-form" onSubmit={handleSubmit}>
-      <label>
-        Lead team member
-        <input name="leadName" required placeholder="Name" />
-      </label>
+      <div className="quiz-night-form-grid">
+        <label>
+          Lead name
+          <input name="leadName" required placeholder="Lead team member" />
+        </label>
+
+        <label>
+          Email
+          <input name="email" type="email" required placeholder="Email address" />
+        </label>
+
+        <label>
+          Team name
+          <input name="teamName" required placeholder="Team name" />
+        </label>
+
+        <label>
+          Team members
+          <input
+            name="teamMembers"
+            placeholder="Optional - names if known"
+          />
+        </label>
+      </div>
 
       <label>
-        Email address
-        <input name="email" type="email" required placeholder="Email" />
-      </label>
-
-      <label>
-        Phone number
-        <input name="phone" placeholder="Optional" />
-      </label>
-
-      <label>
-        Team name
-        <input name="teamName" required placeholder="Team name" />
-      </label>
-
-      <label>
-        Team members
+        Notes
         <textarea
-          name="teamMembers"
-          rows={4}
-          placeholder="Optional - add names if you know them"
+          name="notes"
+          rows={2}
+          placeholder="Optional - dietary needs, accessibility, questions, etc."
         />
       </label>
 
@@ -85,7 +90,7 @@ export function QuizNightRegistrationForm({
           {status === 'saving' ? 'Registering...' : 'Register team'}
         </button>
 
-        <a href={crowdfunderUrl} target="_blank">
+        <a href={crowdfunderUrl} target="_blank" rel="noopener noreferrer">
           Open Crowdfunder
         </a>
       </div>
