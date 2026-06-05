@@ -12,6 +12,29 @@ export function QuizNightRegistrationForm({
   const [status, setStatus] = useState<FormStatus>('idle');
   const [message, setMessage] = useState('');
 
+  const [isIndividualEntry, setIsIndividualEntry] = useState(false);
+
+  function toggleIndividualEntry() {
+    const teamNameInput = document.querySelector(
+      'input[name="teamName"]'
+    ) as HTMLInputElement | null;
+  
+    const teamMembersInput = document.querySelector(
+      'textarea[name="teamMembers"]'
+    ) as HTMLTextAreaElement | null;
+  
+    if (!teamNameInput || !teamMembersInput) return;
+  
+    if (!isIndividualEntry) {
+      teamNameInput.value = 'Individual Entry';
+      teamMembersInput.value = '';
+      setIsIndividualEntry(true);
+    } else {
+      teamNameInput.value = '';
+      setIsIndividualEntry(false);
+    }
+  }
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -63,19 +86,50 @@ export function QuizNightRegistrationForm({
         </label>
 
         <label>
-          Team name
-          <input name="teamName" required placeholder="Team name" />
-        </label>
+	  <div className="quiz-night-team-label-row">
+	    <span>Team name</span>
+
+	    <button
+	      type="button"
+	      className="quiz-night-individual-button"
+	      onClick={toggleIndividualEntry}
+	    >
+	      {isIndividualEntry
+	        ? 'Switch back to team entry'
+	        : 'Or click for individual entry'}
+	    </button>
+	  </div>
+	
+	  <input
+	    name="teamName"
+	    required
+	    placeholder="Team name"
+	    onChange={(e) => {
+	      const value = e.target.value.trim();
+	
+	      if (
+	        isIndividualEntry &&
+	        value.toLowerCase() !== 'individual entry'
+	      ) {
+	        setIsIndividualEntry(false);
+	      }
+	    }}
+	  />
+	</label>
 
         <label>
-          Team members
-          <input
-            name="teamMembers"
-            placeholder="Optional - names if known"
-          />
-        </label>
-      </div>
-
+	  Team members
+	  <textarea
+	    name="teamMembers"
+	    rows={4}
+	    disabled={isIndividualEntry}
+	    placeholder={
+	      isIndividualEntry
+	        ? 'Not required for individual entry'
+	        : 'Optional - add names if you know them'
+	    }
+	  />
+	</label>
       <label>
         Notes
         <textarea

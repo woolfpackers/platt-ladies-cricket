@@ -1777,3 +1777,29 @@ img {
 body:has(.ladies-shell) .club-fixed-header {
   display: none;
 }
+
+.quiz-night-team-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quiz-night-individual-button {
+  border: none;
+  background: transparent;
+  color: #ff2aa1;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.quiz-night-individual-button:hover {
+  text-decoration: underline;
+}
+
+.quiz-night-form textarea:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
