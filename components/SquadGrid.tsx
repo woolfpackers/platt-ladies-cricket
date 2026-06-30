@@ -56,20 +56,19 @@ export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
               </div>
 
               {player.sponsor && sponsorLogoUrl && (
-                <Link
-                  href={sponsorshipHref}
-                  className="player-card-sponsor-logo-wrap"
-                  aria-label={`${player.display_name} sponsor: ${player.sponsor.name}`}
-                >
-                  <Image
-                    src={sponsorLogoUrl}
-                    alt={`${player.sponsor.name} logo`}
-                    width={88}
-                    height={88}
-                    className="player-card-sponsor-logo"
-                  />
-                </Link>
-              )}
+	        <div
+	          className="player-card-sponsor-logo-wrap"
+	          aria-label={`${player.display_name} sponsor: ${player.sponsor.name}`}
+	        >
+	          <Image
+	            src={sponsorLogoUrl}
+	            alt={`${player.sponsor.name} logo`}
+	            width={88}
+	            height={88}
+	            className="player-card-sponsor-logo"
+	          />
+	        </div>
+	      )}
             </div>
 
             <div className="stat-block">
