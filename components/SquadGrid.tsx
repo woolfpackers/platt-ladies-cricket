@@ -7,35 +7,38 @@ function formatStat(value: number | null | undefined, decimals = 2) {
   return Number(value).toFixed(decimals).replace(/\.00$/, '');
 }
 
+function getPlayerSponsorshipHref(playerId: string | number) {
+  return `/ladies/player-sponsorship/${encodeURIComponent(String(playerId))}`;
+}
+
 function getSponsorLogoUrl(player: PlayerWithSponsor) {
   const sponsor = player.sponsor as
     | (PlayerWithSponsor['sponsor'] & {
         logo_url?: string | null;
-        image_url?: string | null;
         sponsor_logo_url?: string | null;
+        image_url?: string | null;
       })
     | null
     | undefined;
 
-  return (
-    sponsor?.logo_url ??
-    sponsor?.sponsor_logo_url ??
-    sponsor?.image_url ??
-    null
-  );
+  return sponsor?.logo_url ?? sponsor?.sponsor_logo_url ?? sponsor?.image_url ?? null;
 }
 
 export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
   return (
     <div className="cards-grid">
       {players.map((player) => {
+        const sponsorshipHref = getPlayerSponsorshipHref(player.id);
         const sponsorLogoUrl = getSponsorLogoUrl(player);
 
         return (
           <article key={player.id} className="player-card">
             <div className="player-photo-wrap">
               <Image
-                src={player.image_url || '/images/platt-ladies/player-placeholder.jpg'}
+                src={
+                  player.image_url ||
+                  '/images/platt-ladies/player-placeholder.jpg'
+                }
                 alt={player.display_name}
                 width={500}
                 height={520}
@@ -54,7 +57,7 @@ export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
 
               {player.sponsor && sponsorLogoUrl && (
                 <Link
-                  href={`/ladies/player-sponsorship?id=${encodeURIComponent(player.id)}`}
+                  href={sponsorshipHref}
                   className="player-card-sponsor-logo-wrap"
                   aria-label={`${player.display_name} sponsor: ${player.sponsor.name}`}
                 >
@@ -78,7 +81,9 @@ export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
                 </div>
                 <div>
                   <strong>Strike Rate:</strong>{' '}
-                  <span>{formatStat(player.career_stats?.batting_strike_rate)}</span>
+                  <span>
+                    {formatStat(player.career_stats?.batting_strike_rate)}
+                  </span>
                 </div>
                 <div>
                   <strong>Total Runs:</strong>{' '}
@@ -96,7 +101,9 @@ export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
                 </div>
                 <div>
                   <strong>Bowling strike rate:</strong>{' '}
-                  <span>{formatStat(player.career_stats?.bowling_strike_rate)}</span>
+                  <span>
+                    {formatStat(player.career_stats?.bowling_strike_rate)}
+                  </span>
                 </div>
                 <div>
                   <strong>Economy rate:</strong>{' '}
@@ -107,17 +114,11 @@ export function SquadGrid({ players }: { players: PlayerWithSponsor[] }) {
 
             <div>
               {player.sponsor ? (
-                <Link
-                  href={`/ladies/player-sponsorship?id=${encodeURIComponent(player.id)}`}
-                  className="taken-badge"
-                >
+                <Link href={sponsorshipHref} className="taken-badge">
                   Sponsored by {player.sponsor.name}
                 </Link>
               ) : (
-                <Link
-                  href={`/ladies/player-sponsorship?id=${encodeURIComponent(player.id)}`}
-                  className="button"
-                >
+                <Link href={sponsorshipHref} className="button">
                   Available for sponsorship
                 </Link>
               )}
