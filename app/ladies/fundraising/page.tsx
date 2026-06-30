@@ -77,9 +77,7 @@ export default async function FundraisingPage({
 
           <div className="fundraising-small-images-row">
             <div className="section-card fundraising-image-card">
-              <a href="/ladies/fundraising?it20=true">
-                <img src="/images/platt-ladies/IT20.jpg" alt="IT20 Competition" />
-              </a>
+              <img src="/images/platt-ladies/corporate-sponsor-deck.png" alt="Corporate Sponsorship Available" />
             </div>
 
             <div className="section-card fundraising-image-card">
