@@ -72,7 +72,7 @@ export default async function TourPage() {
         	controls
         	playsInline
       	      >
-	        <source src="/videos/platt-ladies/baltic_bash_preview.mp4" type="video/mp4" />
+	        <source src="/videos/platt-ladies/Baltic_Bash_2026_Part I_Finland.mp4" type="video/mp4" />
         	Your browser does not support the video tag.
 	      </video>
 	    </div>
