@@ -66,8 +66,8 @@ export default async function AboutPage() {
             <Image
               src={content.image_url}
               alt={content.image_alt || 'About our club'}
-              width={700}
-              height={700}
+              width={350}
+              height={350}
               className="about-image-only"
               priority
             />
